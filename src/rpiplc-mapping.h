@@ -80,4 +80,6 @@ static const uint8_t pca9685Addresses[] = {
 #define pinToDeviceAddress(pin) (((pin) >> 8) & 0xff)
 #define pinToDeviceIndex(pin) ((pin) & 0xff)
 
+#define I2C_BUS	0
+
 #endif

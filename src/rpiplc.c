@@ -15,7 +15,7 @@ static int isAddressIntoArray(uint8_t addr, const uint8_t* arr, uint8_t len) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void initPins() {
-	i2cInit(&i2c, 0);
+	i2cInit(&i2c, I2C_BUS);
 	for (int i = 0; i < NUM_PCA9685_DEVICES; ++i) {
 		pca9685_init(&i2c, pca9685Addresses[i]);
 	}
