@@ -15,7 +15,7 @@ TEST_SRCS=$(wildcard test/*.c)
 TEST_BINS=$(patsubst %.c,%,$(TEST_SRCS))
 
 define test-targets
-$(1): $(1).c
+$(1): $(1).c $(LIBRARY)
 	$(CC) -Isrc -L. -o $(1) $(1).c -lrpiplc
 endef
 
