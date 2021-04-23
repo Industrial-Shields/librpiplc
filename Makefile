@@ -25,7 +25,7 @@ first all world: $(LIBRARY)
 $(LIBRARY): $(OBJS)
 	$(CC) $(LDFLAGS) $^ -o $@
 
-$(OBJS): $(SRCS)
+$(OBJS): $(SRCS) $(HEADERS)
 
 $(foreach TEST_BIN,$(TEST_BINS),$(eval $(call test-targets,$(TEST_BIN))))
 
