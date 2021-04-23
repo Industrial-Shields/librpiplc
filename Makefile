@@ -32,10 +32,16 @@ $(foreach TEST_BIN,$(TEST_BINS),$(eval $(call test-targets,$(TEST_BIN))))
 tests: $(TEST_BINS)
 
 install:
-	cp $(LIBRARY) $(PREFIX)/lib/
+ifneq ($(DESTDIR),)
+	mkdir -p $(DESTDIR)
+endif
+	mkdir -p $(DESTDIR)$(PREFIX)/lib/
+	cp $(LIBRARY) $(DESTDIR)$(PREFIX)/lib/
+ifeq ($(DESTDIR),)
 	ldconfig
-	mkdir -p $(PREFIX)/include/$(LIBNAME)
-	cp $(HEADERS) $(PREFIX)/include/$(LIBNAME)/
+endif
+	mkdir -p $(DESTDIR)$(PREFIX)/include/$(LIBNAME)
+	cp $(HEADERS) $(DESTDIR)$(PREFIX)/include/$(LIBNAME)/
 
 clean:
 	rm -f $(OBJS) $(LIBRARY) $(TEST_BINS)
