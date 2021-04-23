@@ -9,6 +9,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 int i2cInit(i2c_t* i2c, uint8_t bus) {
 	if (i2c == NULL) {
+		fprintf(stderr, "i2cInit: invalid i2c\n");
 		return 1;
 	}
 
@@ -16,6 +17,7 @@ int i2cInit(i2c_t* i2c, uint8_t bus) {
 	sprintf(i2cFileName, "/dev/i2c-%d", bus);
 	i2c->fd = open(i2cFileName, O_RDWR);
 	if (i2c->fd < 0) {
+		perror("i2cInit");
 		return 1;
 	}
 
@@ -32,25 +34,41 @@ void i2cDeinit(i2c_t* i2c) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 size_t i2cWrite(i2c_t* i2c, uint8_t addr, const void* buff, size_t len) {
 	if ((i2c == NULL) || (i2c->fd < 0) || (buff == NULL) || (len == 0)) {
+		fprintf(stderr, "i2cWrite: invalid i2c\n");
 		return 0;
 	}
 
 	if (ioctl(i2c->fd, I2C_SLAVE, addr) < 0) {
-		return 1;
+		perror("i2cWrite");
+		return 0;
 	}
 
-	return write(i2c->fd, buff, len);
+	size_t wLen = write(i2c->fd, buff, len);
+	if (wLen != len) {
+		perror("i2cWrite");
+		fprintf(stderr, "i2cWrite: invalid len (%d != %d)\n", wLen, len);
+		return 0;
+	}
+
+	return len;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 size_t i2cRead(i2c_t* i2c, uint8_t addr, void* buff, size_t len) {
 	if ((i2c == NULL) || (i2c->fd < 0) || (buff == NULL) || (len == 0)) {
+		fprintf(stderr, "i2cInit: invalid i2c\n");
 		return 0;
 	}
 
 	if (ioctl(i2c->fd, I2C_SLAVE, addr) < 0) {
-		return 1;
+		perror("i2cRead");
+		return 0;
 	}
 
-	return read(i2c->fd, buff, len);
+	if (read(i2c->fd, buff, len) != len) {
+		fprintf(stderr, "i2cRead: invalid len\n");
+		return 0;
+	}
+
+	return len;
 }

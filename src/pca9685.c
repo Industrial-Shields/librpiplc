@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "pca9685.h"
 
 // Registers
@@ -35,7 +37,12 @@
 static uint8_t buffer[5];
 
 static int write_regs(i2c_t* i2c, uint8_t addr, uint8_t len) {
-	return i2cWrite(i2c, addr, buffer, len) == len;
+	if (i2cWrite(i2c, addr, buffer, len) != len) {
+		fprintf(stderr, "write_regs error (%02x, %d)\n", addr, len);
+		return 0;
+	}
+
+	return 1;
 }
 
 static int set_led(i2c_t* i2c, uint8_t addr,  uint8_t index,

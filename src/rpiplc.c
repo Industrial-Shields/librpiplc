@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "rpiplc.h"
 #include "pca9685.h"
 
@@ -17,7 +19,9 @@ static int isAddressIntoArray(uint8_t addr, const uint8_t* arr, uint8_t len) {
 void initPins() {
 	i2cInit(&i2c, I2C_BUS);
 	for (int i = 0; i < NUM_PCA9685_DEVICES; ++i) {
-		pca9685_init(&i2c, pca9685Addresses[i]);
+		if (!pca9685_init(&i2c, pca9685Addresses[i])) {
+			fprintf(stderr, "initPins: init PCA9685 (%02x) error\n", pca9685Addresses[i]);
+		}
 	}
 }
 
@@ -27,6 +31,8 @@ void analogWrite(uint32_t pin, int value) {
 	uint8_t index = pinToDeviceIndex(pin);
 
 	if (isAddressIntoArray(addr, pca9685Addresses, NUM_PCA9685_DEVICES)) {
-		pca9685_set_out_pwm(&i2c, addr, index, value);
+		if (!pca9685_set_out_pwm(&i2c, addr, index, value)) {
+			fprintf(stderr, "analogWrite: set PCA9685 error\n");
+		}
 	}
 }
