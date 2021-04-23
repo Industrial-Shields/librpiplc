@@ -3,12 +3,12 @@
 
 #include <stdint.h>
 
-#define PIN_Q0_0	0x00004015
-#define PIN_Q0_1	0x00004014
-#define PIN_Q0_2	0x00004013
-#define PIN_Q0_3	0x00004012
-#define PIN_Q0_4	0x00004011
-#define PIN_Q0_5	0x00004010
+#define PIN_Q0_0	0x0000400f
+#define PIN_Q0_1	0x0000400e
+#define PIN_Q0_2	0x0000400d
+#define PIN_Q0_3	0x0000400c
+#define PIN_Q0_4	0x0000400b
+#define PIN_Q0_5	0x0000400a
 #define PIN_Q0_6	0x00004001
 #define PIN_Q0_7	0x00004000
 
@@ -77,6 +77,6 @@ static const uint8_t pca9685Addresses[] = {
 #define pinToDeviceAddress(pin) (((pin) >> 8) & 0xff)
 #define pinToDeviceIndex(pin) ((pin) & 0xff)
 
-#define I2C_BUS	0
+#define I2C_BUS	1
 
 #endif
