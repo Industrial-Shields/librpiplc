@@ -11,6 +11,7 @@ extern "C" {
 
 void initPins();
 void analogWrite(uint32_t pin, int value);
+uint16_t analogRead(uint32_t pin);
 
 #ifdef __cplusplus
 }

@@ -3,6 +3,44 @@
 
 #include <stdint.h>
 
+#define PIN_I0_7	0x00004a00
+#define PIN_I0_8	0x00004a01
+#define PIN_I0_9	0x00004b00
+#define PIN_I0_10	0x00004802
+#define PIN_I0_11	0x00004800
+#define PIN_I0_12	0x00004801
+
+static const uint32_t I0_7 = PIN_I0_7;
+static const uint32_t I0_8 = PIN_I0_8;
+static const uint32_t I0_9 = PIN_I0_9;
+static const uint32_t I0_10 = PIN_I0_10;
+static const uint32_t I0_11 = PIN_I0_11;
+static const uint32_t I0_12 = PIN_I0_12;
+
+#define PIN_I1_7	0x00004900
+#define PIN_I1_8	0x00004a03
+#define PIN_I1_9	0x00004b02
+#define PIN_I1_10	0x00004b03
+#define PIN_I1_11	0x00004a02
+#define PIN_I1_12	0x00004901
+
+static const uint32_t I1_7 = PIN_I1_7;
+static const uint32_t I1_8 = PIN_I1_8;
+static const uint32_t I1_9 = PIN_I1_9;
+static const uint32_t I1_10 = PIN_I1_10;
+static const uint32_t I1_11 = PIN_I1_11;
+static const uint32_t I1_12 = PIN_I1_12;
+
+#define PIN_I2_7	0x00004903
+#define PIN_I2_8	0x00004902
+#define PIN_I2_9	0x00004803
+#define PIN_I2_10	0x00004b01
+
+static const uint32_t I2_7 = PIN_I2_7;
+static const uint32_t I2_8 = PIN_I2_8;
+static const uint32_t I2_9 = PIN_I2_9;
+static const uint32_t I2_10 = PIN_I2_10;
+
 #define PIN_Q0_0	0x0000400f
 #define PIN_Q0_1	0x0000400e
 #define PIN_Q0_2	0x0000400d
@@ -68,9 +106,13 @@ static const uint32_t A2_5 = PIN_Q2_5;
 static const uint32_t A2_6 = PIN_Q2_6;
 static const uint32_t A2_7 = PIN_Q2_7;
 
+static const uint8_t ads1015Addresses[] = {
+	0x48, 0x49, 0x4a, 0x4b,
+};
+#define NUM_ADS1015_DEVICES (sizeof(ads1015Addresses) / sizeof(uint8_t))
+
 static const uint8_t pca9685Addresses[] = {
-	0x40,
-	0x41,
+	0x40, 0x41,
 };
 #define NUM_PCA9685_DEVICES (sizeof(pca9685Addresses) / sizeof(uint8_t))
 

@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 #include "rpiplc.h"
+
+#include "ads1015.h"
 #include "pca9685.h"
 
 static i2c_t i2c;
@@ -23,6 +25,11 @@ void initPins() {
 			fprintf(stderr, "initPins: init PCA9685 (%02x) error\n", pca9685Addresses[i]);
 		}
 	}
+	for (int i = 0; i < NUM_ADS1015_DEVICES; ++i) {
+		if (!ads1015_init(&i2c, ads1015Addresses[i])) {
+			fprintf(stderr, "initPins, init ADS1015 (%02x) error\n", ads1015Addresses[i]);
+		}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,4 +42,16 @@ void analogWrite(uint32_t pin, int value) {
 			fprintf(stderr, "analogWrite: set PCA9685 error\n");
 		}
 	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+uint16_t analogRead(uint32_t pin) {
+	uint8_t addr = pinToDeviceAddress(pin);
+	uint8_t index = pinToDeviceIndex(pin);
+
+	if (isAddressIntoArray(addr, ads1015Addresses, NUM_ADS1015_DEVICES)) {
+		return ads1015_read(&i2c, addr, index);
+	}
+
+	return 0;
 }
