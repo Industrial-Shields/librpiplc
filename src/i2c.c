@@ -46,7 +46,7 @@ size_t i2cWrite(i2c_t* i2c, uint8_t addr, const void* buff, size_t len) {
 	size_t wLen = write(i2c->fd, buff, len);
 	if (wLen != len) {
 		perror("i2cWrite");
-		fprintf(stderr, "i2cWrite: invalid len (%lu != %lu)\n", wLen, len);
+		fprintf(stderr, "i2cWrite: invalid len (%u != %u)\n", (unsigned int) wLen, (unsigned int) len);
 		return 0;
 	}
 
