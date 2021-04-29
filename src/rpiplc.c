@@ -3,6 +3,7 @@
 #include "rpiplc.h"
 
 #include "ads1015.h"
+#include "mcp23008.h"
 #include "pca9685.h"
 
 static i2c_t i2c;
@@ -30,6 +31,43 @@ void initPins() {
 			fprintf(stderr, "initPins, init ADS1015 (%02x) error\n", ads1015Addresses[i]);
 		}
 	}
+	for (int i = 0; i < NUM_MCP23008_DEVICES; ++i) {
+		if (!mcp23008_init(&i2c, mcp23008Addresses[i])) {
+			fprintf(stderr, "initPins, init MCP23008 (%02x) error\n", mcp23008Addresses[i]);
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void digitalWrite(uint32_t pin, int value) {
+	uint8_t addr = pinToDeviceAddress(pin);
+	uint8_t index = pinToDeviceIndex(pin);
+
+	if (isAddressIntoArray(addr, pca9685Addresses, NUM_PCA9685_DEVICES)) {
+		if (value) {
+			if (!pca9685_set_out_on(&i2c, addr, index)) {
+				fprintf(stderr, "digitalWrite: set PCA9685 error\n");
+			}
+		} else {
+			if (!pca9685_set_out_off(&i2c, addr, index)) {
+				fprintf(stderr, "digitalWrite: set PCA9685 error\n");
+			}
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+int digitalRead(uint32_t pin) {
+	uint8_t addr = pinToDeviceAddress(pin);
+	uint8_t index = pinToDeviceIndex(pin);
+
+	if (isAddressIntoArray(addr, mcp23008Addresses, NUM_MCP23008_DEVICES)) {
+		return mcp23008_read(&i2c, addr, index);
+	} else if (isAddressIntoArray(addr, ads1015Addresses, NUM_ADS1015_DEVICES)) {
+		return ads1015_read(&i2c, addr, index) > 1023 ? 1 : 0;
+	}
+
+	return 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
