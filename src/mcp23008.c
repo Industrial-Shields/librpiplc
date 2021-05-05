@@ -19,31 +19,21 @@
 #define IOCON_DISSLW		0x10
 #define IOCON_SEQOP			0x20
 
-static uint8_t buffer[2];
-
-static int write_reg(i2c_t* i2c, uint8_t addr, uint8_t len) {
-	return i2cWrite(i2c, addr, buffer, len) == len;
+static int write_reg(i2c_t* i2c, uint8_t addr, uint8_t reg, uint8_t value) {
+	const uint8_t buff[] = { reg, value };
+	return i2cWrite(i2c, addr, buff, sizeof(buff)) == sizeof(buff);
 }
 
 int mcp23008_init(i2c_t* i2c, uint8_t addr) {
-	uint8_t* ptr = buffer;
-
-	*ptr++ = IODIR_REGISTER;
-	*ptr++ = 0xff; // Inputs
-	if (!write_reg(i2c, addr, ptr - buffer)) {
+	if (!write_reg(i2c, addr, IODIR_REGISTER, 0xff)) {
 		return 0;
 	}
 
-	*ptr++ = IOCON_REGISTER;
-	*ptr++ = IOCON_SEQOP | IOCON_ODR;
-	if (!write_reg(i2c, addr, ptr - buffer)) {
+	if (!write_reg(i2c, addr, IOCON_REGISTER, IOCON_SEQOP | IOCON_ODR)) {
 		return 0;
 	}
 
-	ptr = buffer;
-	*ptr++ = GPPU_REGISTER;
-	*ptr++ = 0x00; // No pull-ups
-	if (!write_reg(i2c, addr, ptr - buffer)) {
+	if (!write_reg(i2c, addr, GPPU_REGISTER, 0x00)) {
 		return 0;
 	}
 
@@ -51,16 +41,10 @@ int mcp23008_init(i2c_t* i2c, uint8_t addr) {
 }
 
 uint8_t mcp23008_read(i2c_t* i2c, uint8_t addr, uint8_t index) {
-	uint8_t* ptr = buffer;
-
-	*ptr++ = GPIO_REGISTER;
-	if (i2cWrite(i2c, addr, buffer, 1) != 1) {
+	uint8_t value = 0x00;
+	if (i2cRead(i2c, addr, GPIO_REGISTER, &value, 1) != 1) {
 		return 0;
 	}
 
-	if (i2cRead(i2c, addr, buffer, 1) != 1) {
-		return 0;
-	}
-
-	return (buffer[0] >> index) & 1;
+	return (value >> index) & 1;
 }

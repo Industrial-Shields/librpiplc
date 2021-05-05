@@ -84,13 +84,7 @@ uint16_t ads1015_read(i2c_t* i2c, uint8_t addr, uint8_t index) {
 
 	usleep(1000);
 
-	ptr = buffer;
-	*ptr++ = CONVERSION_REGISTER;
-	if (i2cWrite(i2c, addr, buffer, 1) != 1) {
-		return 0;
-	}
-
-	if (i2cRead(i2c, addr, buffer, 2) != 2) {
+	if (i2cRead(i2c, addr, CONVERSION_REGISTER, buffer, 2) != 2) {
 		return 0;
 	}
 

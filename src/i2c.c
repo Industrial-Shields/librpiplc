@@ -2,6 +2,7 @@
 
 #include <fcntl.h>
 #include <linux/i2c-dev.h>
+#include <linux/i2c.h>
 #include <stdio.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
@@ -54,19 +55,30 @@ size_t i2cWrite(i2c_t* i2c, uint8_t addr, const void* buff, size_t len) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-size_t i2cRead(i2c_t* i2c, uint8_t addr, void* buff, size_t len) {
+size_t i2cRead(i2c_t* i2c, uint8_t addr, uint8_t reg, void* buff, size_t len) {
 	if ((i2c == NULL) || (i2c->fd < 0) || (buff == NULL) || (len == 0)) {
 		fprintf(stderr, "i2cInit: invalid i2c\n");
 		return 0;
 	}
 
-	if (ioctl(i2c->fd, I2C_SLAVE, addr) < 0) {
-		perror("i2cRead");
-		return 0;
-	}
+	struct i2c_msg msgs[2];
+	struct i2c_rdwr_ioctl_data data[1];
 
-	if (read(i2c->fd, buff, len) != len) {
-		fprintf(stderr, "i2cRead: invalid len\n");
+	msgs[0].addr = addr;
+	msgs[0].flags = 0;
+	msgs[0].len = 1;
+	msgs[0].buf = &reg;
+
+	msgs[1].addr = addr;
+	msgs[1].flags = I2C_M_RD | I2C_M_NOSTART;
+	msgs[1].len = len;
+	msgs[1].buf = buff;
+
+	data[0].msgs = msgs;
+	data[0].nmsgs = 2;
+
+	if (ioctl(i2c->fd, I2C_RDWR, &data) < 0) {
+		perror("i2cRead");
 		return 0;
 	}
 
