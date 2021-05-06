@@ -1,5 +1,6 @@
 #include <unistd.h>
 
+#include "rpiplc-arduino.h"
 #include "ads1015.h"
 
 // Registers
@@ -77,14 +78,14 @@ uint16_t ads1015_read(i2c_t* i2c, uint8_t addr, uint8_t index) {
 	*ptr++ = CONFIG_REGISTER;
 	*ptr++ = CONFIG_H_MODE_SINGLE | CONFIG_H_PGA_1 | CONFIG_H_OS_START | mux;
 	*ptr++ = CONFIG_L_CQUE_NONE | CONFIG_L_CLAT_NONE | CONFIG_L_CPOL_LOW | CONFIG_L_CMODE_HYST | CONFIG_L_DR_1600;
-	int len = ptr - buffer;
-	if (i2cWrite(i2c, addr, buffer, len) != len) {
+	size_t len = ptr - buffer;
+	if (i2c_write(i2c, addr, buffer, len) != len) {
 		return 0;
 	}
 
-	usleep(1000);
+	delay(1);
 
-	if (i2cRead(i2c, addr, CONVERSION_REGISTER, buffer, 2) != 2) {
+	if (i2c_read(i2c, addr, CONVERSION_REGISTER, buffer, 2) != 2) {
 		return 0;
 	}
 

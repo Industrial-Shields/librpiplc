@@ -21,10 +21,10 @@
 
 static int write_reg(i2c_t* i2c, uint8_t addr, uint8_t reg, uint8_t value) {
 	const uint8_t buff[] = { reg, value };
-	return i2cWrite(i2c, addr, buff, sizeof(buff)) == sizeof(buff);
+	return i2c_write(i2c, addr, buff, sizeof(buff)) == sizeof(buff);
 }
 
-int mcp23008_init(i2c_t* i2c, uint8_t addr) {
+uint8_t mcp23008_init(i2c_t* i2c, uint8_t addr) {
 	if (!write_reg(i2c, addr, IODIR_REGISTER, 0xff)) {
 		return 0;
 	}
@@ -40,11 +40,48 @@ int mcp23008_init(i2c_t* i2c, uint8_t addr) {
 	return 1;
 }
 
+uint8_t mcp23008_set_pin_mode(i2c_t* i2c, uint8_t addr, uint8_t index, uint8_t mode) {
+	uint8_t iodir_reg;
+	if (i2c_read(i2c, addr, IODIR_REGISTER, &iodir_reg, 1) != 1) {
+		return 0;
+	}
+
+	if (mode & 0x01) {
+		iodir_reg |= (1 << index);
+	} else {
+		iodir_reg &= ~(1 << index);
+	}
+
+	if (!write_reg(i2c, addr, IODIR_REGISTER, iodir_reg)) {
+		return 0;
+	}
+
+	return 1;
+}
+
 uint8_t mcp23008_read(i2c_t* i2c, uint8_t addr, uint8_t index) {
 	uint8_t value = 0x00;
-	if (i2cRead(i2c, addr, GPIO_REGISTER, &value, 1) != 1) {
+	if (i2c_read(i2c, addr, GPIO_REGISTER, &value, 1) != 1) {
 		return 0;
 	}
 
 	return (value >> index) & 1;
+}
+
+uint8_t mcp23008_write(i2c_t* i2c, uint8_t addr, uint8_t index, uint8_t value) {
+	uint8_t gpio_reg;
+	if (i2c_read(i2c, addr, GPIO_REGISTER, &gpio_reg, 1) != 1) {
+		return 0;
+	}
+
+	if (!value) {
+		gpio_reg &= ~(1 << index);
+	} else {
+		gpio_reg |= (1 << index);
+	}
+	if (!write_reg(i2c, addr, GPIO_REGISTER, gpio_reg)) {
+		return 0;
+	}
+
+	return 1;
 }

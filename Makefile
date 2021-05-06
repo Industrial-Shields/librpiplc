@@ -1,22 +1,24 @@
 LIBNAME:=rpiplc
 LIBRARY:=lib$(LIBNAME).so
 
-override CFLAGS+=-fpic -Wall -Werror
+override CXXFLAGS+=-Wall -Werror -std=c++14
 override LDFLAGS+=-shared
 
-CC=gcc
+CC=g++
+CXX=g++
 PREFIX=/usr/local
 
 HEADERS:=$(wildcard src/*.h)
-SRCS:=$(wildcard src/*.c)
-OBJS:=$(patsubst %.c,%.o,$(SRCS))
+SRCS:=$(wildcard src/*.cpp)
+OBJS:=$(patsubst %.cpp,%.o,$(SRCS))
 
-TEST_SRCS=$(wildcard test/*.c)
-TEST_BINS=$(patsubst %.c,%,$(TEST_SRCS))
+TEST_SRCS=$(wildcard test/*.cpp)
+TEST_BINS=$(patsubst %.cpp,%,$(TEST_SRCS))
 
 define test-targets
-$(1): $(1).c $(LIBRARY)
-	$(CC) -Isrc -L. -o $(1) $(1).c -lrpiplc
+.PHONY: $(1)
+$(1): $(1).cpp $(LIBRARY)
+	$(CXX) $(CXXFLAGS) -Isrc -L. -o $(1) $(1).cpp -lrpiplc
 endef
 
 .PHONY: first all world clean tests install
@@ -25,6 +27,7 @@ first all world: $(LIBRARY)
 $(LIBRARY): $(OBJS)
 	$(CC) $(LDFLAGS) $^ -o $@
 
+$(OBJS): CXXFLAGS+=-fpic
 $(OBJS): $(SRCS) $(HEADERS)
 
 $(foreach TEST_BIN,$(TEST_BINS),$(eval $(call test-targets,$(TEST_BIN))))
