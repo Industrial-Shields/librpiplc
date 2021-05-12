@@ -9,6 +9,8 @@
 #define PIN_I0_2	0x00002102
 #define PIN_I0_3	0x00002101
 #define PIN_I0_4	0x00002100
+#define PIN_I0_5	13
+#define PIN_I0_6	12
 #define PIN_I0_7	0x00004a00
 #define PIN_I0_8	0x00004a01
 #define PIN_I0_9	0x00004b00
@@ -21,6 +23,8 @@ static const uint32_t I0_1 = PIN_I0_1;
 static const uint32_t I0_2 = PIN_I0_2;
 static const uint32_t I0_3 = PIN_I0_3;
 static const uint32_t I0_4 = PIN_I0_4;
+static const uint32_t I0_5 = PIN_I0_5;
+static const uint32_t I0_6 = PIN_I0_6;
 static const uint32_t I0_7 = PIN_I0_7;
 static const uint32_t I0_8 = PIN_I0_8;
 static const uint32_t I0_9 = PIN_I0_9;
@@ -51,11 +55,15 @@ static const uint32_t A0_6 = PIN_Q0_6;
 static const uint32_t A0_7 = PIN_Q0_7;
 
 #elif defined(RPIPLC_19R) || defined(RPIPLC_38R) || defined(RPIPLC_50RRA) || defined(RPIPLC_57R)
+#define PIN_I0_0	13
+#define PIN_I0_1	12
 #define PIN_I0_2	0x00004a00
 #define PIN_I0_3	0x00004a01
 #define PIN_I0_4	0x00004b00
 #define PIN_I0_5	0x00004802
 
+static const uint32_t I0_0 = PIN_I0_0;
+static const uint32_t I0_1 = PIN_I0_1;
 static const uint32_t I0_2 = PIN_I0_2;
 static const uint32_t I0_3 = PIN_I0_3;
 static const uint32_t I0_4 = PIN_I0_4;
@@ -99,6 +107,8 @@ static const uint32_t R0_8 = PIN_R0_8;
 #define PIN_I1_2	0x00002000
 #define PIN_I1_3	0x00002107
 #define PIN_I1_4	0x00002106
+#define PIN_I1_5	27
+#define PIN_I1_6	4
 #define PIN_I1_7	0x00004900
 #define PIN_I1_8	0x00004a03
 #define PIN_I1_9	0x00004b02
@@ -111,6 +121,8 @@ static const uint32_t I1_1 = PIN_I1_1;
 static const uint32_t I1_2 = PIN_I1_2;
 static const uint32_t I1_3 = PIN_I1_3;
 static const uint32_t I1_4 = PIN_I1_4;
+static const uint32_t I1_5 = PIN_I1_5;
+static const uint32_t I1_6 = PIN_I1_6;
 static const uint32_t I1_7 = PIN_I1_7;
 static const uint32_t I1_8 = PIN_I1_8;
 static const uint32_t I1_9 = PIN_I1_9;
@@ -141,6 +153,8 @@ static const uint32_t A1_6 = PIN_Q1_6;
 static const uint32_t A1_7 = PIN_Q1_7;
 
 #elif defined(RPIPLC_38R) || defined(RPIPLC_38AR) || defined(RPIPLC_50RRA) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57R)
+#define PIN_I1_0	27
+#define PIN_I1_1	4
 #define PIN_I1_2	0x00004900
 #define PIN_I1_3	0x00004a03
 #define PIN_I1_4	0x00004b02
@@ -189,6 +203,8 @@ static const uint32_t R1_8 = PIN_R1_8;
 #define PIN_I2_2	0x00002007
 #define PIN_I2_3	0x00002004
 #define PIN_I2_4	0x00002003
+#define PIN_I2_5	17
+#define PIN_I2_6	16
 #define PIN_I2_7	0x00004903
 #define PIN_I2_8	0x00004902
 #define PIN_I2_9	0x00004803
@@ -227,6 +243,8 @@ static const uint32_t A2_6 = PIN_Q2_6;
 static const uint32_t A2_7 = PIN_Q2_7;
 
 #elif defined(RPIPLC_53ARR) || defined(RPIPLC_57AAR) || defined(RPIPLC_57R)
+#define PIN_I2_0	17
+#define PIN_I2_1	16
 #define PIN_I2_2	0x00004903
 #define PIN_I2_3	0x00004902
 #define PIN_I2_4	0x00004803
@@ -268,5 +286,9 @@ static const uint32_t R2_7 = PIN_R2_7;
 static const uint32_t R2_8 = PIN_R2_8;
 
 #endif
+
+static const uint32_t gpio_pins[] = {
+	4, 12, 13, 16, 17, 27,
+};
 
 #endif

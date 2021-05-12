@@ -8,6 +8,7 @@
 #include "ads1015.h"
 #include "mcp23008.h"
 #include "pca9685.h"
+#include "rpi-gpio.h"
 
 static i2c_t i2c;
 
@@ -24,6 +25,8 @@ static int isAddressIntoArray(uint8_t addr, const uint8_t* arr, uint8_t len) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void initPins() {
 	i2c_init(&i2c, I2C_BUS);
+
+	rpi_gpio_init();
 
 	for (int i = 0; i < rpiplc_num_pca9685; ++i) {
 		if (!pca9685_init(&i2c, rpiplc_pca9685[i])) {
@@ -49,12 +52,12 @@ void pinMode(uint32_t pin, uint8_t mode) {
 	uint8_t addr = pinToDeviceAddress(pin);
 	uint8_t index = pinToDeviceIndex(pin);
 
-	if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
-		if (mode == INPUT) {
-			mcp23008_set_pin_mode(&i2c, addr, index, MCP23008_INPUT);
-		} else if (mode == OUTPUT) {
-			mcp23008_set_pin_mode(&i2c, addr, index, MCP23008_OUTPUT);
-		}
+	if (addr == 0) {
+		rpi_gpio_set_pin_mode(index, mode == OUTPUT ? RPI_GPIO_OUTPUT : RPI_GPIO_INPUT);
+
+	} else if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
+		mcp23008_set_pin_mode(&i2c, addr, index, mode == OUTPUT ? MCP23008_OUTPUT : MCP23008_INPUT);
+
 	}
 }
 
@@ -63,7 +66,10 @@ void digitalWrite(uint32_t pin, int value) {
 	uint8_t addr = pinToDeviceAddress(pin);
 	uint8_t index = pinToDeviceIndex(pin);
 
-	if (isAddressIntoArray(addr, rpiplc_pca9685, rpiplc_num_pca9685)) {
+	if (addr == 0) {
+		rpi_gpio_write(index, value);
+
+	} else if (isAddressIntoArray(addr, rpiplc_pca9685, rpiplc_num_pca9685)) {
 		if (value) {
 			if (!pca9685_set_out_on(&i2c, addr, index)) {
 				fprintf(stderr, "digitalWrite: set PCA9685 error\n");
@@ -86,10 +92,15 @@ int digitalRead(uint32_t pin) {
 	uint8_t addr = pinToDeviceAddress(pin);
 	uint8_t index = pinToDeviceIndex(pin);
 
-	if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
+	if (addr == 0) {
+		return rpi_gpio_read(pin);
+
+	} else if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
 		return mcp23008_read(&i2c, addr, index);
+
 	} else if (isAddressIntoArray(addr, rpiplc_ads1015, rpiplc_num_ads1015)) {
 		return ads1015_read(&i2c, addr, index) > 1023 ? 1 : 0;
+
 	}
 
 	return 0;
