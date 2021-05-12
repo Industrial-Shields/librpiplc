@@ -74,7 +74,7 @@ uint8_t rpi_gpio_deinit() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-uint8_t rpi_rpi_gpioet_pin_mode(uint32_t pin, uint32_t mode) {
+uint8_t rpi_gpio_set_pin_mode(uint32_t pin, uint32_t mode) {
 	struct gpiohandle_request req;
 
 	struct rpi_gpio* gpio = find_gpio_by_pin(pin);

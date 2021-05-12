@@ -3,26 +3,26 @@
 
 static const uint32_t digitalInputs[] = {
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
-	I0_0, I0_1, I0_2, I0_3, I0_4,
+	I0_0, I0_1, I0_2, I0_3, I0_4, I0_5, I0_6,
 
 #elif defined(RPIPLC_19R) || defined(RPIPLC_38R) || defined(RPIPLC_50RRA) || defined(RPIPLC_57R)
-	I0_2, I0_3, I0_4, I0_5,
+	I0_0, I0_1, I0_2, I0_3, I0_4, I0_5,
 
 #endif
 
 #if defined(RPIPLC_42) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
-	I1_0, I1_1, I1_2, I1_3, I1_4,
+	I1_0, I1_1, I1_2, I1_3, I1_4, I1_5, I1_6,
 
 #elif defined(RPIPLC_38R) || defined(RPIPLC_38AR) || defined(RPIPLC_50RRA) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57R)
-	I1_2, I1_3, I1_4, I1_5,
+	I1_0, I1_1, I1_2, I1_3, I1_4, I1_5,
 
 #endif
 
 #if defined(RPIPLC_50RRA) || defined(RPIPLC_54ARA) || defined(RPIPLC_58)
-	I2_0, I2_1, I2_2, I2_3, I2_4,
+	I2_0, I2_1, I2_2, I2_3, I2_4, I2_5, I2_6,
 
 #elif defined(RPIPLC_53ARR) || defined(RPIPLC_57AAR) || defined(RPIPLC_57R)
-	I2_2, I2_3, I2_4, I2_5,
+	I2_0, I2_1, I2_2, I2_3, I2_4, I2_5,
 
 #endif
 };
