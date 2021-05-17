@@ -21,7 +21,7 @@ $(1): $(1).cpp $(LIBRARY)
 	$(CXX) $(CXXFLAGS) -Isrc -L. -o $(1) $(1).cpp -l$(LIBNAME)
 endef
 
-.PHONY: first all world clean tests install pack
+.PHONY: first all world clean tests install pack pre-pack
 first all world: $(LIBRARY)
 
 $(LIBRARY): $(OBJS)
@@ -35,21 +35,20 @@ $(foreach TEST_BIN,$(TEST_BINS),$(eval $(call test-targets,$(TEST_BIN))))
 tests: $(TEST_BINS)
 
 install:
-ifneq ($(DESTDIR),)
-	mkdir -p $(DESTDIR)
-endif
+	if [ -n "$(DESTDIR)" ]; then mkdir -p $(DESTDIR); fi
 	mkdir -p $(DESTDIR)$(PREFIX)/lib/
 	cp $(LIBRARY) $(DESTDIR)$(PREFIX)/lib/
-ifeq ($(DESTDIR),)
-	ldconfig
-endif
+	if [ -z "$(DESTDIR)" ]; then ldconfig; fi
 	mkdir -p $(DESTDIR)$(PREFIX)/include/$(LIBNAME)
 	cp $(HEADERS) $(DESTDIR)$(PREFIX)/include/$(LIBNAME)/
 
-pack:
-	rm -rf /tmp/${LIBNAME}
-	make install PREFIX= DESTDIR=/tmp/${LIBNAME}
-	tar -C /tmp/${LIBNAME} -cjvf lib${LIBNAME}.tar.bz2 .
+pack: DESTDIR=/tmp/$(LIBNAME)
+pack: PREFIX=
+pack: pre-pack $(LIBRARY) install
+	tar -C $(DESTDIR) -cjvf lib$(LIBNAME).tar.bz2 .
+
+pre-pack:
+	rm -rf $(DESTDIR)
 
 clean:
 	rm -f $(OBJS) $(LIBRARY) $(TEST_BINS)
