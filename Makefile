@@ -47,9 +47,9 @@ endif
 	cp $(HEADERS) $(DESTDIR)$(PREFIX)/include/$(LIBNAME)/
 
 pack:
-	rm -rf /tmp/rpiplc-lib
-	make install PREFIX= DESTDIR=/tmp/rpiplc-lib
-	tar -C /tmp/rpiplc-lib -cjvf librpiplc.tar.bz2 .
+	rm -rf /tmp/${LIBNAME}
+	make install PREFIX= DESTDIR=/tmp/${LIBNAME}
+	tar -C /tmp/${LIBNAME} -cjvf lib${LIBNAME}.tar.bz2 .
 
 clean:
 	rm -f $(OBJS) $(LIBRARY) $(TEST_BINS)
