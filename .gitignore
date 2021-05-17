@@ -3,3 +3,5 @@ src/*.o
 test/*
 !test/*.cpp
 !test/*.h
+*.tar.bz2
+*.tar.gz

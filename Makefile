@@ -21,7 +21,7 @@ $(1): $(1).cpp $(LIBRARY)
 	$(CXX) $(CXXFLAGS) -Isrc -L. -o $(1) $(1).cpp -l$(LIBNAME)
 endef
 
-.PHONY: first all world clean tests install
+.PHONY: first all world clean tests install pack
 first all world: $(LIBRARY)
 
 $(LIBRARY): $(OBJS)
@@ -45,6 +45,11 @@ ifeq ($(DESTDIR),)
 endif
 	mkdir -p $(DESTDIR)$(PREFIX)/include/$(LIBNAME)
 	cp $(HEADERS) $(DESTDIR)$(PREFIX)/include/$(LIBNAME)/
+
+pack:
+	rm -rf /tmp/rpiplc-lib
+	make install PREFIX= DESTDIR=/tmp/rpiplc-lib
+	tar -C /tmp/rpiplc-lib -cjvf librpiplc.tar.bz2 .
 
 clean:
 	rm -f $(OBJS) $(LIBRARY) $(TEST_BINS)
