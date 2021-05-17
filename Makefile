@@ -1,5 +1,4 @@
 LIBNAME:=rpiplc
-LIBRARY:=lib$(LIBNAME).so
 
 override CXXFLAGS+=-Wall -Werror -std=c++14
 override LDFLAGS+=-shared
@@ -8,6 +7,7 @@ CC=g++
 CXX=g++
 PREFIX=/usr/local
 
+LIBRARY:=lib$(LIBNAME).so
 HEADERS:=$(wildcard src/*.h)
 SRCS:=$(wildcard src/*.cpp)
 OBJS:=$(patsubst %.cpp,%.o,$(SRCS))
@@ -18,7 +18,7 @@ TEST_BINS=$(patsubst %.cpp,%,$(TEST_SRCS))
 define test-targets
 .PHONY: $(1)
 $(1): $(1).cpp $(LIBRARY)
-	$(CXX) $(CXXFLAGS) -Isrc -L. -o $(1) $(1).cpp -lrpiplc
+	$(CXX) $(CXXFLAGS) -Isrc -L. -o $(1) $(1).cpp -l$(LIBNAME)
 endef
 
 .PHONY: first all world clean tests install

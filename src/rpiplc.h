@@ -8,6 +8,7 @@
 
 #include "rpiplc-arduino.h"
 #include "rpiplc-mapping.h"
+#include "rpiplc-version.h"
 
 extern void setup();
 extern void loop();
