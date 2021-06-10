@@ -35,7 +35,8 @@ sudo nano /boot/config.txt
 
 **6**. Comment all the following lines by adding a hash mark at the beginning of the lines like this:
 
-```#dtoverlay=mcp23017,noints,mcp23008,addr=0x20
+```
+#dtoverlay=mcp23017,noints,mcp23008,addr=0x20
 #dtoverlay=mcp23017,noints,mcp23008,addr=0x21
 
 #dtoverlay=i2c-pwm-pca9685a,addr=0x40
