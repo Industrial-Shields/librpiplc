@@ -284,8 +284,9 @@ Run it executing the following:
 
 The output on the terminal will be shown like this:
 
-Num digital outputs: 24
 ```
+Num digital outputs: 24
+
 Set value 1
 Set value 0
 Set value 1
