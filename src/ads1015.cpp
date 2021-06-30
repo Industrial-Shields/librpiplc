@@ -48,8 +48,6 @@
 #define CONFIG_L_DR_2400		0xa0
 #define CONFIG_L_DR_3300		0xc0
 
-static uint8_t buffer[2];
-
 int ads1015_init(i2c_t* i2c, uint8_t addr) {
 	return 1;
 }
@@ -74,12 +72,11 @@ uint16_t ads1015_read(i2c_t* i2c, uint8_t addr, uint8_t index) {
 			break;
 	}
 
-	uint8_t* ptr = buffer;
-	*ptr++ = CONFIG_REGISTER;
-	*ptr++ = CONFIG_H_MODE_SINGLE | CONFIG_H_PGA_1 | CONFIG_H_OS_START | mux;
-	*ptr++ = CONFIG_L_CQUE_NONE | CONFIG_L_CLAT_NONE | CONFIG_L_CPOL_LOW | CONFIG_L_CMODE_HYST | CONFIG_L_DR_1600;
-	size_t len = ptr - buffer;
-	if (i2c_write(i2c, addr, buffer, len) != len) {
+	uint8_t buffer[3];
+	buffer[0] = CONFIG_REGISTER;
+	buffer[1] = CONFIG_H_MODE_SINGLE | CONFIG_H_PGA_1 | CONFIG_H_OS_START | mux;
+	buffer[2] = CONFIG_L_CQUE_NONE | CONFIG_L_CLAT_NONE | CONFIG_L_CPOL_LOW | CONFIG_L_CMODE_HYST | CONFIG_L_DR_1600;
+	if (i2c_write(i2c, addr, buffer, 3) != 3) {
 		return 0;
 	}
 
