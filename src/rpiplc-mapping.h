@@ -289,8 +289,4 @@ static const uint32_t R2_8 = PIN_R2_8;
 
 #endif
 
-static const uint32_t gpio_pins[] = {
-	4, 12, 13, 16, 17, 27,
-};
-
 #endif

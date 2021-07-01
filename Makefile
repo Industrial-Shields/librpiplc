@@ -51,4 +51,4 @@ pre-pack:
 	rm -rf $(DESTDIR)
 
 clean:
-	rm -f $(OBJS) $(LIBRARY) $(TEST_BINS)
+	rm -f $(OBJS) $(LIBRARY) $(TEST_BINS) src/*.o

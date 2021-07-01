@@ -10,7 +10,4 @@
 #include "rpiplc-mapping.h"
 #include "rpiplc-version.h"
 
-extern void setup();
-extern void loop();
-
 #endif
