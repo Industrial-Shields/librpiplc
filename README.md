@@ -90,11 +90,31 @@ Compile the rpiplc-lib applications with the essential parameters:
 
 Rpiplc-lib contains different applications:
 
+0. [Main](#main-0)
 1. [AnalogBlink](#analog-blink)
 2. [AnalogRead](#analog-read)
 3. [Delay](#delay-1)
 4. [DigitalBlink](#digital-blink)
 5. [DigitalRead](#digital-read)
+
+
+### <a name="main-0"></a>Main
+All the applications must implement the main function that looks like the example below:
+```
+int main(int argc, char* argv[]) {
+    initPins();
+
+    setup();
+
+    while (1) {
+        loop();
+    }
+    
+    return 0;
+}
+```
+
+The main() function will call the setup() and loop() function so that they can be executed.
 
 
 ### <a name="analog-blink"></a>AnalogBlink
