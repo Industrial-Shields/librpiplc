@@ -73,7 +73,7 @@ sudo nano /boot/config.txt
 **g++** is a GNU project C and C++ compiler. When you invoke GCC, it normally does preprocessing, compilation, assembly and linking. The gcc program accepts options and file names as operands. 
 Compile the rpiplc-lib applications with the essential parameters:
 
-```g++ -o file file.cpp -l rpiplc -I /usr/local/include/rpiplc -D DEVICE_MODEL```
+```g++ -o file file.cpp -L /usr/local/lib -l rpiplc -I /usr/local/include/rpiplc -D DEVICE_MODEL```
 
 **-o** file: Place output in file file.
 
