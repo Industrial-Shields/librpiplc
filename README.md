@@ -11,14 +11,29 @@ Rpiplc-lib implements some common applications on industrial environments for Ra
 
 Raspberry based Industrial Shields PLC.
 
+### Installing Git
 
-### Installing
+**1**. Start by updating the package manager:
+
+```sudo apt update```
+
+**2**. Run the following command to install Git: 
+
+```sudo apt install git```
+
+**3**. Verify the installation by typing the following command which will print the Git version.
+
+```git --version```
+
+
+### Installation
 
 **1**. Go to the directory where you want to have the library.
 
 **2**. Run the following command to clone the repository:
 
 ```git clone https://github.com/Industrial-Shields/rpiplc-lib.git```
+Note: 
 
 **3**. Execute the makefile:
 
