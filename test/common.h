@@ -33,7 +33,7 @@ static const uint32_t analogInputs[] = {
 	I0_7, I0_8, I0_9, I0_10, I0_11, I0_12,
 
 #elif defined(RPIPLC_19R) || defined(RPIPLC_38R) || defined(RPIPLC_50RRA) || defined(RPIPLC_57R)
-	I0_2, I0_3, I0_4, I0_5,
+	I0_0, I0_1, I0_2, I0_3, I0_4, I0_5,
 
 #endif
 
@@ -41,7 +41,7 @@ static const uint32_t analogInputs[] = {
 	I1_7, I1_8, I1_9, I1_10, I1_11, I1_12,
 
 #elif defined(RPIPLC_38R) || defined(RPIPLC_38AR) || defined(RPIPLC_50RRA) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57R)
-	I1_2, I1_3, I1_4, I1_5,
+	I1_0, I1_1, I1_2, I1_3, I1_4, I1_5,
 
 #endif
 
@@ -49,7 +49,7 @@ static const uint32_t analogInputs[] = {
 	I2_7, I2_8, I2_9, I2_10,
 
 #elif defined(RPIPLC_53ARR) || defined(RPIPLC_57AAR) || defined(RPIPLC_57R)
-	I2_2, I2_3, I2_4, I2_5,
+	I2_0, I2_1, I2_2, I2_3, I2_4, I2_5,
 
 #endif
 };
