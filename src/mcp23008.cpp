@@ -85,3 +85,20 @@ uint8_t mcp23008_write(i2c_t* i2c, uint8_t addr, uint8_t index, uint8_t value) {
 
 	return 1;
 }
+
+uint8_t mcp23008_read_all(i2c_t* i2c, uint8_t addr) {
+	uint8_t value = 0x00;
+	if (i2c_read(i2c, addr, GPIO_REGISTER, &value, 1) != 1) {
+		return 0;
+	}
+
+	return value;
+}
+
+uint8_t mcp23008_write_all(i2c_t* i2c, uint8_t addr, uint8_t value) {
+	if (!write_reg(i2c, addr, GPIO_REGISTER, value)) {
+		return 0;
+	}
+
+	return 1;
+}

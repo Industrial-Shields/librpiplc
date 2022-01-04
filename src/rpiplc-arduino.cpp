@@ -138,3 +138,35 @@ void delay(uint32_t milliseconds) {
 	};
 	select(0, NULL, NULL, NULL, &tv);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void digitalWriteAll(uint8_t addr, uint32_t values) {
+	if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
+		if (!mcp23008_write_all(&i2c, addr, values)) {
+			fprintf(stderr, "digitalWrite: set MCP23008 error\n");
+		}
+
+	} else if (isAddressIntoArray(addr, rpiplc_pca9685, rpiplc_num_pca9685)) {
+		if (!pca9685_set_all_digital(&i2c, addr, values)) {
+			fprintf(stderr, "digitalWrite: set PCA9685 error\n");
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+uint32_t digitalReadAll(uint8_t addr) {
+	if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
+		return mcp23008_read_all(&i2c, addr);
+	}
+
+	return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+void analogWriteAll(uint8_t addr, const uint16_t* values) {
+	if (isAddressIntoArray(addr, rpiplc_pca9685, rpiplc_num_pca9685)) {
+		if (!pca9685_set_all_analog(&i2c, addr, values)) {
+			fprintf(stderr, "digitalWrite: set PCA9685 error\n");
+		}
+	}
+}

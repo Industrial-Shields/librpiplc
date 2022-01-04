@@ -34,7 +34,7 @@
 #define MODE2_OCH			0x08
 #define MODE2_INVRT			0x10
 
-static uint8_t buffer[5];
+static uint8_t buffer[1 + (4 * PCA9685_NUM_OUTPUTS)];
 
 static int write_regs(i2c_t* i2c, uint8_t addr, uint8_t len) {
 	if (i2c_write(i2c, addr, buffer, len) != len) {
@@ -94,4 +94,32 @@ int pca9685_set_out_off(i2c_t* i2c, uint8_t addr, uint8_t index) {
 
 int pca9685_set_out_pwm(i2c_t* i2c, uint8_t addr, uint8_t index, uint16_t value) {
 	return set_led(i2c, addr, index, 0x00, 0x00, value & 0xff, (value >> 8) & 0x0f);
+}
+
+int pca9685_set_all_digital(i2c_t* i2c, uint8_t addr, uint16_t values) {
+	uint8_t* ptr = buffer;
+	*ptr++ = LED_REGISTERS(0);
+
+	for (int i = 0; i < PCA9685_NUM_OUTPUTS; ++i) {
+		*ptr++ = 0x00;
+		*ptr++ = (values & (1 << i)) ? 0x10 : 0x00;
+		*ptr++ = 0x00;
+		*ptr++ = (values & (1 << i)) ? 0x00 : 0x10;
+	}
+
+	return write_regs(i2c, addr, ptr - buffer);
+}
+
+int pca9685_set_all_analog(i2c_t* i2c, uint8_t addr, const uint16_t* values) {
+	uint8_t* ptr = buffer;
+	*ptr++ = LED_REGISTERS(0);
+
+	for (int i = 0; i < PCA9685_NUM_OUTPUTS; ++i) {
+		*ptr++ = 0x00;
+		*ptr++ = 0x00;
+		*ptr++ = values[i] & 0xff;
+		*ptr++ = (values[i] >> 8) & 0x0f;
+	}
+
+	return write_regs(i2c, addr, ptr - buffer);
 }

@@ -9,5 +9,6 @@
 #include "rpiplc-arduino.h"
 #include "rpiplc-mapping.h"
 #include "rpiplc-version.h"
+#include "rpiplc-peripherals.h"
 
 #endif

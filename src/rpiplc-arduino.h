@@ -20,6 +20,10 @@ extern "C" {
 
 	void delay(uint32_t milliseconds);
 
+	void digitalWriteAll(uint8_t addr, uint32_t values);
+	uint32_t digitalReadAll(uint8_t addr);
+	void analogWriteAll(uint8_t addr, const uint16_t* values);
+
 #ifdef __cplusplus
 }
 #endif
