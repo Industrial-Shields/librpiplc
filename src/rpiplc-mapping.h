@@ -219,7 +219,7 @@ static const uint32_t I2_3 = PIN_I2_3;
 static const uint32_t I2_4 = PIN_I2_4;
 static const uint32_t I2_5 = PIN_I2_5;
 static const uint32_t I2_6 = PIN_I2_6;
-static const uint32_t I2_7 = PIN_I2_7;static const uint32_t I1_2 = PIN_I1_2;
+static const uint32_t I2_7 = PIN_I2_7;
 static const uint32_t I2_8 = PIN_I2_8;
 static const uint32_t I2_9 = PIN_I2_9;
 static const uint32_t I2_10 = PIN_I2_10;
