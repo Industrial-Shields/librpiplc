@@ -87,7 +87,7 @@ sudo nano /boot/config.txt
 ### Compilation
 
 **g++** is a GNU project C and C++ compiler. When you invoke GCC, it normally does preprocessing, compilation, assembly and linking. The gcc program accepts options and file names as operands. 
-Compile the rpiplc-lib applications with the essential parameters:
+So, inside the rpiplc-lib directory, go to the test directory and compile the rpiplc-lib applications with the essential parameters:
 
 ```g++ -o file file.cpp -L /usr/local/lib -l rpiplc -I /usr/local/include/rpiplc -D DEVICE_MODEL```
 
@@ -108,10 +108,12 @@ Rpiplc-lib contains different applications:
 
 0. [Main](#main-0)
 1. [AnalogBlink](#analog-blink)
-2. [AnalogRead](#analog-read)
-3. [Delay](#delay-1)
-4. [DigitalBlink](#digital-blink)
-5. [DigitalRead](#digital-read)
+2. [AnalogBlinkAll](#analog-blink-all)
+3. [AnalogRead](#analog-read)
+4. [Delay](#delay-1)
+5. [DigitalBlink](#digital-blink)
+6. [DigitalBlinkAll](#digital-blink-all)
+7. [DigitalRead](#digital-read)
 
 
 ### <a name="main-0"></a>Main
@@ -188,6 +190,69 @@ Set value 2047
 Set value 1023
 Set value 511
 Set value 0
+```
+
+
+### <a name="analog-blink-all"></a>AnalogBlinkAll
+
+```
+#include <rpiplc.h>
+#include "common.h"
+```
+
+This application, like analog blink, shows how to blink the on-board LEDs from all the analog outputs. All the values are written at the same time by minimizing the i2c writes, in order to reduce the speed of the analog outputs.
+
+
+The pinMode function, like in Arduino, configures the specified pin to behave either as an input or an output. In the setup function, all the analog outputs are set as outputs:
+```
+void setup() {
+  for (int i = 0; i < numAnalogOutputs; ++i) {
+    pinMode(analogOutputs[i], OUTPUT);
+  }
+}
+```
+
+In the loop function, all the analog outputs are written with the different analog values, with a 1000 milliseconds delay in every loop.
+
+```
+void loop() {
+    for (int i = 0; i < numValues; ++i) {
+        printf("Set value %d\n", values[i]);
+
+        for (int j = 0; j < PCA9685_NUM_OUTPUTS; ++j) {
+            analogValues[j] = values[i];
+        }
+        for (int j = 0; j < rpiplc_num_pca9685; ++j) {
+            analogWriteAll(rpiplc_pca9685[j], analogValues);
+        }
+        delay(1000);
+        }
+}
+
+```
+
+So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called analogBlinkAll:
+```
+g++ -o analogBlinkAll analogBlinkAll.cpp -l rpiplc -I  /usr/local/include/rpiplc -D RPIPLC_58
+```
+
+Execute the created file named analogBlinkAll, to run the application:
+```
+./analogBlinkAll
+```
+
+and start getting an output every 1000 milliseconds:
+```
+Set value 0
+Set value 511
+Set value 1023
+Set value 2047
+Set value 4095
+Set value 2047
+Set value 1023
+Set value 511
+Set value 0
+...
 ```
 
 ### <a name="analog-read"></a>AnalogRead
@@ -330,6 +395,59 @@ Set value 1
 Set value 0
 Set value 1
 ```
+
+### <a name="digital-blink-all"></a>DigitalBlinkAll
+
+This application shows the on-board LEDs blinking from all the digital outputs, by reducing the i2c writes in order to decrease the speed of the outputs. The values change every 1000 milliseconds. 
+
+The setup function configures all the possible outputs as digital outputs.
+
+```
+void setup() {
+  printf("Num digital outputs: %d\n", numDigitalOutputs);
+  for (int i = 0; i < numDigitalOutputs; ++i) {
+    pinMode(digitalOutputs[i], OUTPUT);
+  }
+}
+```
+
+The loop function makes all the digital output LEDs blink every 1000 milliseconds.
+```
+void loop() {
+    value = value == 0 ? 0xffffffff : 0;
+
+    for (int i = 0; i < rpiplc_num_mcp23008; ++i) {
+        digitalWriteAll(rpiplc_mcp23008[i], value);
+    }
+    for (int i = 0; i < rpiplc_num_pca9685; ++i) {
+        digitalWriteAll(rpiplc_pca9685[i], value);
+    }
+    delay(1000);
+}
+```
+
+Compile the application executing the following command:
+```
+g++ -o digitalBlinkAll digitalBlinkAll.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_58 (or any other Raspberry PLC model)
+```
+
+Run it executing the following:
+```
+./digitalBlinkAll
+```
+
+The output on the terminal will be shown like this:
+
+```
+Num digital outputs: 24
+
+Set value 1
+Set value 0
+Set value 1
+Set value 0
+Set value 1
+```
+
 
 ### <a name="digital-read"></a>DigitalRead
 
