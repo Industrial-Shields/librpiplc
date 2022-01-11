@@ -48,7 +48,17 @@ static int write_regs(i2c_t* i2c, uint8_t addr, uint8_t len) {
 static int set_led(i2c_t* i2c, uint8_t addr,  uint8_t index,
 		uint8_t on_l, uint8_t on_h, uint8_t off_l, uint8_t off_h) {
 
+	// Prevent MODE1 and MODE2 uncontrolled overwrite
 	uint8_t* ptr = buffer;
+	ptr = buffer;
+	*ptr++ = MODE1_REGISTER;
+	*ptr++ = MODE1_AI;
+	*ptr++ = MODE2_OUTDRV;
+	if (!write_regs(i2c, addr, ptr - buffer)) {
+		return 0;
+	}
+
+	ptr = buffer;
 	*ptr++ = LED_REGISTERS(index);
 	*ptr++ = on_l;
 	*ptr++ = on_h;
@@ -63,6 +73,13 @@ int pca9685_init(i2c_t* i2c, uint8_t addr) {
 
 	*ptr++ = MODE1_REGISTER;
 	*ptr++ = MODE1_SLEEP | MODE1_AI;
+	if (!write_regs(i2c, addr, ptr - buffer)) {
+		return 0;
+	}
+
+	ptr = buffer;
+	*ptr++ = MODE2_REGISTER;
+	*ptr++ = MODE2_OUTDRV;
 	if (!write_regs(i2c, addr, ptr - buffer)) {
 		return 0;
 	}
