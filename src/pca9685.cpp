@@ -11,8 +11,8 @@
 #define ALLCALLADR_REGISTER	0x05
 
 #define LED_REGISTERS(i)	(0x06 + (i * 4))
-#define LED_ON_L(i)			(LED_REGISTERS(i))
-#define LED_ON_H(i)			(LED_REGISTERS(i) + 1)
+#define LED_ON_L(i)		(LED_REGISTERS(i))
+#define LED_ON_H(i)		(LED_REGISTERS(i) + 1)
 #define LED_OFF_L(i)		(LED_REGISTERS(i) + 2)
 #define LED_OFF_H(i)		(LED_REGISTERS(i) + 3)
 
@@ -70,6 +70,16 @@ static int set_led(i2c_t* i2c, uint8_t addr,  uint8_t index,
 
 int pca9685_init(i2c_t* i2c, uint8_t addr) {
 	uint8_t* ptr = buffer;
+	uint8_t mode1, mode2, prescale;
+	mode1 = mode2 = prescale = 0x00;
+
+	i2c_read(i2c, addr, MODE1_REGISTER, &mode1, 1);
+	i2c_read(i2c, addr, MODE2_REGISTER, &mode2, 1);
+	i2c_read(i2c, addr, PRE_SCALE_REGISTER, &prescale, 1);
+
+	if ( (mode1 == MODE1_AI) && (mode2 == MODE2_OUTDRV) && (prescale == 11) ) {
+		return 1;
+	}
 
 	*ptr++ = MODE1_REGISTER;
 	*ptr++ = MODE1_SLEEP | MODE1_AI;
