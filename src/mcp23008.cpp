@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "mcp23008.h"
 
 // Registers
@@ -15,9 +16,10 @@
 
 // Registers values and masks
 #define IOCON_INTPOL		0x02
-#define IOCON_ODR			0x04
+#define IOCON_ODR		0x04
 #define IOCON_DISSLW		0x10
-#define IOCON_SEQOP			0x20
+#define IOCON_SEQOP		0x20
+
 
 static int write_reg(i2c_t* i2c, uint8_t addr, uint8_t reg, uint8_t value) {
 	const uint8_t buff[] = { reg, value };
@@ -25,6 +27,16 @@ static int write_reg(i2c_t* i2c, uint8_t addr, uint8_t reg, uint8_t value) {
 }
 
 uint8_t mcp23008_init(i2c_t* i2c, uint8_t addr) {
+
+	uint8_t iocon, gppu;
+
+	i2c_read(i2c, addr, IOCON_REGISTER, &iocon, 1);
+	i2c_read(i2c, addr, GPPU_REGISTER, &gppu, 1);
+
+	if ( (iocon == (IOCON_SEQOP | IOCON_ODR)) && (gppu == 0x00) ) {
+		return 1;
+	}
+
 	if (!write_reg(i2c, addr, IODIR_REGISTER, 0xff)) {
 		return 0;
 	}
@@ -36,7 +48,6 @@ uint8_t mcp23008_init(i2c_t* i2c, uint8_t addr) {
 	if (!write_reg(i2c, addr, GPPU_REGISTER, 0x00)) {
 		return 0;
 	}
-
 	return 1;
 }
 
