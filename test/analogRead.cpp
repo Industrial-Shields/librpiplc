@@ -1,5 +1,4 @@
 #include <rpiplc.h>
-
 #include "common.h"
 
 void setup() {

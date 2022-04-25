@@ -14,3 +14,8 @@ const uint8_t rpiplc_pca9685[] = {
 	0x40, 0x41,
 };
 const int rpiplc_num_pca9685 = sizeof(rpiplc_pca9685) / sizeof(uint8_t);
+
+const uint8_t rpiplc_ltc2309[] = {
+	0x08, 0x0a, 0x28
+};
+const int rpiplc_num_ltc2309 = sizeof(rpiplc_ltc2309) / sizeof(uint8_t);

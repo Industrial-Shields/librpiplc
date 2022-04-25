@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "mcp23008.h"
 
 // Registers
@@ -15,9 +16,10 @@
 
 // Registers values and masks
 #define IOCON_INTPOL		0x02
-#define IOCON_ODR			0x04
+#define IOCON_ODR		0x04
 #define IOCON_DISSLW		0x10
-#define IOCON_SEQOP			0x20
+#define IOCON_SEQOP		0x20
+
 
 static int write_reg(i2c_t* i2c, uint8_t addr, uint8_t reg, uint8_t value) {
 	const uint8_t buff[] = { reg, value };
@@ -25,6 +27,16 @@ static int write_reg(i2c_t* i2c, uint8_t addr, uint8_t reg, uint8_t value) {
 }
 
 uint8_t mcp23008_init(i2c_t* i2c, uint8_t addr) {
+
+	uint8_t iocon, gppu;
+
+	i2c_read(i2c, addr, IOCON_REGISTER, &iocon, 1);
+	i2c_read(i2c, addr, GPPU_REGISTER, &gppu, 1);
+
+	if ( (iocon == (IOCON_SEQOP | IOCON_ODR)) && (gppu == 0x00) ) {
+		return 1;
+	}
+
 	if (!write_reg(i2c, addr, IODIR_REGISTER, 0xff)) {
 		return 0;
 	}
@@ -36,7 +48,6 @@ uint8_t mcp23008_init(i2c_t* i2c, uint8_t addr) {
 	if (!write_reg(i2c, addr, GPPU_REGISTER, 0x00)) {
 		return 0;
 	}
-
 	return 1;
 }
 
@@ -55,7 +66,6 @@ uint8_t mcp23008_set_pin_mode(i2c_t* i2c, uint8_t addr, uint8_t index, uint8_t m
 	if (!write_reg(i2c, addr, IODIR_REGISTER, iodir_reg)) {
 		return 0;
 	}
-
 	return 1;
 }
 
@@ -82,7 +92,6 @@ uint8_t mcp23008_write(i2c_t* i2c, uint8_t addr, uint8_t index, uint8_t value) {
 	if (!write_reg(i2c, addr, GPIO_REGISTER, gpio_reg)) {
 		return 0;
 	}
-
 	return 1;
 }
 
@@ -91,7 +100,6 @@ uint8_t mcp23008_read_all(i2c_t* i2c, uint8_t addr) {
 	if (i2c_read(i2c, addr, GPIO_REGISTER, &value, 1) != 1) {
 		return 0;
 	}
-
 	return value;
 }
 
@@ -99,6 +107,5 @@ uint8_t mcp23008_write_all(i2c_t* i2c, uint8_t addr, uint8_t value) {
 	if (!write_reg(i2c, addr, GPIO_REGISTER, value)) {
 		return 0;
 	}
-
 	return 1;
 }

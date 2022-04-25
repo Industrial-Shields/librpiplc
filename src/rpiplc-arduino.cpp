@@ -9,6 +9,7 @@
 #include "mcp23008.h"
 #include "pca9685.h"
 #include "rpi-gpio.h"
+#include "ltc2309.h"
 
 static i2c_t i2c;
 
@@ -45,6 +46,12 @@ void initPins() {
 			fprintf(stderr, "initPins, init MCP23008 (%02x) error\n", rpiplc_mcp23008[i]);
 		}
 	}
+
+	for (int i = 0; i < rpiplc_num_ltc2309; ++i) {
+		if (!ltc2309_init(&i2c, rpiplc_ltc2309[i])) {
+			fprintf(stderr, "initPins, init LTC2309 (%02x) error\n", rpiplc_ltc2309[i]);
+		}
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,7 +64,6 @@ void pinMode(uint32_t pin, uint8_t mode) {
 
 	} else if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
 		mcp23008_set_pin_mode(&i2c, addr, index, mode == OUTPUT ? MCP23008_OUTPUT : MCP23008_INPUT);
-
 	}
 }
 
@@ -100,7 +106,6 @@ int digitalRead(uint32_t pin) {
 
 	} else if (isAddressIntoArray(addr, rpiplc_ads1015, rpiplc_num_ads1015)) {
 		return ads1015_read(&i2c, addr, index) > 1023 ? 1 : 0;
-
 	}
 
 	return 0;
@@ -125,7 +130,9 @@ uint16_t analogRead(uint32_t pin) {
 
 	if (isAddressIntoArray(addr, rpiplc_ads1015, rpiplc_num_ads1015)) {
 		return ads1015_read(&i2c, addr, index);
-	}
+	} else if (isAddressIntoArray(addr, rpiplc_ltc2309, rpiplc_num_ltc2309)) {
+                return ltc2309_read(&i2c, addr, index);
+        }
 
 	return 0;
 }
@@ -140,12 +147,20 @@ void delay(uint32_t milliseconds) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+void delayMicroseconds(uint32_t micros) {
+	struct timeval tv = {
+		.tv_sec = (long) (micros / 1000000),
+		.tv_usec = (long) (micros % 1000000),
+	};
+	select(0, NULL, NULL, NULL, &tv);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 void digitalWriteAll(uint8_t addr, uint32_t values) {
 	if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
 		if (!mcp23008_write_all(&i2c, addr, values)) {
 			fprintf(stderr, "digitalWrite: set MCP23008 error\n");
 		}
-
 	} else if (isAddressIntoArray(addr, rpiplc_pca9685, rpiplc_num_pca9685)) {
 		if (!pca9685_set_all_digital(&i2c, addr, values)) {
 			fprintf(stderr, "digitalWrite: set PCA9685 error\n");
@@ -170,3 +185,4 @@ void analogWriteAll(uint8_t addr, const uint16_t* values) {
 		}
 	}
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////

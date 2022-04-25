@@ -19,6 +19,7 @@ extern "C" {
 	uint16_t analogRead(uint32_t pin);
 
 	void delay(uint32_t milliseconds);
+	void delayMicroseconds(uint32_t micros);
 
 	void digitalWriteAll(uint8_t addr, uint32_t values);
 	uint32_t digitalReadAll(uint8_t addr);
