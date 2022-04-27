@@ -7,6 +7,8 @@ typedef struct {
 } pin_t;
 
 static const pin_t digitalInputs[] = {
+	{"PIN8", PIN8},
+
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"I0.0", I0_0}, {"I0.1", I0_1}, {"I0.2", I0_2}, {"I0.3", I0_3}, {"I0.4", I0_4}, {"I0.5", I0_5}, {"I0.6", I0_6},
 
@@ -33,7 +35,6 @@ static const pin_t digitalInputs[] = {
 static const int numDigitalInputs = sizeof(digitalInputs) / sizeof(pin_t);
 
 static const pin_t analogInputs[] = {
-	{"PIN8", PIN8},
 
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"I0.7", I0_7}, {"I0.8", I0_8}, {"I0.9", I0_9}, {"I0.10", I0_10}, {"I0.11", I0_11}, {"I0.12", I0_12},
@@ -62,7 +63,7 @@ static const pin_t analogInputs[] = {
 static const int numAnalogInputs = sizeof(analogInputs) / sizeof(pin_t);
 
 static const pin_t digitalOutputs[] = {
-	{"PWM1", PWM1}, {"PWM2", PWM2}, {"PWM3", PWM3},
+	{"PWM1", PWM1}, {"PWM2", PWM2}, {"PWM3", PWM3}, {"EXP1_RST", EXP1_RST},
 
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"Q0.0", Q0_0}, {"Q0.1", Q0_1}, {"Q0.2", Q0_2}, {"Q0.3", Q0_3}, {"Q0.4", Q0_4}, {"Q0.5", Q0_5}, {"Q0.6", Q0_6}, {"Q0.7", Q0_7},

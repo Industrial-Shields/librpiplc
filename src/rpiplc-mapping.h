@@ -13,6 +13,8 @@ static const uint32_t PWM3 = PIN_PWM3;
 static const uint32_t PWM2 = PIN_PWM2;
 static const uint32_t PWM1 = PIN_PWM1;
 
+static const uint32_t EXP1_RST = 0x00004008;
+
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 #define PIN_I0_0	0x00002105
 #define PIN_I0_1	0x00002102
@@ -119,12 +121,12 @@ static const uint32_t R0_8 = PIN_R0_8;
 #define PIN_I1_4	0x00002107
 #define PIN_I1_5	27
 #define PIN_I1_6	5
-#define PIN_I1_7	0x00000806
-#define PIN_I1_8	0x00000805
-#define PIN_I1_9	0x00000807
-#define PIN_I1_10	0x00000A00
-#define PIN_I1_11	0x00000A06
-#define PIN_I1_12	0x00000A03
+#define PIN_I1_7	0x00002807
+#define PIN_I1_8	0x00000800
+#define PIN_I1_9	0x00002800
+#define PIN_I1_10	0x00000A02
+#define PIN_I1_11	0x00000804
+#define PIN_I1_12	0x00000A04
 
 static const uint32_t I1_0 = PIN_I1_0;
 static const uint32_t I1_1 = PIN_I1_1;
@@ -214,7 +216,7 @@ static const uint32_t R1_8 = PIN_R1_8;
 #define PIN_I2_1	0x00002003
 #define PIN_I2_2	0x00002006
 #define PIN_I2_3	0x00002002
-#define PIN_I2_4	0x00002004
+#define PIN_I2_4	0x00002005
 #define PIN_I2_5	26
 #define PIN_I2_6	4
 #define PIN_I2_7	0x00000803
