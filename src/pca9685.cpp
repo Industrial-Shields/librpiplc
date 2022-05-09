@@ -81,17 +81,6 @@ int pca9685_init(i2c_t* i2c, uint8_t addr) {
 		return 1;
 	}
 
-	uint8_t mode1, mode2, prescale;
-	mode1 = mode2 = prescale = 0x00;
-
-	i2c_read(i2c, addr, MODE1_REGISTER, &mode1, 1);
-	i2c_read(i2c, addr, MODE2_REGISTER, &mode2, 1);
-	i2c_read(i2c, addr, PRE_SCALE_REGISTER, &prescale, 1);
-
-	if ( (mode1 == MODE1_AI) && (mode2 == MODE2_OUTDRV) && (prescale == 11) ) {
-        	return 1;
-	}
-
 	*ptr++ = MODE1_REGISTER;
 	*ptr++ = MODE1_SLEEP | MODE1_AI;
 	if (!write_regs(i2c, addr, ptr - buffer)) {
