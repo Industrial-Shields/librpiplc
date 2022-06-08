@@ -114,6 +114,10 @@ Rpiplc-lib contains different applications:
 5. [DigitalBlink](#digital-blink)
 6. [DigitalBlinkAll](#digital-blink-all)
 7. [DigitalRead](#digital-read)
+8. [Set digital output](#set-digital-output)
+8. [Set analog output](#set-analog-output)
+8. [Get digital input](#set-digital-read)
+8. [Get analog input](#get-analog-input)
 
 
 ### <a name="main-0"></a>Main
@@ -171,7 +175,7 @@ void loop() {
 
 So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called analogBlink:
 ```
-g++ -o analogBlink analogBlink.cpp -l rpiplc -I  /usr/local/include/rpiplc -D RPIPLC_58
+g++ -o analogBlink analogBlink.cpp -l rpiplc -I  /usr/local/include/rpiplc -D RPIPLC_58 (or any other Raspberry PLC model)
 ```
 
 Execute the created file named analogBlink, to run the application:
@@ -233,7 +237,7 @@ void loop() {
 
 So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called analogBlinkAll:
 ```
-g++ -o analogBlinkAll analogBlinkAll.cpp -l rpiplc -I  /usr/local/include/rpiplc -D RPIPLC_58
+g++ -o analogBlinkAll analogBlinkAll.cpp -l rpiplc -I  /usr/local/include/rpiplc -D RPIPLC_58 (or any other Raspberry PLC model)
 ```
 
 Execute the created file named analogBlinkAll, to run the application:
@@ -476,7 +480,7 @@ void loop() {
 
 To run the application, execute the following command:
 ```
-g++ -o digitalRead digitalRead.cpp -lrpiplc -I/usr/local/include/rpiplc -DRPIPLC_58 (or any other Raspberry PLC model)
+g++ -o digitalRead digitalRead.cpp -lrpiplc -I/usr/local/include/rpiplc -DRPIPLC_38AR (or any other Raspberry PLC model)
 ```
 
 Run it executing the following:
@@ -509,3 +513,79 @@ Pin 00000011 value: 0
 Pin 00000010 value: 0
 ```
 
+### <a name="set-digital-output"></a>Set digital output
+
+This application sets a digital output to the specified value.
+
+The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the output to the output mode, and it writes to the pin the specified value in the parameter: either 1 or 0
+
+So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called set-digital-output:
+```
+g++ -o set-digital-output set-digital-output.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_42 (or any other Raspberry PLC model)
+```
+Execute the compiled file named set-digital-output with two parameters:
+1: the output to control
+2: the value to set
+```
+./set-digital-output Q0.0 1
+```
+
+And see how the Q0.0 output has been activated.
+
+### <a name="set-analog-output"></a>Set analog output
+
+This application sets an analog output to the specified value.
+
+The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the output to the output mode, and it writes to the pin the specified value in the parameter.
+
+So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called set-analog-output:
+```
+g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_19R (or any other Raspberry PLC model)
+```
+Execute the compiled file named set-analog-output with two parameters:
+1: the output to control
+2: the value to set
+```
+./set-analog-output A0.5 4095
+```
+
+And see how the A0.5 output has been given the specified resolution.
+
+
+### <a name="get-digital-input"></a>Get digital input
+
+This application gets the value for a digital input.
+
+The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the input to the input mode, and it reads the value of the pin specified in the parameter
+
+So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called get-digital-input:
+```
+g++ -o get-digital-input get-digital-input.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_21 (or any other Raspberry PLC model)
+```
+Execute the compiled file named get-digital-input with the input as parameter.
+```
+./get-digital-input I0.0
+```
+And get the value for that input. 
+```
+1
+```
+
+### <a name="get-analog-input"></a>Get analog input
+
+This application gets the value for a analog input.
+
+The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the input to the input mode, and it reads the value of the pin specified in the parameter
+
+So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called get-analog-input:
+```
+g++ -o get-analog-input get-digital-input.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_21 (or any other Raspberry PLC model)
+```
+Execute the compiled file named get-analog-input with the input as parameter.
+```
+./get-analog-input I0.7
+```
+And get the value for that input. 
+```
+2000
+```
