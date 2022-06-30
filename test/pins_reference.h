@@ -97,25 +97,32 @@ static const int numDigitalOutputs = sizeof(digitalOutputs) / sizeof(pin_t);
 static const pin_t analogOutputs[] = {
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"A0.5", A0_5}, {"A0.6", A0_6}, {"A0.7", A0_7},
+	{"Q0.0", Q0_0}, {"Q0.1", Q0_1}, {"Q0.2", Q0_2}, {"Q0.3", Q0_3}, {"Q0.4", Q0_4}, {"Q0.5", Q0_5}, {"Q0.6", Q0_6}, {"Q0.7", Q0_7},
 
 #elif defined(RPIPLC_19R) || defined(RPIPLC_38R) || defined(RPIPLC_50RRA) || defined(RPIPLC_57R)
 	{"A0.0", A0_0}, {"A0.1", A0_1}, {"A0.2", A0_2},
+	{"Q0.0", Q0_0}, {"Q0.1", Q0_1}, {"Q0.2", Q0_2},
 
 #endif
 
 #if defined(RPIPLC_42) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"A1.5", A1_5}, {"A1.6", A1_6}, {"A1.7", A1_7},
+	{"Q1.0", Q1_0}, {"Q1.1", Q1_1}, {"Q1.2", Q1_2}, {"Q1.3", Q1_3}, {"Q1.4", Q1_4}, {"Q1.5", Q1_5}, {"Q1.6", Q1_6}, {"Q1.7", Q1_7},
 
 #elif defined(RPIPLC_38R) || defined(RPIPLC_38AR) || defined(RPIPLC_50RRA) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57R)
 	{"A1.0", A1_0}, {"A1.1", A1_1}, {"A1.2", A1_2},
+	{"Q1.0", Q1_0}, {"Q1.1", Q1_1}, {"Q1.2", Q1_2},
 
 #endif
 
 #if defined(RPIPLC_50RRA) || defined(RPIPLC_54ARA) || defined(RPIPLC_58)
 	{"A2.5", A2_5}, {"A2.6", A2_6}, {"A2.7", A2_7},
+	{"Q2.0", Q2_0}, {"Q2.1", Q2_1}, {"Q2.2", Q2_2}, {"Q2.3", Q2_3}, {"Q2.4", Q2_4}, {"Q2.5", Q2_5}, {"Q2.6", Q2_6}, {"Q2.7", Q2_7},
+	
 
 #elif defined(RPIPLC_53ARR) || defined(RPIPLC_57AAR) || defined(RPIPLC_57R)
 	{"A2.0", A2_0}, {"A2.1", A2_1}, {"A2.2", A2_2},
+	{"Q2.0", Q2_0}, {"Q2.1", Q2_1}, {"Q2.2", Q2_2},
 
 #endif
 };
