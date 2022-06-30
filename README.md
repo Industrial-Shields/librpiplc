@@ -551,6 +551,24 @@ Execute the compiled file named set-analog-output with two parameters:
 
 And see how the A0.5 output has been given the specified resolution.
 
+### <a name="PWM"></a>PWM
+
+This application sets a PWM output to the specified value using the set-analog-output function with a digital output. All the digital outputs of the PLC can be used for the PWM function. 
+
+The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the output to the output mode, and it writes to the pin the specified value in the parameter.
+
+So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called set-analog-output:
+```
+g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_19R (or any other Raspberry PLC model)
+```
+Execute the compiled file named set-analog-output with two parameters:
+1: the digital output to control
+2: the PWM (analog) value to set (from 0 to 4095)
+```
+./set-analog-output Q0.0 4095
+```
+
+And see how the Q0.0 output has been given the specified resolution.
 
 ### <a name="get-digital-input"></a>Get digital input
 
