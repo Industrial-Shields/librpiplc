@@ -32,7 +32,9 @@ Raspberry based Industrial Shields PLC.
 
 **2**. Run the following command to clone the repository:
 
-```git clone https://github.com/Industrial-Shields/rpiplc-lib.git```
+```git clone -b <tagname> https://github.com/Industrial-Shields/rpiplc-lib.git```
+tagname = 1.X.X = RPI PLC Version 3
+tagname = 2.X.X = RPI PLC Version 4
 
 **3**. Access to the directory and execute the makefile:
 
