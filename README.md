@@ -34,9 +34,9 @@ Raspberry based Industrial Shields PLC.
 
 ```git clone -b <tagname> https://github.com/Industrial-Shields/rpiplc-lib.git```
 
-    tagname = 1.X.X = RPI PLC Version 3
+    tagname = v1.X.X = RPI PLC Version 3
 
-    tagname = 2.X.X = RPI PLC Version 4
+    tagname = v2.X.X = RPI PLC Version 4
     
     You can find the available tags here: https://github.com/Industrial-Shields/rpiplc-lib/tags
 
