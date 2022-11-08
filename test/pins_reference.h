@@ -63,7 +63,7 @@ static const pin_t analogInputs[] = {
 static const int numAnalogInputs = sizeof(analogInputs) / sizeof(pin_t);
 
 static const pin_t digitalOutputs[] = {
-	{"PWM1", PWM1}, {"PWM2", PWM2}, {"PWM3", PWM3}, {"EXP1_RST", EXP1_RST},
+	{"PWM1", PWM1}, {"PWM2", PWM2}, {"PWM3", PWM3}, {"EXP1_RST", EXP1_RST}, {"EXP1_RST_2", EXP1_RST_2},
 
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"Q0.0", Q0_0}, {"Q0.1", Q0_1}, {"Q0.2", Q0_2}, {"Q0.3", Q0_3}, {"Q0.4", Q0_4}, {"Q0.5", Q0_5}, {"Q0.6", Q0_6}, {"Q0.7", Q0_7},
