@@ -46,7 +46,7 @@ static const uint32_t analogInputs[] = {
 #endif
 
 #if defined(RPIPLC_50RRA) || defined(RPIPLC_54ARA) || defined(RPIPLC_58)
-	I2_7, I2_8, I2_9, I2_10,
+	I2_7, I2_8, I2_9, I2_10, I2_11, I2_12
 
 #elif defined(RPIPLC_53ARR) || defined(RPIPLC_57AAR) || defined(RPIPLC_57R)
 	I2_2, I2_3, I2_4, I2_5,
