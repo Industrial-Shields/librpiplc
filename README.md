@@ -616,6 +616,7 @@ And get the value for that input.
 ```
 
 ### <a name="available-models"></a>Available PLC models
+```
 RPIPLC (for Raspberry PLC CPU)
 RPIPLC_19R
 RPIPLC_21
@@ -628,3 +629,4 @@ RPIPLC_54ARA
 RPIPLC_57AAR
 RPIPLC_57R
 RPIPLC_58
+```
