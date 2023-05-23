@@ -121,9 +121,10 @@ Rpiplc-lib contains different applications:
 6. [DigitalBlinkAll](#digital-blink-all)
 7. [DigitalRead](#digital-read)
 8. [Set digital output](#set-digital-output)
-8. [Set analog output](#set-analog-output)
-8. [Get digital input](#set-digital-read)
-8. [Get analog input](#get-analog-input)
+9. [Set analog output](#set-analog-output)
+10. [Get digital input](#set-digital-read)
+11. [Get analog input](#get-analog-input)
+12. [Available PLC models](#available-models)
 
 
 ### <a name="main-0"></a>Main
@@ -613,3 +614,17 @@ And get the value for that input.
 ```
 2000
 ```
+
+### <a name="available-models"></a>Available PLC models
+RPIPLC (for Raspberry PLC CPU)
+RPIPLC_19R
+RPIPLC_21
+RPIPLC_38AR
+RPIPLC_38R
+RPIPLC_42
+RPIPLC_50RRA
+RPIPLC_53ARR
+RPIPLC_54ARA
+RPIPLC_57AAR
+RPIPLC_57R
+RPIPLC_58
