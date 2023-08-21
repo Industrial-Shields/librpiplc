@@ -103,8 +103,9 @@ int digitalRead(uint32_t pin) {
 
 	} else if (isAddressIntoArray(addr, rpiplc_mcp23008, rpiplc_num_mcp23008)) {
 		return mcp23008_read(&i2c, addr, index);
-
-	} else if (isAddressIntoArray(addr, rpiplc_ads1015, rpiplc_num_ads1015)) {
+	} else if (isAddressIntoArray(addr, rpiplc_ltc2309, rpiplc_num_ltc2309)) {
+                return ltc2309_read(&i2c, addr, index) > 2047 ? 1 : 0;
+        } else if (isAddressIntoArray(addr, rpiplc_ads1015, rpiplc_num_ads1015)) {
 		return ads1015_read(&i2c, addr, index) > 1023 ? 1 : 0;
 	}
 
