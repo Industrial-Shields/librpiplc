@@ -1,7 +1,2 @@
-lib*.so
-src/*.o
-test/*
-!test/*.cpp
-!test/*.h
-*.tar.bz2
-*.tar.gz
+/build/
+/.ccls-cache/
