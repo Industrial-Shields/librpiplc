@@ -13,8 +13,8 @@ set_target_properties(${LIBNAME} PROPERTIES LINKER_LANGUAGE CXX)
 
 # Externalize the header files to other targets
 target_include_directories(${LIBNAME} PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include/lib${LIBNAME}>
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+	$<INSTALL_INTERFACE:include/lib${LIBNAME}>
 )
 
 

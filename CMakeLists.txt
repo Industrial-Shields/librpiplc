@@ -12,7 +12,7 @@ set(LIBNAME rpiplc)
 # If is not an out of source build, cause fatal error to
 # stop the script from further execution
 if (${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
-    message(FATAL_ERROR "CMake has been ran to create an out of source build.
+	message(FATAL_ERROR "CMake has been ran to create an out of source build.
 This error prevents CMake from running an in-source build.")
 endif ()
 
@@ -20,18 +20,18 @@ endif ()
 # Check that both the PLC version and model macros are passed
 set(VERSIONS_LIST RPIPLC_V3 RPIPLC_V4)
 set(MODELS_LIST RPIPLC_19R RPIPLC_21 RPIPLC_38AR RPIPLC_38R RPIPLC_42
-RPIPLC_50RRA RPIPLC_53ARR PIPLC_54ARA RPIPLC_57AAR RPIPLC_57R RPIPLC_58)
+	RPIPLC_50RRA RPIPLC_53ARR PIPLC_54ARA RPIPLC_57AAR RPIPLC_57R RPIPLC_58)
 
 if(NOT DEFINED PLC_VERSION OR NOT DEFINED PLC_MODEL)
-    message(FATAL_ERROR "Usage: cmake -DPLC_VERSION=<value> -DPLC_MODEL=<value>")
+	message(FATAL_ERROR "Usage: cmake -DPLC_VERSION=<value> -DPLC_MODEL=<value>")
 endif()
 
 # .. and that they are correct
 if(NOT "${PLC_VERSION}" IN_LIST VERSIONS_LIST)
-    message(FATAL_ERROR "Invalid value for PLC_VERSION")
+	message(FATAL_ERROR "Invalid value for PLC_VERSION")
 endif()
 if(NOT "${PLC_MODEL}" IN_LIST MODELS_LIST)
-    message(FATAL_ERROR "Invalid value for PLC_MODEL")
+	message(FATAL_ERROR "Invalid value for PLC_MODEL")
 endif()
 
 
