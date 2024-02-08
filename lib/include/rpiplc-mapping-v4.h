@@ -9,7 +9,7 @@
 #define PIN_PWM2	0x0000410A
 #define PIN_PWM1	0x0000410B
 #define EXP1RST   0x00004008;
-#define EXP1RST2  0x0000400A;
+#define EXP2RST   0x0000400A;
 
 static const uint32_t PIN8 = PIN_8;
 static const uint32_t PWM3 = PIN_PWM3;
@@ -17,7 +17,7 @@ static const uint32_t PWM2 = PIN_PWM2;
 static const uint32_t PWM1 = PIN_PWM1;
 
 static const uint32_t EXP1_RST = EXP1RST;
-static const uint32_t EXP1_RST_2 = EXP1RST2;
+static const uint32_t EXP2_RST = EXP2RST;
 
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 #define PIN_I0_0	0x00002105
