@@ -27,11 +27,19 @@ if(NOT DEFINED PLC_VERSION OR NOT DEFINED PLC_MODEL)
 endif()
 
 # .. and that they are correct
-if(NOT "${PLC_VERSION}" IN_LIST VERSIONS_LIST)
+if(NOT "${PLC_VERSION}" STREQUAL "ALL" AND NOT "${PLC_VERSION}" IN_LIST VERSIONS_LIST)
 	message(FATAL_ERROR "Invalid value for PLC_VERSION")
 endif()
-if(NOT "${PLC_MODEL}" IN_LIST MODELS_LIST)
+if(NOT "${PLC_MODEL}" STREQUAL "ALL" AND NOT "${PLC_MODEL}" IN_LIST MODELS_LIST)
 	message(FATAL_ERROR "Invalid value for PLC_MODEL")
+endif()
+
+# And if the version and model are not "ALL", make a list of one element
+if(NOT PLC_VERSION STREQUAL "ALL")
+    set(VERSIONS_LIST ${PLC_VERSION})
+endif()
+if(NOT PLC_MODEL STREQUAL "ALL")
+    set(MODELS_LIST ${PLC_MODEL})
 endif()
 
 

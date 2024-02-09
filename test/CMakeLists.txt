@@ -7,16 +7,44 @@ file(GLOB TEST_SOURCES "src/*.cpp")
 # Find the rpiplc library
 find_library(${LIBNAME} NAMES ${LIBNAME})
 
-# Add the macros to the tests
-add_definitions(-D"${PLC_VERSION}")
-add_definitions(-D"${PLC_MODEL}")
+# Header files
+include_directories(include)
 
-# Create an executable for each test source file
-foreach(TEST_SOURCE ${TEST_SOURCES})
-	# Get the base name of the test file without the extension
-	get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)
+# Source files
+file(GLOB TEST_SOURCES "src/*.cpp")
 
-	add_executable(${TEST_NAME} ${TEST_SOURCE})
+# Find the rpiplc library
+find_library(${LIBNAME} NAMES ${LIBNAME})
 
-	target_link_libraries(${TEST_NAME} ${LIBNAME})
+
+# Root directory where all tests will be
+set(TESTS_OUTPUT_PATH "${CMAKE_BINARY_DIR}/test/")
+
+
+function(build_one_test TEST_SOURCES VERSION MODEL)
+	foreach(TEST_SOURCE ${TEST_SOURCES})
+		# Get the base name of the test file without the extension
+		get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)
+
+		set(FULL_TEST_NAME "${TEST_NAME}_${VERSION}_${MODEL}")
+
+
+		add_executable(${FULL_TEST_NAME} ${TEST_SOURCE})
+
+		target_link_libraries(${FULL_TEST_NAME} ${LIBNAME})
+
+		target_compile_definitions(${FULL_TEST_NAME} PUBLIC "${VERSION}" "${MODEL}")
+
+
+		set_target_properties(${FULL_TEST_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY
+			"${TESTS_OUTPUT_PATH}/${VERSION}/${MODEL}")
+		set_target_properties(${FULL_TEST_NAME} PROPERTIES OUTPUT_NAME "${TEST_NAME}")
+	endforeach()
+endfunction()
+
+
+foreach(VERSION ${VERSIONS_LIST})
+	foreach(MODEL ${MODELS_LIST})
+		build_one_test("${TEST_SOURCES}" "${VERSION}" "${MODEL}")
+	endforeach()
 endforeach()
