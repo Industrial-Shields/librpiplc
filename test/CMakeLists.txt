@@ -7,15 +7,6 @@ file(GLOB TEST_SOURCES "src/*.cpp")
 # Find the rpiplc library
 find_library(${LIBNAME} NAMES ${LIBNAME})
 
-# Header files
-include_directories(include)
-
-# Source files
-file(GLOB TEST_SOURCES "src/*.cpp")
-
-# Find the rpiplc library
-find_library(${LIBNAME} NAMES ${LIBNAME})
-
 
 # Root directory where all tests will be
 set(TESTS_OUTPUT_PATH "${CMAKE_BINARY_DIR}/test/")
