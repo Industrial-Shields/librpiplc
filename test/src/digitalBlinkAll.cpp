@@ -1,6 +1,6 @@
 #include <rpiplc.h>
 
-#include "common.h"
+#include "pins_references.h"
 
 uint32_t value = 0;
 

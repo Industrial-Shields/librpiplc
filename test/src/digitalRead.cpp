@@ -1,6 +1,6 @@
 #include <rpiplc.h>
 
-#include "common.h"
+#include "pins_references.h"
 
 void setup() {
 	printf("Num digital inputs: %d\n", numDigitalInputs);

@@ -1,6 +1,6 @@
 #include <rpiplc.h>
 
-#include "common.h"
+#include "pins_references.h"
 
 const static uint16_t values[] = {0, 511, 1023, 2047, 4095, 2047, 1023, 511};
 const static int numValues = sizeof(values) / sizeof(uint16_t);

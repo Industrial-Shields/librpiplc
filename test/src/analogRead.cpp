@@ -1,5 +1,6 @@
 #include <rpiplc.h>
-#include "common.h"
+
+#include "pins_references.h"
 
 void setup() {
 	for (int i = 0; i < numAnalogInputs; ++i) {

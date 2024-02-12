@@ -1,13 +1,14 @@
 #include <cstring>
 #include <rpiplc.h>
-#include "pins_reference.h"
+
+#include "pins_references.h"
 
 //////////////////////////////////////////////////////////////////////////////////////
-const pin_t* findPin(const char* name){
+const pin_name_t* findPin(const char* name){
 
-	for (int i = 0; i < numAnalogOutputs; i++) {
-		if (strcmp(name, analogOutputs[i].name) == 0) {
-			return &analogOutputs[i];
+	for (int i = 0; i < numNamedAnalogOutputs; i++) {
+		if (strcmp(name, namedAnalogOutputs[i].name) == 0) {
+			return &namedAnalogOutputs[i];
 		}
 	}
 	return nullptr;
@@ -24,7 +25,7 @@ int main (int argc, const char* argv[]) {
 	initPins();
 
 	float value = atof(argv[2]);
-	const pin_t* pin = findPin(argv[1]);
+	const pin_name_t* pin = findPin(argv[1]);
 
 	if (pin) {
 //		printf("Pin: %s %04x\n", pin->name, pin->pin);
