@@ -30,6 +30,9 @@ function(build_one_test TEST_SOURCES VERSION MODEL)
 		set_target_properties(${FULL_TEST_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY
 			"${TESTS_OUTPUT_PATH}/${VERSION}/${MODEL}")
 		set_target_properties(${FULL_TEST_NAME} PROPERTIES OUTPUT_NAME "${TEST_NAME}")
+
+
+		install(TARGETS ${FULL_TEST_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/test/${VERSION}/${MODEL})
 	endforeach()
 endfunction()
 
