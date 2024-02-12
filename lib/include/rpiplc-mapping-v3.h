@@ -162,6 +162,8 @@ static const uint32_t A1_7 = PIN_Q1_7;
 #define PIN_I1_4	0x00004b02
 #define PIN_I1_5	0x00004b03
 
+static const uint32_t I1_0 = PIN_I1_0;
+static const uint32_t I1_1 = PIN_I1_1;
 static const uint32_t I1_2 = PIN_I1_2;
 static const uint32_t I1_3 = PIN_I1_3;
 static const uint32_t I1_4 = PIN_I1_4;
@@ -254,6 +256,8 @@ static const uint32_t A2_7 = PIN_Q2_7;
 #define PIN_I2_4	0x00004803
 #define PIN_I2_5	0x00004b01
 
+static const uint32_t I2_0 = PIN_I2_0;
+static const uint32_t I2_1 = PIN_I2_1;
 static const uint32_t I2_2 = PIN_I2_2;
 static const uint32_t I2_3 = PIN_I2_3;
 static const uint32_t I2_4 = PIN_I2_4;
