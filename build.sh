@@ -18,7 +18,7 @@ for i in "$@"; do
 	    shift
 	    ;;
 	"-V"[0-9])
-	    if [[ "$1" =~ -V[3-4] ]]; then
+	    if [[ "$1" =~ -V[3-5] ]]; then
 		PLC_VERSION="RPIPLC_${1#-}"
 		shift
 	    else
