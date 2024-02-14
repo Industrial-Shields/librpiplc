@@ -12,7 +12,7 @@
 
 #define PIN_8	8
 #define PIN_P_RELAY	26
-#define PIN_OPTO_OUT2	18
+#define PIN_OPTO_OUT2	27
 #define PIN_OPTO_OUT1	13
 #define PIN_OPTO_IN2	5
 #define PIN_OPTO_IN1	12
