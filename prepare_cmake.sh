@@ -2,17 +2,13 @@ ROOT_DIR=$(dirname $(realpath "$0"))
 BUILD_DIR=$ROOT_DIR/build
 INSTALL_DIR=/tmp/librpiplc
 
-
+BUILD_TYPE=""
 if [ "$#" -eq 3 ] && [ "$3" == "-d" ]; then
-    BUILD_TYPE=Debug
+    BUILD_TYPE="Debug"
 else
-    BUILD_TYPE=Release
+    BUILD_TYPE="Release"
 fi
 
-if [ "$#" -lt 2 ] || [ "$#" -gt 3 ]; then
-    echo "Usage: $0 PLC_VERSION PLC_MODEL -d"
-    exit 1
-fi
 
 PLC_VERSION="$1"
 PLC_MODEL="$2"

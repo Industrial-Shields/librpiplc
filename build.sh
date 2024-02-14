@@ -54,7 +54,7 @@ done
 "$ROOT_DIR/prepare_cmake.sh" "$PLC_VERSION" "$PLC_MODEL" "$DEBUG"
 
 # Build the install target
-make -C "$BUILD_DIR" "$INSTALL"
+make -j$(nproc --all) -C "$BUILD_DIR" $INSTALL
 
 # Copy all new files
 if [ -n "$INSTALL" ]; then

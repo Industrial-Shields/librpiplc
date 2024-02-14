@@ -4,6 +4,11 @@ project("RPi PLC GPIO Control")
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
+set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+
+# Enable compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Name of the library
 set(LIBNAME rpiplc)
