@@ -1,30 +1,26 @@
+#include <cstdint>
+#include <cstddef>
+#include <cstdio>
+
+#define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
 
-#include "pins_references.h"
+#include "pins_references.hpp"
 
 void setup() {
-	for (int i = 0; i < numAnalogInputs; ++i) {
-		pinMode(analogInputs[i], INPUT);
+	printf("Number of analog inputs: %ld\n", numNamedAnalogInputs);
+
+	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
+		pinMode(namedAnalogInputs[i].pin, INPUT);
 	}
 }
 
 void loop() {
-	for (int i = 0; i < numAnalogInputs; ++i) {
-		uint16_t value = analogRead(analogInputs[i]);
-		printf("Pin %08x value: %u\n", analogInputs[i], value);
+	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
+		uint16_t value = analogRead(namedAnalogInputs[i].pin);
+		printf("Pin %s value: %u\n", namedAnalogInputs[i].name, value);
 	}
 
+	printf("\n");
 	delay(1000);
-}
-
-int main(int argc, char* argv[]) {
-	initPins();
-
-	setup();
-
-	while (1) {
-		loop();
-	}
-
-	return 0;
 }

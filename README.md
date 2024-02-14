@@ -1,197 +1,253 @@
 # RPIPLC-LIB library
 
-
 ### by Industrial Shields
-Rpiplc-lib implements some common applications on industrial environments for Raspberry based Industrial Shields PLC, based on the code structure as the Arduino IDE.
-
-## Getting started
+rpiplc-lib implements some common applications on industrial environments for Raspberry based Industrial Shields PLCs. It also contains some adaptations based on the code structure of the Arduino IDE to make it more familiar.
 
 
-### Prerequisites
 
-Raspberry based Industrial Shields PLC.
+## Prerequisites
 
-### Installing Git
+### One of our PLCs: https://www.industrialshields.com/
 
-**1**. Start by updating the package manager:
+### Installing Git and CMake
 
-```sudo apt update```
-
-**2**. Run the following command to install Git: 
-
-```sudo apt install git```
-
-**3**. Verify the installation by typing the following command which will print the Git version.
-
-```git --version```
-
-
-### Installation
-
-**1**. Go to the directory where you want to have the library.
-
-**2**. Run the following command to clone the repository:
-
-```git clone -b <tagname> https://github.com/Industrial-Shields/rpiplc-lib.git```
-
-    tagname = v1.X.X = RPI PLC Version 3
-
-    tagname = v2.X.X = RPI PLC Version 4
-    
-    You can find the available tags here: https://github.com/Industrial-Shields/rpiplc-lib/tags
-
-**3**. Access to the directory and execute the makefile:
-
-```cd rpiplc-lib```
-
-```make```
-
-```sudo make install```
-
-**4**. Now, you can open any file from the rpiplc-lib/ directory.
-
-**5**. Finally, go to the /boot/config.txt file:
+1. Start by updating the package manager:
 ```
-sudo nano /boot/config.txt
+sudo apt update
 ```
 
-**6**. Comment all the following lines by adding a hash mark at the beginning of the lines like this:
+2. Run the following command to install Git and CMake: 
+```
+sudo apt install git cmake
+```
+
+3. Verify the installation by typing the following commands, which will print the versions of each package:
+```
+git --version && cmake --version
+```
+
+
+### `/boot/config.txt` setup
+Make sure that the `/boot/config.txt` file has all the parameters appropriate for your RPi PLC version.
+
+**TODO: Method to only install /boot/config.txt, without using install.sh**
+
+
+
+## Installing
+
+### Normal procedure
+
+1. Go to the directory where you want the library repository to be. For example, in your *home*:
+```
+cd
+```
+
+2. Run the following command to clone the repository:
+```
+git clone -b <tagname> https://github.com/Industrial-Shields/rpiplc-lib.git
+```
+Where `<tagname>` is the version you wish to download. Before this unification, you had to choose between versions 1.X.X (for V3 PLCs) or 2.X.X (for V4 PLCs). As of 3.X.X this library is compatible with our PLCs regardless of it's version.
+You can check the available versions in here: https://github.com/Industrial-Shields/rpiplc-lib/tags
+
+3. Go to the library directory and install the library with the following command:
+```
+cd rpiplc-lib/
+./build.sh -i -V<version> -M <model>
+```
+Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library for the RPi PLC 21 V4:
+```
+./build.sh -i -V4 -M 21
+```
+
+### Building tests for all versions and/or models
+If you want to compile the tests for all PLC versions, or all PLC models, or both, you can pass "ALL" to the `./build.sh` script. This command will build for all versions and models of our PLCs (it may take a while to complete!):
+```
+./build.sh -i -VALL -M ALL
+```
+
+
+## Compilation
+**g++** is a GNU project C and C++ compiler. When you invoke **g++**, it normally does preprocessing, compilation, assembly and linking. This program can also accept options and file names as operands. If you want to compile your program to use our library (or you want to manually compile our tests), you have to call **g++** with the following arguments:
+```
+g++ -o file file.cpp -l rpiplc -I /usr/local/include/librpiplc -D PLC_VERSION -D PLC_MODEL`
 
 ```
-#dtoverlay=mcp23017,noints,mcp23008,addr=0x20
-#dtoverlay=mcp23017,noints,mcp23008,addr=0x21
 
-#dtoverlay=i2c-pwm-pca9685a,addr=0x40
-#dtoverlay=i2c-pwm-pca9685a,addr=0x41
+`-o file`: Place the output executable in file `file`.
 
-#dtoverlay=ads1015,addr=0x48
-#dtparam=cha_enable=true,cha_gain=1
-#dtparam=chb_enable=true,chb_gain=1
-#dtparam=chc_enable=true,chc_gain=1
-#dtparam=chd_enable=true,chd_gain=
-#dtoverlay=ads1015,addr=0x49
-#dtparam=cha_enable=true,cha_gain=1
-#dtparam=chb_enable=true,chb_gain=1
-#dtparam=chc_enable=true,chc_gain=1
-#dtparam=chd_enable=true,chd_gain=1
-#dtoverlay=ads1015,addr=0x4a
-#dtparam=cha_enable=true,cha_gain=1
-#dtparam=chb_enable=true,chb_gain=1
-#dtparam=chc_enable=true,chc_gain=1
-#dtparam=chd_enable=true,chd_gain=1
-#dtoverlay=ads1015,addr=0x4b
-#dtparam=cha_enable=true,cha_gain=1
-#dtparam=chb_enable=true,chb_gain=1
-#dtparam=chc_enable=true,chc_gain=1
-#dtparam=chd_enable=true,chd_gain=1
+`-l library`. Search the library named `library` when linking.
+
+`-I dir`. Add the directory `dir` to the list of directories to search for header files. This line is needed in order to search for the librpiplc library headers.
+
+`-D name=definition`. It is used to define macros before preprocessing occurs. It is ideal to define configuration macros, like the version or the model of the PLC.
+
+Example to build the program for RPi PLC 38AR V3:
 ```
-**7** Reboot the system to apply changes:
-
-```sudo reboot now```
-
-
-### Compilation
-
-**g++** is a GNU project C and C++ compiler. When you invoke GCC, it normally does preprocessing, compilation, assembly and linking. The gcc program accepts options and file names as operands. 
-So, inside the rpiplc-lib directory, go to the test directory and compile the rpiplc-lib applications with the essential parameters:
-
-```g++ -o file file.cpp -L /usr/local/lib -l rpiplc -I /usr/local/include/rpiplc -D DEVICE_MODEL```
-
-**-o** file: Place output in file file.
-
-**-l** library. Search the library named library when linking.
-
-**-I** dir. Add the directory dir to the list of directories to be searched for header files. Directories named by -I are searched before the standard system include directories.
-
-**-D** name=definition. The contents of definition are tokenized and processed as if they appeared during translation phase three in a #define directive.
+g++ -o file file.cpp -l rpiplc -I /usr/local/include/librpiplc -D RPIPLC_V3 -D RPIPLC_38AR
+```
 
 *Know more: https://linux.die.net/man/1/g++*
 
+
+
 ## Reference
+rpiplc-lib contains several tests in order to verify the correct operation of the PLCs:
+
+1. [Arduino setup() and loop() functions](#loop-setup-functions)
+1. [set-digital-output](#set-digital-output)
+1. [set-analog-output](#set-analog-output)
+1. [get-digital-input](#get-digital-input)
+1. [get-analog-input](#get-analog-input)
+1. [analogBlink](#analogBlink)
+1. [analogBlinkAll](#analogBlinkAll)
+1. [analogRead](#analogRead)
+1. [delay](#delay)
+1. [digitalBlink](#digitalBlink)
+1. [digitalBlinkAll](#digitalBlinkAll)
+1. [digitalRead](#digitalRead)
+1. [Available PLC versions](#available-versions)
+1. [Available PLC models](#available-models)
 
 
-Rpiplc-lib contains different applications:
+### <a name="loop-setup-functions"></a>Arduino **setup()** and **loop()** functions
+In Arduino sketches you must define at least these two functions:
+1. **setup()**: A function that is called only once when booting up the PLC.
+1. **loop()**: A function that will be continuously called when it ends or returns.
 
-0. [Main](#main-0)
-1. [AnalogBlink](#analog-blink)
-2. [AnalogBlinkAll](#analog-blink-all)
-3. [AnalogRead](#analog-read)
-4. [Delay](#delay-1)
-5. [DigitalBlink](#digital-blink)
-6. [DigitalBlinkAll](#digital-blink-all)
-7. [DigitalRead](#digital-read)
-8. [Set digital output](#set-digital-output)
-9. [Set analog output](#set-analog-output)
-10. [Get digital input](#set-digital-read)
-11. [Get analog input](#get-analog-input)
-12. [Available PLC models](#available-models)
+This approach is completely different from C/C++ programs in other environments such as GNU/Linux, where you only need to declare the function **int main(int argv, const char* argc[])**. This function must return an integer, which will be 0 if the process was terminated correctly, or some other integer if there was an error. The two arguments that it accepts (if given) are the number of arguments given in the program call, and an array of those arguments.
 
-
-### <a name="main-0"></a>Main
-All the applications must implement the main function that looks like the example below:
+Some of the examples we provide with the library use this approach because it's the standard way to write C/C++ programs. However, our library also allows you to write programs the Arduino way by declaring the ``__ARDUINO_FUNCTIONS__`` macro before including the library header:
 ```
-int main(int argc, char* argv[]) {
-    initPins();
-
-    setup();
-
-    while (1) {
-        loop();
-    }
-    
-    return 0;
-}
-```
-
-The main() function will call the setup() and loop() function so that they can be executed.
-
-
-### <a name="analog-blink"></a>AnalogBlink
-
-```
+#define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
-#include "common.h"
+```
+With this definition you can omit the **main()** function and use the **setup()** and **loop()** functions. But remember that, in order to exit the program without killing it externally, you will need to call **exit(EXIT_NUM)**, where **EXIT_NUM** is an integer that indicates whether the process exited successfully or not.
+
+
+### <a name="set-digital-output"></a>set-digital-output
+This application sets a digital output or relay to the specified value.
+
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initPins()** function. Then, as in Arduino programming, it sets the given pin to output mode, and it writes to it the specified value in the second parameter: either 1 (HIGH) or 0 (LOW).
+
+Apart from using the `build.sh` script, you can build the executable file called `set-digital-output` with **g++**:
+```
+g++ -o set-digital-output set-digital-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
 ```
 
+Execute the compiled file named `set-digital-output` with two parameters:
+1. The output to control
+1. The value to set
+```
+./set-digital-output Q0.0 1
+```
+
+And see how the Q0.0 output activates.
+
+
+### <a name="set-analog-output"></a>set-analog-output
+This application sets an analog output to the specified value.
+
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initPins()** function. Then, as in Arduino programming, it sets the given pin to output mode, and it writes to it the specified value in the second parameter: from 0 to 4095 (12 bits).
+
+Apart from using the `build.sh` script, you can build the executable file called `set-analog-output` with **g++**:
+```
+g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
+```
+
+#### Analog output
+Execute the compiled file named `set-analog-output` with two parameters:
+1. The output to control
+1. The value to set
+```
+./set-analog-output Q0.5 1024
+```
+And see how Q0.5 outputs around 2.5V.
+
+#### PWM output
+All the digital outputs can output PWM signals using the `set-analog-output` program, but using it in digital outputs.
+Execute the compiled file named `set-analog-output` with two parameters:
+1. The digital output to control
+1. The PWM (analog) value to set (from 0 to 4095)
+```
+./set-analog-output Q0.0 2047
+```
+This will output a 50% duty cycle PWM in Q0.0.
+
+
+### <a name="get-digital-input"></a>get-digital-input
+This application prints out the value of a digital input.
+
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initPins()** function. Then, as in Arduino programming, it sets the given pin to input mode, and it prints it's value: 0 or 1.
+
+Apart from using the `build.sh` script, you can build the executable file called `get-digital-output` with **g++**:
+```
+g++ -o get-digital-output get-digital-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
+```
+Execute the compiled file named `get-digital-input` with the input as parameter.
+```
+./get-digital-input I0.0
+1
+```
+And it will print the value of I0.0 at the moment.
+
+
+### <a name="get-analog-input"></a>get-analog-input
+This application prints out the value of an analog input.
+
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initPins()** function. Then, as in Arduino programming, it sets the given pin to input mode, and it prints it's analog value.
+
+Apart from using the `build.sh` script, you can build the executable file called `get-analog-output` with **g++**:
+```
+g++ -o get-analog-output get-analog-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
+```
+Execute the compiled file named `get-analog-input` with the input as parameter.
+```
+./get-analog-input I0.7
+1330
+```
+And it will print the value of I0.0 at the moment.
+
+
+### <a name="analogBlink"></a>analogBlink
 This application shows the simplest thing you can do to see physical outputs: it blinks the on-board LEDs from the analog outputs.
 
-The pinMode function, like in Arduino, configures the specified pin to behave either as an input or an output. In the setup function, all the analog outputs are set as outputs:
+In the **setup()** function we configure all the analog outputs as **OUTPUT**s:
 ```
 void setup() {
-  for (int i = 0; i < numAnalogOutputs; ++i) {
-    pinMode(analogOutputs[i], OUTPUT);
-  }
+	printf("Number of analog outputs: %ld\n", numAnalogOutputs);
+	
+	for (size_t i = 0; i < numAnalogOutputs; i++) {
+		pinMode(analogOutputs[i], OUTPUT);
+	}
 }
 ```
 
-In the loop function, all the analog outputs are written with the different analog values, with a 1000 milliseconds delay in every loop.
+And in the **loop()** function, all the analog outputs are written with the different analog values, with a 1000 milliseconds delay for every loop.
 
 ```
 void loop() {
-  for (int i = 0; i < numValues; ++i) {
-    printf("Set value %d\n", values[i]);
+	for (size_t i = 0; i < numValues; i++) {
+		printf("Set value %d\n", values[i]);
 
-    for (int j = 0; j < numAnalogOutputs; ++j) {
-      analogWrite(analogOutputs[j], values[i]);
-    }
+		for (size_t j = 0; j < numAnalogOutputs; j++) {
+			analogWrite(analogOutputs[j], values[i]);
+		}
 
-    delay(1000);
-  }
+		delay(1000);
+	}
 }
 ```
 
-So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called analogBlink:
+To compile the executable file called `analogBlink` with **g++**:
 ```
-g++ -o analogBlink analogBlink.cpp -l rpiplc -I  /usr/local/include/rpiplc -D RPIPLC_58 (or any other Raspberry PLC model)
+g++ -o analogBlink analogBlink.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
 ```
 
-Execute the created file named analogBlink, to run the application:
+Execute the created file named `analogBlink` to run the application, and you will get an output every 1000 milliseconds: 
 ```
 ./analogBlink
-```
-
-and start getting an output every 1000 milliseconds:
-```
+Number of analog outputs: 3
 Set value 0
 Set value 511
 Set value 1023
@@ -204,56 +260,18 @@ Set value 0
 ```
 
 
-### <a name="analog-blink-all"></a>AnalogBlinkAll
+### <a name="analogBlinkAll"></a>analogBlinkAll
+This application is the same as <a name="analogBlink"></a>analogBlink, but it is more efficient when doing so. It uses the `analogWriteAll` function, which requires many fewer I2C cycles than calling analogWrite for each pin. It currently applies to all output pins.
 
+To compile the executable file called `analogBlinkAll` with **g++**:
 ```
-#include <rpiplc.h>
-#include "common.h"
-```
-
-This application, like analog blink, shows how to blink the on-board LEDs from all the analog outputs. All the values are written at the same time by minimizing the i2c writes, in order to reduce the speed of the analog outputs.
-
-
-The pinMode function, like in Arduino, configures the specified pin to behave either as an input or an output. In the setup function, all the analog outputs are set as outputs:
-```
-void setup() {
-  for (int i = 0; i < numAnalogOutputs; ++i) {
-    pinMode(analogOutputs[i], OUTPUT);
-  }
-}
+g++ -o analogBlinkAll analogBlinkAll.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
 ```
 
-In the loop function, all the analog outputs are written with the different analog values, with a 1000 milliseconds delay in every loop.
-
-```
-void loop() {
-    for (int i = 0; i < numValues; ++i) {
-        printf("Set value %d\n", values[i]);
-
-        for (int j = 0; j < PCA9685_NUM_OUTPUTS; ++j) {
-            analogValues[j] = values[i];
-        }
-        for (int j = 0; j < rpiplc_num_pca9685; ++j) {
-            analogWriteAll(rpiplc_pca9685[j], analogValues);
-        }
-        delay(1000);
-        }
-}
-
-```
-
-So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called analogBlinkAll:
-```
-g++ -o analogBlinkAll analogBlinkAll.cpp -l rpiplc -I  /usr/local/include/rpiplc -D RPIPLC_58 (or any other Raspberry PLC model)
-```
-
-Execute the created file named analogBlinkAll, to run the application:
+Execute the created file named `analogBlinkAll` to run the application, and you will get an output every 1000 milliseconds:
 ```
 ./analogBlinkAll
-```
-
-and start getting an output every 1000 milliseconds:
-```
+Number of analog outputs: 3
 Set value 0
 Set value 511
 Set value 1023
@@ -263,91 +281,74 @@ Set value 2047
 Set value 1023
 Set value 511
 Set value 0
-...
 ```
 
-### <a name="analog-read"></a>AnalogRead
-The analogRead application reads the value from the analog input pins. In this setup function, all the inputs are set as analog inputs:
 
+### <a name="analogRead"></a>analogRead
+The analogRead application reads and prints the value from all the analog input pins.
+
+In this **setup()** function, all the inputs are set as analog inputs:
 ```
 void setup() {
-  for (int i = 0; i < numAnalogInputs; ++i) {
-    pinMode(analogInputs[i], INPUT);
-  }
+	printf("Number of analog inputs: %ld\n", numNamedAnalogInputs);
+	
+	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
+		pinMode(namedAnalogInputs[i].pin, INPUT);
+	}
 }
 ```
 
-In the loop function below, it prints out all the analog input values, and there is a 1000 milliseconds delay after that.
-
+In the **loop()** function below, it prints out all the analog input values, and there is a 1000 milliseconds delay after that.
 ```
 void loop() {
-  for (int i = 0; i < numAnalogInputs; ++i) {
-    uint16_t value = analogRead(analogInputs[i]);
-    printf("Pin %08x value: %u\n", analogInputs[i], value);
-  }
-  delay(1000);
+	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
+		uint16_t value = analogRead(namedAnalogInputs[i].pin);
+		printf("Pin %s value: %u\n", namedAnalogInputs[i].name, value);
+	}
+
+	printf("\n");
+	delay(1000);
 }
 ```
 
-Compile the application executing the following command:
+To compile the executable file called `analogRead` with **g++**:
 ```
-g++ -o analogRead analogRead.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_58 (or any other Raspberry PLC model)
+g++ -o analogRead analogRead.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
 ```
 
-Run it executing the following:
+Execute the created file named `analogRead` to run the application, and you will get an output every 1000 milliseconds:
 ```
 ./analogRead
+Number of analog inputs: 6
+Pin I0.7 value: 0
+Pin I0.8 value: 3840
+Pin I0.9 value: 0
+Pin I0.10 value: 0
+Pin I0.11 value: 1971
+Pin I0.12 value: 0
 ```
 
-The output on the terminal will be shown like this:
-```
-Pin 00004a00 value: 1
-Pin 00004a01 value: 1
-Pin 00004b00 value: 1
-Pin 00004802 value: 1
-Pin 00004800 value: 2
-Pin 00004801 value: 2
-Pin 00004900 value: 1
-Pin 00004a03 value: 1
-Pin 00004b02 value: 2
-Pin 00004b03 value: 2
-Pin 00004a02 value: 2
-Pin 00004901 value: 1
-Pin 00004903 value: 2
-Pin 00004902 value: 1
-Pin 00004803 value: 2
-Pin 00004b01 value: 1
-```
 
-### <a name="delay-1"></a>Delay
-The delay application pauses the program for the amount of time (in milliseconds) specified as parameter. 
-
-Syntax:
-
-delay(ms) - ms: the number of milliseconds to pause.
+### <a name="delay"></a>Delay
+The delay application prints an incremental number every second (the time specified by the `delay` function). This function accepts as argument the number of milliseconds it has to wait before resuming execution.
 ```
 int counter = 0;
-void setup() {
-}
+
+void setup() {}
 
 void loop() {
-  printf("%d\n", counter++);
-  delay(1000);
+	printf("%d\n", counter++);
+	delay(1000);
 }
 ```
 
 Compile the application executing the following command:
 ```
-g++ -o delay delay.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_58 (or any other Raspberry PLC model)
+g++ -o delay delay.cpp -l rpiplc -I /usr/local/include/librpiplc -DRPIPLC_V4 -DRPIPLC_21
 ```
-
-Run it executing the following:
+And if you run it executing the following, you will get an output every 1000 milliseconds:
 ```
 ./delay
-```
-
-The example file in the rpiplc-lib/test directory, delays the program and it prints a counter every 1000 milliseconds. The output is shown like this:
-```
 0
 1
 2
@@ -356,50 +357,46 @@ The example file in the rpiplc-lib/test directory, delays the program and it pri
 5
 ```
 
-### <a name="digital-blink"></a>DigitalBlink
 
+### <a name="digitalBlink"></a>digitalBlink
 This application shows the on-board LEDs blinking from the digital outputs. The values change every 1000 milliseconds.
 
-The setup function configures all the possible outputs as digital outputs.
-
+The **setup()** function configures all the possible outputs as digital outputs.
 ```
 void setup() {
-  printf("Num digital outputs: %d\n", numDigitalOutputs);
-  for (int i = 0; i < numDigitalOutputs; ++i) {
-    pinMode(digitalOutputs[i], OUTPUT);
-  }
+	printf("Number of digital outputs: %ld\n", numDigitalOutputs);
+
+	for (size_t i = 0; i < numDigitalOutputs; i++) {
+		pinMode(digitalOutputs[i], OUTPUT);
+	}
 }
 ```
 
-The loop function makes all the digital output LEDs blink every 1000 milliseconds.
+The **loop()** function makes all the digital output LEDs blink every 1000 milliseconds.
 ```
+int value = 1;
+
 void loop() {
-  value = value == 0 ? 1 : 0;
+	value = value == 0 ? 1 : 0;
 
-  printf("Set value %d\n", value);
-  for (int i = 0; i < numDigitalOutputs; ++i) {
-    digitalWrite(digitalOutputs[i], value);
-  }
+	printf("Set value %d\n", value);
+	for (size_t i = 0; i < numDigitalOutputs; i++) {
+		digitalWrite(digitalOutputs[i], value);
+	}
 
-  delay(1000);
+	delay(1000);
 }
 ```
 
 Compile the application executing the following command:
 ```
-g++ -o digitalBlink digitalBlink.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_58 (or any other Raspberry PLC model)
+g++ -o digitalBlink digitalBlink.cpp -l rpiplc -I /usr/local/include/librpiplc -DRPIPLC_V4 -DRPIPLC_21
 ```
-
-Run it executing the following:
+The output on the terminal will show you this when you run the program:
 ```
 ./digitalBlink
-```
-
-The output on the terminal will be shown like this:
-
-```
-Num digital outputs: 24
-
+Number of digital outputs: 8
+Set value 0
 Set value 1
 Set value 0
 Set value 1
@@ -407,213 +404,81 @@ Set value 0
 Set value 1
 ```
 
-### <a name="digital-blink-all"></a>DigitalBlinkAll
+### <a name="digitalBlinkAll"></a>digitalBlinkAll
+This application is the same as <a name="digitalBlink"></a>digitalBlink, but it is more efficient when doing so. It uses the `digitalWriteAll` function, which requires many fewer I2C cycles than calling digitalWrite for each pin.
 
-This application shows the on-board LEDs blinking from all the digital outputs, by reducing the i2c writes in order to decrease the speed of the outputs. The values change every 1000 milliseconds. 
-
-The setup function configures all the possible outputs as digital outputs.
-
+To compile the executable file called `digitalBlinkAll` with **g++**:
 ```
-void setup() {
-  printf("Num digital outputs: %d\n", numDigitalOutputs);
-  for (int i = 0; i < numDigitalOutputs; ++i) {
-    pinMode(digitalOutputs[i], OUTPUT);
-  }
-}
+g++ -o digitalBlinkAll digitalBlinkAll.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
 ```
 
-The loop function makes all the digital output LEDs blink every 1000 milliseconds.
-```
-void loop() {
-    value = value == 0 ? 0xffffffff : 0;
-
-    for (int i = 0; i < rpiplc_num_mcp23008; ++i) {
-        digitalWriteAll(rpiplc_mcp23008[i], value);
-    }
-    for (int i = 0; i < rpiplc_num_pca9685; ++i) {
-        digitalWriteAll(rpiplc_pca9685[i], value);
-    }
-    delay(1000);
-}
-```
-
-Compile the application executing the following command:
-```
-g++ -o digitalBlinkAll digitalBlinkAll.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_58 (or any other Raspberry PLC model)
-```
-
-Run it executing the following:
+Execute the created file named `digitalBlinkAll` to run the application, and you will get an output every 1000 milliseconds:
 ```
 ./digitalBlinkAll
-```
-
-The output on the terminal will be shown like this:
-
-```
-Num digital outputs: 24
-
-Set value 1
-Set value 0
-Set value 1
-Set value 0
-Set value 1
+Number of digital outputs: 8
+Set value 0x0
+Set value 0xFFFFFFFF
+Set value 0x0
+Set value 0xFFFFFFFF
+Set value 0x0
+Set value 0xFFFFFFFF
+Set value 0x0
 ```
 
 
-### <a name="digital-read"></a>DigitalRead
+### <a name="digitalRead"></a>digitalRead
+The digitalRead application reads and prints the value from all the isolated digital input pins.
 
-The digitalRead application reads the value from the digital input pins. In this setup function, all the inputs are set as digital inputs:
-
+In this **setup()** function, all the inputs are set as digital inputs:
 ```
 void setup() {
-  printf("Num digital inputs: %d\n", numDigitalInputs);
-  for (int i = 0; i < numDigitalInputs; ++i) {
-    pinMode(digitalInputs[i], INPUT);
-  }
+	printf("Number of digital inputs: %ld\n", numNamedDigitalInputs);
+
+	for (size_t i = 0; i < numNamedDigitalInputs; i++) {
+		pinMode(namedDigitalInputs[i].pin, INPUT);
+	}
 }
 ```
 
-In the loop function below, it prints out all the digital input values, and there is a 1000 milliseconds delay after that.
-
+In the **loop()** function below, it prints out all the digital input values, and there is a 1000 milliseconds delay after that.
 ```
 void loop() {
-  for (int i = 0; i < numDigitalInputs; ++i) {
-    int value = digitalRead(digitalInputs[i]);
-    printf("Pin %08x value: %u\n", digitalInputs[$
-  }
-  delay(1000);
+	for (size_t i = 0; i < numNamedDigitalInputs; i++) {
+		int value = digitalRead(namedDigitalInputs[i].pin);
+		printf("Pin %s value: %u\n", namedDigitalInputs[i].name, value);
+	}
+
+	printf("\n");
+	delay(1000);
 }
 ```
 
-To run the application, execute the following command:
+To compile the executable file called `digitalRead` with **g++**:
 ```
-g++ -o digitalRead digitalRead.cpp -lrpiplc -I/usr/local/include/rpiplc -DRPIPLC_38AR (or any other Raspberry PLC model)
+g++ -o digitalRead digitalRead.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
 ```
 
-Run it executing the following:
+Execute the created file named `digitalRead` to run the application, and you will get an output every 1000 milliseconds:
 ```
 ./digitalRead
+Number of digital inputs: 8
+Pin PIN8 value: 0
+Pin I0.0 value: 0
+Pin I0.1 value: 1
+Pin I0.2 value: 1
+Pin I0.3 value: 0
+Pin I0.4 value: 0
+Pin I0.5 value: 1
+Pin I0.6 value: 0
 ```
 
-The output on the terminal will be shown like this:
+
+### <a name="available-versions"></a>Available PLC versions
 ```
-Pin 00002105 value: 0
-Pin 00002103 value: 0
-Pin 00002102 value: 0
-Pin 00002101 value: 0
-Pin 00002100 value: 0
-Pin 0000000d value: 0
-Pin 0000000c value: 0
-Pin 00002002 value: 0
-Pin 00002001 value: 0
-Pin 00002000 value: 0
-Pin 00002107 value: 0
-Pin 00002106 value: 0
-Pin 0000001b value: 0
-Pin 00000004 value: 0
-Pin 00002006 value: 0
-Pin 00002005 value: 0
-Pin 00002007 value: 0
-Pin 00002004 value: 0
-Pin 00002003 value: 0
-Pin 00000011 value: 0
-Pin 00000010 value: 0
+RPIPLC_V3 (deprecated)
+RPIPLC_V4
 ```
 
-### <a name="set-digital-output"></a>Set digital output
-
-This application sets a digital output to the specified value.
-
-The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the output to the output mode, and it writes to the pin the specified value in the parameter: either 1 or 0
-
-So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called set-digital-output:
-```
-g++ -o set-digital-output set-digital-output.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_42 (or any other Raspberry PLC model)
-```
-Execute the compiled file named set-digital-output with two parameters:
-1: the output to control
-2: the value to set
-```
-./set-digital-output Q0.0 1
-```
-
-And see how the Q0.0 output has been activated.
-
-### <a name="set-analog-output"></a>Set analog output
-
-This application sets an analog output to the specified value.
-
-The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the output to the output mode, and it writes to the pin the specified value in the parameter.
-
-So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called set-analog-output:
-```
-g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_19R (or any other Raspberry PLC model)
-```
-Execute the compiled file named set-analog-output with two parameters:
-1: the output to control
-2: the value to set
-```
-./set-analog-output A0.5 4095
-```
-
-And see how the A0.5 output has been given the specified resolution.
-
-### <a name="PWM"></a>PWM
-
-This application sets a PWM output to the specified value using the set-analog-output function with a digital output. All the digital outputs of the PLC can be used for the PWM function. 
-
-The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the output to the output mode, and it writes to the pin the specified value in the parameter.
-
-So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called set-analog-output:
-```
-g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_19R (or any other Raspberry PLC model)
-```
-Execute the compiled file named set-analog-output with two parameters:
-1: the digital output to control
-2: the PWM (analog) value to set (from 0 to 4095)
-```
-./set-analog-output Q0.0 4095
-```
-
-And see how the Q0.0 output has been given the specified resolution.
-
-### <a name="get-digital-input"></a>Get digital input
-
-This application gets the value for a digital input.
-
-The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the input to the input mode, and it reads the value of the pin specified in the parameter
-
-So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called get-digital-input:
-```
-g++ -o get-digital-input get-digital-input.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_21 (or any other Raspberry PLC model)
-```
-Execute the compiled file named get-digital-input with the input as parameter.
-```
-./get-digital-input I0.0
-```
-And get the value for that input. 
-```
-1
-```
-
-### <a name="get-analog-input"></a>Get analog input
-
-This application gets the value for a analog input.
-
-The main function initializes the microcontrollers with the initPins() function. Then, like in Arduino programming, it sets the input to the input mode, and it reads the value of the pin specified in the parameter
-
-So, in the ~/rpiplc-lib/test directory, execute the following command to create an executable file called get-analog-input:
-```
-g++ -o get-analog-input get-digital-input.cpp -l rpiplc -I /usr/local/include/rpiplc -DRPIPLC_21 (or any other Raspberry PLC model)
-```
-Execute the compiled file named get-analog-input with the input as parameter.
-```
-./get-analog-input I0.7
-```
-And get the value for that input. 
-```
-2000
-```
 
 ### <a name="available-models"></a>Available PLC models
 ```

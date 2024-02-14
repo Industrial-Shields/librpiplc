@@ -1,37 +1,30 @@
-#include <cstring>
+#include <cstdint>
+#include <cstddef>
+#include <cstdio>
+#include <string>
+
+using namespace std;
+
 #include <rpiplc.h>
 
-#include "pins_references.h"
+#include "pins_references.hpp"
+#include "find_pin.hpp"
 
-//////////////////////////////////////////////////////////////////////////////////////
-const pin_name_t* findPin(const char* name){
 
-	for (int i = 0; i < numNamedAnalogInputs; i++) {
-		if (strcmp(name, namedAnalogInputs[i].name) == 0) {
-			return &namedAnalogInputs[i];
-		}
-	}
-	return nullptr;
-}
-
-//////////////////////////////////////////////////////////////////////////////////////
 int main (int argc, const char* argv[]) {
-
-	if (argc < 2 ) {
+	if (argc != 2) {
 		fprintf(stderr, "Usage: %s <io-name>\n", argv[0]);
 		return 1;
 	}
 
-	initPins();
-
-	const pin_name_t* pin = findPin(argv[1]);
-
+	const pin_name_t* pin = find_pin<namedAnalogInputs, numNamedAnalogInputs>(argv[1]);
 	if (pin) {
+		initPins();
 		pinMode(pin->pin, INPUT);
-		uint16_t value = analogRead(pin->pin);
-		printf("%u\n", value);
+		uint16_t read_value = analogRead(pin->pin);
+		printf("%u\n", read_value);
+		return 0;
 	}
-	return 0;
-}
 
-//////////////////////////////////////////////////////////////////////////////////////
+	return 1;
+}

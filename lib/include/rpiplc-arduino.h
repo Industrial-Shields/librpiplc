@@ -25,6 +25,28 @@ extern "C" {
 	uint32_t digitalReadAll(uint8_t addr);
 	void analogWriteAll(uint8_t addr, const uint16_t* values);
 
+#ifdef __ARDUINO_FUNCTIONS__
+	int argc;
+	const char** argv;
+
+	void setup();
+	void loop();
+
+	int main(int _argc, const char** _argv) {
+		argc = _argc; argv = _argv;
+
+	        initPins();
+
+	        setup();
+
+                while (true) {
+	                loop();
+                }
+
+                return 1;
+        }
+#endif // __ARDUINO_FUNCTIONS__
+
 #ifdef __cplusplus
 }
 #endif

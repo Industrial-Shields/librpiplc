@@ -1,40 +1,31 @@
-#include <cstring>
+#include <cstdint>
+#include <cstddef>
+#include <cstdio>
+#include <string>
+
+using namespace std;
+
 #include <rpiplc.h>
 
-#include "pins_references.h"
+#include "pins_references.hpp"
+#include "find_pin.hpp"
 
-//////////////////////////////////////////////////////////////////////////////////////
-const pin_name_t* findPin(const char* name){
 
-	for (int i = 0; i < numNamedDigitalOutputs; i++) {
-		if (strcmp(name, namedDigitalOutputs[i].name) == 0) {
-			return &namedDigitalOutputs[i];
-		}
-	}
-	return nullptr;
-}
-
-//////////////////////////////////////////////////////////////////////////////////////
 int main (int argc, const char* argv[]) {
-
-	if (argc < 3 ) {
+	if (argc != 3) {
 		fprintf(stderr, "Usage: %s <io-name> <value>\n", argv[0]);
 		return 1;
 	}
 
-	initPins();
+        const int value_to_write = atoi(argv[2]);
 
-	int value = atoi(argv[2]);
-	const pin_name_t* pin = findPin(argv[1]);
-
+	const pin_name_t* pin = find_pin<namedDigitalOutputs, numNamedDigitalOutputs>(argv[1]);
 	if (pin) {
-//		printf("ChipAddrChipIndex: %s %04x\n", pin->name, pin->pin);
+		initPins();
 		pinMode(pin->pin, OUTPUT);
-		digitalWrite(pin->pin, value);
+		digitalWrite(pin->pin, value_to_write);
+		return 0;
 	}
-	return 0;
+
+	return 1;
 }
-//////////////////////////////////////////////////////////////////////////////////////
-
-
-

@@ -1,38 +1,33 @@
+#include <cstdint>
+#include <cstddef>
+#include <cstdio>
+
+#define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
 
-#include "pins_references.h"
+#include "pins_references.hpp"
 
-uint32_t value = 0;
+uint32_t value = 0xFFFFFFFF;
 
 void setup() {
-	printf("Num digital outputs: %d\n", numDigitalOutputs);
+	printf("Number of digital outputs: %ld\n", numDigitalOutputs);
 
-	for (int i = 0; i < numDigitalOutputs; ++i) {
+	for (size_t i = 0; i < numDigitalOutputs; i++) {
 		pinMode(digitalOutputs[i], OUTPUT);
 	}
 }
 
 void loop() {
-	value = value == 0 ? 0xffffffff : 0;
+	value = value == 0 ? 0xFFFFFFFF : 0;
 
-	for (int i = 0; i < rpiplc_num_mcp23008; ++i) {
+	printf("Set value 0x%0X\n", value);
+
+	for (ssize_t i = 0; i < rpiplc_num_mcp23008; i++) {
 		digitalWriteAll(rpiplc_mcp23008[i], value);
 	}
-	for (int i = 0; i < rpiplc_num_pca9685; ++i) {
+	for (ssize_t i = 0; i < rpiplc_num_pca9685; i++) {
 		digitalWriteAll(rpiplc_pca9685[i], value);
 	}
 
 	delay(1000);
-}
-
-int main(int argc, char* argv[]) {
-	initPins();
-
-	setup();
-
-	while (1) {
-		loop();
-	}
-
-	return 0;
 }
