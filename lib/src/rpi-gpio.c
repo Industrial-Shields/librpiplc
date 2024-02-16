@@ -25,7 +25,7 @@ static struct rpi_gpio* find_gpio_by_pin(uint32_t pin) {
 		}
 		++gpio;
 	}
-	return nullptr;
+	return NULL;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +37,7 @@ static struct rpi_gpio* find_empty_gpio() {
 		}
 		++gpio;
 	}
-	return nullptr;
+	return NULL;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,13 +78,13 @@ uint8_t rpi_gpio_set_pin_mode(uint32_t pin, uint32_t mode) {
 	struct gpiohandle_request req;
 
 	struct rpi_gpio* gpio = find_gpio_by_pin(pin);
-	if (gpio != nullptr) {
+	if (gpio != NULL) {
 		close(gpio->fd);
 		gpio->fd = -1;
 	}
 
 	gpio = find_empty_gpio();
-	if (gpio == nullptr) {
+	if (gpio == NULL) {
 		return 0;
 	}
 
@@ -108,7 +108,7 @@ uint8_t rpi_gpio_read(uint32_t pin) {
 	struct gpiohandle_data data;
 
 	struct rpi_gpio* gpio = find_gpio_by_pin(pin);
-	if (gpio == nullptr) {
+	if (gpio == NULL) {
 		return 0;
 	}
 
@@ -125,7 +125,7 @@ uint8_t rpi_gpio_write(uint32_t pin, uint8_t value) {
 	struct gpiohandle_data data;
 
 	struct rpi_gpio* gpio = find_gpio_by_pin(pin);
-	if (gpio == nullptr) {
+	if (gpio == NULL) {
 		return 0;
 	}
 
