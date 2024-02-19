@@ -7,7 +7,9 @@
 #include <unistd.h>
 
 #include "rpiplc-arduino.h"
+#ifndef DONT_IMPORT_MAPPING
 #include "rpiplc-mapping.h"
+#endif
 #include "rpiplc-version.h"
 #include "rpiplc-peripherals.h"
 
