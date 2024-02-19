@@ -55,9 +55,13 @@ You can check the available versions in here: https://github.com/Industrial-Shie
 cd rpiplc-lib/
 ./build.sh -i -V<version> -M <model>
 ```
-Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library for the RPi PLC 21 V4:
+Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library with the tests for the RPi PLC 21 V4:
 ```
 ./build.sh -i -V4 -M 21
+```
+If you don't want to install the test files for your PLC, you can skip the `-V` and `-M` flags.
+```
+./build.sh -i
 ```
 
 ### Building tests for all versions and/or models

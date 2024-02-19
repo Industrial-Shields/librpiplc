@@ -2,19 +2,65 @@ ROOT_DIR=$(dirname $(realpath "$0"))
 BUILD_DIR=$ROOT_DIR/build
 INSTALL_DIR=/tmp/librpiplc
 
+
 BUILD_TYPE=""
-if [ "$#" -eq 3 ] && [ "$3" == "-d" ]; then
-    BUILD_TYPE="Debug"
-else
-    BUILD_TYPE="Release"
+DEBUG=""
+PLC_VERSION=""
+PLC_MODEL=""
+
+for i in "$@"; do
+    case $i in
+	"-d"|"--debug")
+	    DEBUG="-d"
+	    shift
+	    ;;
+	"-V"[0-9])
+	    if [[ "$1" =~ -V[3-5] ]]; then
+		PLC_VERSION="RPIPLC_${1#-}"
+		shift
+	    else
+		echo "Error: Version number is missing or incorrectly formatted. It must be -V5, -V4 or -V3"
+		exit 1
+	    fi
+	    ;;
+	"-M")
+	    shift
+	    if [[ $1 == "ALL" ]]; then
+		PLC_MODEL="ALL"
+	    else
+		PLC_MODEL="RPIPLC_$1"
+	    fi
+	    CASCADE_ARGS="$CASCADE_ARGS $1"
+	    shift
+	    ;;
+	"-VALL")
+	    PLC_VERSION="ALL";
+	    CASCADE_ARGS="$CASCADE_ARGS $1"
+	    shift
+	    ;;
+	-*|--*)
+	    echo "Unknown option $i. Usage: $0 [--debug] -V3|4|5 -M PLC_MODEL"
+	    exit 1
+	    ;;
+	*)
+	    ;;
+    esac
+done
+
+
+if [ -n "$PLC_VERSION" ]; then
+    PLC_VERSION="-DPLC_VERSION=$PLC_VERSION"
+    PLC_MODEL="-DPLC_MODEL=$PLC_MODEL"
 fi
 
 
-PLC_VERSION="$1"
-PLC_MODEL="$2"
+rm -rf "$INSTALL_DIR"
+
+mkdir "$INSTALL_DIR"
 
 
-
-mkdir -p "$INSTALL_DIR"
-
-cmake -S "$ROOT_DIR" -B "$BUILD_DIR" --install-prefix "$INSTALL_DIR" -DPLC_VERSION=$PLC_VERSION -DPLC_MODEL=$PLC_MODEL -DCMAKE_BUILD_TYPE="$BUILD_TYPE"
+cmake -S "$ROOT_DIR" -B "$BUILD_DIR" --install-prefix "$INSTALL_DIR" $PLC_VERSION $PLC_MODEL -DCMAKE_BUILD_TYPE="$BUILD_TYPE"
+if [ $? -ne 0 ]; then
+    echo "The command failed with exit code $?"
+    exit 1
+fi
