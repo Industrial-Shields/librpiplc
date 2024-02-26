@@ -1,7 +1,7 @@
-# RPIPLC-LIB library
+# librpiplc
 
 ### by Industrial Shields
-rpiplc-lib implements some common applications on industrial environments for Raspberry based Industrial Shields PLCs. It also contains some adaptations based on the code structure of the Arduino IDE to make it more familiar.
+**librpiplc** implements useful functions to use Raspberry based Industrial Shields PLCs for industrial environments. It also contains some adaptations based on the code structure of the Arduino IDE to make it more familiar.
 
 
 
@@ -45,14 +45,14 @@ cd
 
 2. Run the following command to clone the repository:
 ```
-git clone -b <tagname> https://github.com/Industrial-Shields/rpiplc-lib.git
+git clone -b <tagname> https://github.com/Industrial-Shields/librpiplc.git
 ```
 Where `<tagname>` is the version you wish to download. Before this unification, you had to choose between versions 1.X.X (for V3 PLCs) or 2.X.X (for V4 PLCs). As of 3.X.X this library is compatible with our PLCs regardless of it's version.
-You can check the available versions in here: https://github.com/Industrial-Shields/rpiplc-lib/tags
+You can check the available versions in here: https://github.com/Industrial-Shields/librpiplc/tags
 
 3. Go to the library directory and install the library with the following command:
 ```
-cd rpiplc-lib/
+cd librpiplc/
 ./build.sh -i -V<version> -M <model>
 ```
 Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library with the tests for the RPi PLC 21 V4:
@@ -96,7 +96,7 @@ g++ -o file file.cpp -l rpiplc -I /usr/local/include/librpiplc -D RPIPLC_V3 -D R
 
 
 ## Reference
-rpiplc-lib contains several tests in order to verify the correct operation of the PLCs:
+librpiplc contains several tests in order to verify the correct operation of the PLCs:
 
 1. [Arduino setup() and loop() functions](#loop-setup-functions)
 1. [set-digital-output](#set-digital-output)
