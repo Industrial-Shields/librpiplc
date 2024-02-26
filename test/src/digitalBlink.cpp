@@ -5,8 +5,8 @@
 #define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
 
-#include "pins_references.hpp"
-#include "find_pin.hpp"
+#include "pins-references.hpp"
+#include "find-pin.hpp"
 
 int value = 1;
 

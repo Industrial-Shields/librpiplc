@@ -10,13 +10,13 @@ typedef struct {
 } pin_name_t;
 
 #if defined(RPIPLC_V5)
-#include "pins_references_v5.hpp"
+#include "pins-references-v5.hpp"
 
 #elif defined(RPIPLC_V4)
-#include "pins_references_v4.hpp"
+#include "pins-references-v4.hpp"
 
 #elif defined(RPIPLC_V3)
-#include "pins_references_v3.hpp"
+#include "pins-references-v3.hpp"
 
 #else
 #error "No selected PLC version"

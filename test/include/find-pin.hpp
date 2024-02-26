@@ -1,6 +1,6 @@
 #include <cstddef>
 #include <cstring>
-#include "pins_references.hpp"
+#include "pins-references.hpp"
 
 template<const pin_name_t* PA, size_t N>
 const pin_name_t* find_pin(const char* name){

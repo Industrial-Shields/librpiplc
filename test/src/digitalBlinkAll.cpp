@@ -5,7 +5,7 @@
 #define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
 
-#include "pins_references.hpp"
+#include "pins-references.hpp"
 
 uint32_t value = 0xFFFFFFFF;
 

@@ -5,7 +5,7 @@
 #define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
 
-#include "pins_references.hpp"
+#include "pins-references.hpp"
 
 void setup() {
 	printf("Number of analog inputs: %zu\n", numNamedAnalogInputs);

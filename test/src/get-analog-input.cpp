@@ -7,8 +7,8 @@ using namespace std;
 
 #include <rpiplc.h>
 
-#include "pins_references.hpp"
-#include "find_pin.hpp"
+#include "pins-references.hpp"
+#include "find-pin.hpp"
 
 
 int main (int argc, const char* argv[]) {
