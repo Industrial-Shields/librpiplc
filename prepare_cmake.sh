@@ -59,7 +59,7 @@ rm -rf "$INSTALL_DIR"
 mkdir "$INSTALL_DIR"
 
 
-cmake -S "$ROOT_DIR" -B "$BUILD_DIR" --install-prefix "$INSTALL_DIR" $PLC_VERSION $PLC_MODEL -DCMAKE_BUILD_TYPE="$BUILD_TYPE"
+cmake -S "$ROOT_DIR" -B "$BUILD_DIR" $PLC_VERSION $PLC_MODEL -DCMAKE_BUILD_TYPE="$BUILD_TYPE" -DCMAKE_INSTALL_PREFIX="$INSTALL_DIR"
 if [ $? -ne 0 ]; then
     echo "The command failed with exit code $?"
     exit 1

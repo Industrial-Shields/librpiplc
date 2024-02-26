@@ -11,7 +11,7 @@ const static uint16_t values[] = {0, 511, 1023, 2047, 4095, 2047, 1023, 511};
 const static size_t numValues = sizeof(values) / sizeof(uint16_t);
 
 void setup() {
-	printf("Number of analog outputs: %ld\n", numAnalogOutputs);
+	printf("Number of analog outputs: %zu\n", numAnalogOutputs);
 
 	for (size_t i = 0; i < numAnalogOutputs; i++) {
 		pinMode(analogOutputs[i], OUTPUT);

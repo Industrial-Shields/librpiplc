@@ -1,12 +1,12 @@
-cmake_minimum_required(VERSION 3.25.1-1)
+cmake_minimum_required(VERSION 3.18.4)
 project("RPi PLC GPIO Control")
 
 # Set C and C++ standards
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_C_STANDARD 23)
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 11)
 
 # Enable some warning flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")

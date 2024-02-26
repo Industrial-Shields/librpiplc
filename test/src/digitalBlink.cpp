@@ -11,7 +11,7 @@
 int value = 1;
 
 void setup() {
-	printf("Number of digital outputs: %ld\n", numDigitalOutputs);
+	printf("Number of digital outputs: %zu\n", numDigitalOutputs);
 
 	for (size_t i = 0; i < numDigitalOutputs; i++) {
 		pinMode(digitalOutputs[i], OUTPUT);

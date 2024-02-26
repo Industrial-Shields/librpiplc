@@ -8,7 +8,7 @@
 #include "pins_references.hpp"
 
 void setup() {
-	printf("Number of analog inputs: %ld\n", numNamedAnalogInputs);
+	printf("Number of analog inputs: %zu\n", numNamedAnalogInputs);
 
 	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
 		pinMode(namedAnalogInputs[i].pin, INPUT);

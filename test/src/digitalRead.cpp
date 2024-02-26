@@ -8,7 +8,7 @@
 #include "pins_references.hpp"
 
 void setup() {
-	printf("Number of digital inputs: %ld\n", numNamedDigitalInputs);
+	printf("Number of digital inputs: %zu\n", numNamedDigitalInputs);
 
 	for (size_t i = 0; i < numNamedDigitalInputs; i++) {
 		pinMode(namedDigitalInputs[i].pin, INPUT);
