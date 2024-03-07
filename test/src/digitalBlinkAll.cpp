@@ -22,11 +22,14 @@ void loop() {
 
 	printf("Set value 0x%0X\n", value);
 
-	for (ssize_t i = 0; i < rpiplc_num_mcp23008; i++) {
-		digitalWriteAll(rpiplc_mcp23008[i], value);
+	for (size_t i = 0; i < NUM_MCP23008; i++) {
+		int i2c_ret = digitalWriteAll(MCP23008[i], value);
+		if (i2c_ret != 0) {
+		        perror("MCP ERROR");
+		}
 	}
-	for (ssize_t i = 0; i < rpiplc_num_pca9685; i++) {
-		digitalWriteAll(rpiplc_pca9685[i], value);
+	for (size_t i = 0; i < NUM_PCA9685; i++) {
+		digitalWriteAll(PCA9685[i], value);
 	}
 
 	delay(1000);

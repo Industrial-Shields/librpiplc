@@ -26,8 +26,8 @@ void loop() {
 		for (size_t j = 0; j < PCA9685_NUM_OUTPUTS; j++) {
 			analogValues[j] = values[i];
 		}
-		for (ssize_t j = 0; j < rpiplc_num_pca9685; j++) {
-			analogWriteAll(rpiplc_pca9685[j], analogValues);
+		for (size_t j = 0; j < NUM_PCA9685; j++) {
+			analogWriteAll(PCA9685[j], analogValues);
 		}
 
 		delay(1000);
