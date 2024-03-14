@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <time.h>
+#include <errno.h>
 
 const uint8_t I2C_BUS = 1;
 
@@ -29,6 +31,8 @@ const uint8_t LTC2309[] = {
 };
 const size_t NUM_LTC2309 = sizeof(LTC2309) / sizeof(uint8_t);
 
+const uint8_t MCP23017[] = {};
+const size_t NUM_MCP23017 = sizeof(MCP23017) / sizeof(uint8_t);
 
 int normal_gpio_init(void) {
 	return rpi_gpio_init();
@@ -51,18 +55,23 @@ int normal_gpio_read(uint32_t pin, uint8_t* read) {
         return 0;
 }
 
+int normal_gpio_analog_read(uint32_t pin, uint16_t* read) {
+	errno = ENOTSUP;
+	return -1;
+}
+
 void delay(uint32_t milliseconds) {
-	struct timeval tv = {
-		.tv_sec = (long) (milliseconds / 1000),
-		.tv_usec = (long) (milliseconds % 1000) * 1000L,
-	};
-	select(0, NULL, NULL, NULL, &tv);
+    struct timespec req = {
+        .tv_sec = milliseconds / 1000,
+        .tv_nsec = (milliseconds % 1000) * 1000000
+    };
+    nanosleep(&req, NULL);
 }
 
 void delayMicroseconds(uint32_t micros) {
-	struct timeval tv = {
-		.tv_sec = (long) (micros / 1000000),
-		.tv_usec = (long) (micros % 1000000),
-	};
-	select(0, NULL, NULL, NULL, &tv);
+    struct timespec req = {
+        .tv_sec = micros / 1000000,
+        .tv_nsec = (micros % 1000000) * 1000
+    };
+    nanosleep(&req, NULL);
 }
