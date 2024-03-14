@@ -17,11 +17,11 @@ int main (int argc, const char* argv[]) {
 		return 1;
 	}
 
-	const pin_name_t* pin = find_pin<namedDigitalInputs, numNamedDigitalInputs>(argv[1]);
+	const pin_name_t* pin = find_pin<namedAnalogInputs, numNamedAnalogInputs>(argv[1]);
 	if (pin) {
-		initPins();
+		initExpandedGPIO();
 		pinMode(pin->pin, INPUT);
-		uint16_t read_value = digitalRead(pin->pin);
+		uint16_t read_value = analogRead(pin->pin);
 		printf("%u\n", read_value);
 		return 0;
 	}

@@ -19,11 +19,11 @@ int main (int argc, const char* argv[]) {
 
         const int value_to_write = atoi(argv[2]);
 
-	const pin_name_t* pin = find_pin<namedDigitalOutputs, numNamedDigitalOutputs>(argv[1]);
+	const pin_name_t* pin = find_pin<namedAnalogOutputs, numNamedAnalogOutputs>(argv[1]);
 	if (pin) {
-		initPins();
+		initExpandedGPIO();
 		pinMode(pin->pin, OUTPUT);
-		digitalWrite(pin->pin, value_to_write);
+		analogWrite(pin->pin, value_to_write);
 		return 0;
 	}
 

@@ -60,5 +60,5 @@ if(DEFINED PLC_VERSION AND DEFINED PLC_MODEL)
 		set(MODELS_LIST ${PLC_MODEL})
 	endif()
 
-	add_subdirectory(test)
+	add_subdirectory(tests)
 endif()

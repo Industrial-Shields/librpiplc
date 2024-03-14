@@ -30,7 +30,7 @@ extern "C" {
 	int main(int _argc, const char** _argv) {
 		argc = _argc; argv = _argv;
 
-	        initPins();
+	        initExpandedGPIO();
 
 	        setup();
 
