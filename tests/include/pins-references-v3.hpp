@@ -1,5 +1,5 @@
 #ifndef __PINS_REFERENCES_H__
-#error "Not importing from pins_references.h"
+#error "Not importing from pins_references.hpp"
 #endif
 
 #include <cstdint>
