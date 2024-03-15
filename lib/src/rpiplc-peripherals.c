@@ -51,8 +51,7 @@ int normal_gpio_write(uint32_t pin, uint8_t value) {
 }
 
 int normal_gpio_read(uint32_t pin, uint8_t* read) {
-	*read = rpi_gpio_read(pin);
-        return 0;
+	return rpi_gpio_read(pin, read);
 }
 
 int normal_gpio_analog_read(uint32_t pin, uint16_t* read) {
