@@ -53,21 +53,29 @@ You can check the available versions in here: https://github.com/Industrial-Shie
 3. Go to the library directory and install the library with the following command:
 ```
 cd librpiplc/
-./build.sh -i -V<version> -M <model>
+cmake -B build/ -DRPIPLC_V<version> $DRPIPLC_<model>
 ```
 Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library with the tests for the RPi PLC 21 V4:
 ```
-./build.sh -i -V4 -M 21
+cmake -B "build" -DPLC_VERSION=RPIPLC_V4 -DPLC_MODEL=RPIPLC_21
+cmake --build build/ -- -j $(nproc)
+sudo cmake --install build/
+sudo chown -R $USER:$USER ~/test/
 ```
-If you don't want to install the test files for your PLC, you can skip the `-V` and `-M` flags.
+If you don't want to install the test files for your PLC, you can skip the version and model flags:
 ```
-./build.sh -i
+cmake -B "build"
+cmake --build build/ -- -j $(nproc)
+sudo cmake --install build/
 ```
 
 ### Building tests for all versions and/or models
-If you want to compile the tests for all PLC versions, or all PLC models, or both, you can pass "ALL" to the `./build.sh` script. This command will build for all versions and models of our PLCs (it may take a while to complete!):
+If you want to compile the tests for all PLC versions, or all PLC models, or both, you can pass "ALL" to the `cmake --build` command. This command will build for all versions and models of our PLCs (it may take a while to complete!):
 ```
-./build.sh -i -VALL -M ALL
+cmake -B "build" -DPLC_VERSION=ALL -DPLC_MODEL=ALL
+cmake --build build/ -- -j $(nproc)
+sudo cmake --install build/
+sudo chown -R $USER:$USER ~/test/
 ```
 
 
