@@ -18,16 +18,32 @@ void setup() {
 	}
 }
 
-void loop() {
-	for (size_t i = 0; i < numValues; i++) {
-		printf("Set value %d\n", values[i]);
-
-		uint16_t analogValues[PCA9685_NUM_OUTPUTS];
-		for (size_t j = 0; j < PCA9685_NUM_OUTPUTS; j++) {
-			analogValues[j] = values[i];
+static bool is_output_analog(uint8_t addr, uint8_t index) {
+	uint32_t pin = ((addr << 8) | index);
+	for (size_t c = 0; c < numAnalogOutputs; c++) {
+		if (pin == analogOutputs[c]) {
+			return true;
 		}
-		for (size_t j = 0; j < NUM_PCA9685; j++) {
-			analogWriteAll(PCA9685[j], analogValues);
+	}
+
+	return false;
+}
+
+void loop() {
+	for (size_t val = 0; val < numValues; val++) {
+		printf("Set value %d\n", values[val]);
+
+		for (size_t pca = 0; pca < NUM_PCA9685; pca++) {
+			uint16_t analogValues[PCA9685_NUM_OUTPUTS];
+			for (size_t ch = 0; ch < PCA9685_NUM_OUTPUTS; ch++) {
+				if (is_output_analog(PCA9685[pca], ch)) {
+					analogValues[ch] = values[val];
+				}
+				else {
+					analogValues[ch] = 0;
+				}
+			}
+			analogWriteAll(PCA9685[pca], analogValues);
 		}
 
 		delay(1000);
