@@ -4,13 +4,8 @@ include_directories(include)
 # Source files
 file(GLOB TEST_SOURCES "src/*.cpp")
 
-# Find the rpiplc library
-find_library(${LIBNAME} NAMES ${LIBNAME})
-
-
 # Root directory where all tests will be
 set(TESTS_OUTPUT_PATH "${CMAKE_BINARY_DIR}/test/")
-
 
 function(build_one_test TEST_SOURCES VERSION MODEL)
 	foreach(TEST_SOURCE ${TEST_SOURCES})
@@ -22,6 +17,7 @@ function(build_one_test TEST_SOURCES VERSION MODEL)
 
 		add_executable(${FULL_TEST_NAME} ${TEST_SOURCE})
 
+		add_dependencies(${FULL_TEST_NAME} ${LIBNAME})
 		target_link_libraries(${FULL_TEST_NAME} ${LIBNAME})
 
 		target_compile_definitions(${FULL_TEST_NAME} PUBLIC "${VERSION}" "${MODEL}")

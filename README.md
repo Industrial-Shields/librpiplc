@@ -54,6 +54,9 @@ You can check the available versions in here: https://github.com/Industrial-Shie
 ```
 cd librpiplc/
 cmake -B build/ -DRPIPLC_V<version> $DRPIPLC_<model>
+cmake --build build/ -- -j $(nproc)
+sudo cmake --install build/
+sudo chown -R $USER:$USER ~/test/
 ```
 Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library with the tests for the RPi PLC 21 V4:
 ```
@@ -69,13 +72,14 @@ cmake --build build/ -- -j $(nproc)
 sudo cmake --install build/
 ```
 
-### Building tests for all versions and/or models
-If you want to compile the tests for all PLC versions, or all PLC models, or both, you can pass "ALL" to the `cmake --build` command. This command will build for all versions and models of our PLCs (it may take a while to complete!):
+### Other options
+If you want to compile the tests for all PLC versions, or all PLC models, or both, you can pass "ALL" to the `cmake -B` command. This command will build for all versions and models of our PLCs (it may take a while to complete!):
 ```
 cmake -B "build" -DPLC_VERSION=ALL -DPLC_MODEL=ALL
-cmake --build build/ -- -j $(nproc)
-sudo cmake --install build/
-sudo chown -R $USER:$USER ~/test/
+```
+And if you want to compile in Debug mode (with sanitizing included), call `cmake -B` with `-DCMAKE_BUILD_TYPE=Release`:
+```
+cmake -B "build" -DPLC_VERSION=ALL -DPLC_MODEL=ALL -DCMAKE_BUILD_TYPE=Release
 ```
 
 
