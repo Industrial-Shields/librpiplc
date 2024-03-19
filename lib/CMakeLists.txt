@@ -41,5 +41,5 @@ install(TARGETS ${LIBNAME}
         RUNTIME DESTINATION bin
 )
 # And its header files
-install(DIRECTORY include/ DESTINATION include/lib${LIBNAME})
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals/include DESTINATION include/lib${LIBNAME})
+install(DIRECTORY include/ DESTINATION include/lib${LIBNAME}/include)
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals/include DESTINATION include/lib${LIBNAME}/include)
