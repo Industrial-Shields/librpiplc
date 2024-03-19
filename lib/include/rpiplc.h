@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
+#include <assert.h>
 
 #include "rpiplc-peripherals.h"
 
@@ -30,7 +30,8 @@ extern "C" {
 	int main(int _argc, const char** _argv) {
 		argc = _argc; argv = _argv;
 
-	        initExpandedGPIO();
+		int __attribute__((unused)) _returnInitExpandedGPIO_ = initExpandedGPIO(false);
+		assert(_returnInitExpandedGPIO_ == 0);
 
 	        setup();
 

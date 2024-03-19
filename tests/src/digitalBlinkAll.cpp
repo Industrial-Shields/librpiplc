@@ -13,7 +13,11 @@ void setup() {
 	printf("Number of digital outputs: %zu\n", numDigitalOutputs);
 
 	for (size_t i = 0; i < numDigitalOutputs; i++) {
-		pinMode(digitalOutputs[i], OUTPUT);
+		int ret = pinMode(digitalOutputs[i], OUTPUT);
+		if (ret != 0) {
+			PERROR_WITH_LINE("pinMode fail");
+			exit(-1);
+		}
 	}
 }
 
@@ -22,14 +26,20 @@ void loop() {
 
 	printf("Set value 0x%0X\n", value);
 
+	int ret;
 	for (size_t i = 0; i < NUM_MCP23008; i++) {
-		int i2c_ret = digitalWriteAll(MCP23008[i], value);
-		if (i2c_ret != 0) {
-		        perror("MCP ERROR");
+		ret = digitalWriteAll(MCP23008[i], value);
+		if (ret != 0) {
+			PERROR_WITH_LINE("digitalWriteAll fail");
+			exit(-1);
 		}
 	}
 	for (size_t i = 0; i < NUM_PCA9685; i++) {
-		digitalWriteAll(PCA9685[i], value);
+		ret = digitalWriteAll(PCA9685[i], value);
+		if (ret != 0) {
+			PERROR_WITH_LINE("digitalWriteAll fail");
+			exit(-1);
+		}
 	}
 
 	delay(1000);

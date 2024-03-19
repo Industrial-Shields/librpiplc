@@ -27,12 +27,12 @@ int main(int argc, const char* argv[]) {
 		return -3;
 	}
 
-	if (value_to_write != 0 && value_to_write != 1) {
+	if (value_to_write < 0 || value_to_write > 4095) {
 		fprintf(stderr, "Out of range: %d\n", value_to_write);
 		return -4;
 	}
 
-	const pin_name_t* pin = find_pin<namedDigitalOutputs, numNamedDigitalOutputs>(argv[1]);
+	const pin_name_t* pin = find_pin<namedPWMOutputs, numNamedPWMOutputs>(argv[1]);
 
 	if (pin != nullptr) {
 		int ret;
@@ -48,10 +48,10 @@ int main(int argc, const char* argv[]) {
 			exit(-1);
 		}
 
-		ret = digitalWrite(pin->pin, value_to_write);
+		ret = analogWrite(pin->pin, value_to_write);
 		ret = pinMode(pin->pin, OUTPUT);
 		if (ret != 0) {
-			PERROR_WITH_LINE("digitalWrite fail");
+			PERROR_WITH_LINE("analogWrite fail");
 			exit(-1);
 		}
 

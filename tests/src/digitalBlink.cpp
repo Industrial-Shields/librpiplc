@@ -14,7 +14,11 @@ void setup() {
 	printf("Number of digital outputs: %zu\n", numDigitalOutputs);
 
 	for (size_t i = 0; i < numDigitalOutputs; i++) {
-		pinMode(digitalOutputs[i], OUTPUT);
+		int ret = pinMode(digitalOutputs[i], OUTPUT);
+		if (ret != 0) {
+			PERROR_WITH_LINE("pinMode fail");
+			exit(-1);
+		}
 	}
 }
 
@@ -23,7 +27,11 @@ void loop() {
 
 	printf("Set value %d\n", value);
 	for (size_t i = 0; i < numDigitalOutputs; i++) {
-		digitalWrite(digitalOutputs[i], value);
+		int ret = digitalWrite(digitalOutputs[i], value);
+		if (ret != 0) {
+			PERROR_WITH_LINE("digitalWrite fail");
+			exit(-1);
+		}
 	}
 
 	delay(1000);

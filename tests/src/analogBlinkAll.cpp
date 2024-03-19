@@ -14,7 +14,11 @@ void setup() {
   	printf("Number of analog outputs: %zu\n", numAnalogOutputs);
 
 	for (size_t i = 0; i < numAnalogOutputs; i++) {
-		pinMode(analogOutputs[i], OUTPUT);
+		int ret = pinMode(analogOutputs[i], OUTPUT);
+		if (ret != 0) {
+			PERROR_WITH_LINE("pinMode fail");
+			exit(-1);
+		}
 	}
 }
 
@@ -43,7 +47,11 @@ void loop() {
 					analogValues[ch] = 0;
 				}
 			}
-			analogWriteAll(PCA9685[pca], analogValues);
+			int ret = analogWriteAll(PCA9685[pca], analogValues);
+		        if (ret != 0) {
+				PERROR_WITH_LINE("analogWrite fail");
+				exit(-1);
+			}
 		}
 
 		delay(1000);

@@ -8,19 +8,26 @@
 #include "pins-references.hpp"
 
 void setup() {
-	printf("Number of analog inputs: %zu\n", numNamedAnalogInputs);
+	printf("Number of analog inputs: %zu\n\n", numNamedAnalogInputs);
 
 	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
-		pinMode(namedAnalogInputs[i].pin, INPUT);
+		int ret = pinMode(namedAnalogInputs[i].pin, INPUT);
+		if (ret != 0) {
+			PERROR_WITH_LINE("pinMode fail");
+			exit(-1);
+		}
 	}
 }
 
 void loop() {
 	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
-		uint16_t value = analogRead(namedAnalogInputs[i].pin);
-		printf("Pin %s value: %u\n", namedAnalogInputs[i].name, value);
+		int value = analogRead(namedAnalogInputs[i].pin);
+		printf("  Pin %s value: %4u\n", namedAnalogInputs[i].name, value);
 	}
 
-	printf("\n");
+	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
+		printf("\033[A");
+	}
+
 	delay(1000);
 }

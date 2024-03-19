@@ -58,7 +58,7 @@ cmake --build build/ -- -j $(nproc)
 sudo cmake --install build/
 sudo chown -R $USER:$USER ~/test/
 ```
-Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library with the tests for the RPi PLC 21 V4:
+Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library, including the tests for the RPi PLC 21 V4:
 ```
 cmake -B "build" -DPLC_VERSION=RPIPLC_V4 -DPLC_MODEL=RPIPLC_21
 cmake --build build/ -- -j $(nproc)
@@ -113,6 +113,7 @@ librpiplc contains several tests in order to verify the correct operation of the
 1. [Arduino setup() and loop() functions](#loop-setup-functions)
 1. [set-digital-output](#set-digital-output)
 1. [set-analog-output](#set-analog-output)
+1. [set-pwm-output](#set-pwm-output)
 1. [get-digital-input](#get-digital-input)
 1. [get-analog-input](#get-analog-input)
 1. [analogBlink](#analogBlink)
@@ -144,7 +145,7 @@ With this definition you can omit the **main()** function and use the **setup()*
 ### <a name="set-digital-output"></a>set-digital-output
 This application sets a digital output or relay to the specified value.
 
-The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initPins()** function. Then, as in Arduino programming, it sets the given pin to output mode, and it writes to it the specified value in the second parameter: either 1 (HIGH) or 0 (LOW).
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initExpandedGPIO(restart)** function. Then, as in Arduino programming, it sets the given pin to output mode, and it writes to it the specified value in the second parameter: either 1 (HIGH) or 0 (LOW).
 
 Apart from using the `build.sh` script, you can build the executable file called `set-digital-output` with **g++**:
 ```
@@ -164,14 +165,13 @@ And see how the Q0.0 output activates.
 ### <a name="set-analog-output"></a>set-analog-output
 This application sets an analog output to the specified value.
 
-The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initPins()** function. Then, as in Arduino programming, it sets the given pin to output mode, and it writes to it the specified value in the second parameter: from 0 to 4095 (12 bits).
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initExpandedGPIO(restart)** function. Then, as in Arduino programming, it sets the given pin to output mode, and it writes to it the specified value in the second parameter: from 0 to 4095 (12 bits).
 
 Apart from using the `build.sh` script, you can build the executable file called `set-analog-output` with **g++**:
 ```
 g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
 ```
 
-#### Analog output
 Execute the compiled file named `set-analog-output` with two parameters:
 1. The output to control
 1. The value to set
@@ -180,21 +180,31 @@ Execute the compiled file named `set-analog-output` with two parameters:
 ```
 And see how Q0.5 outputs around 2.5V.
 
-#### PWM output
-All the digital outputs can output PWM signals using the `set-analog-output` program, but using it in digital outputs.
-Execute the compiled file named `set-analog-output` with two parameters:
+
+### <a name="set-pwm-output"></a>set-pwm-output
+This application sets a digital output to the specified PWM value.
+
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initExpandedGPIO(restart)** function. Then, as in Arduino programming, it sets the given pin to output mode, and it writes to it the specified value in the second parameter: from 0 to 4095 (12 bits).
+
+Apart from using the `build.sh` script, you can build the executable file called `set-pwm-output` with **g++**:
+```
+g++ -o set-pwm-output set-pwm-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -DRPIPLC_V4 -DRPIPLC_21
+```
+
+All the digital outputs can output PWM signals using the `set-pwm-output` program, but using it in digital outputs.
+Execute the compiled file named `set-pwm-output` with two parameters:
 1. The digital output to control
 1. The PWM (analog) value to set (from 0 to 4095)
 ```
-./set-analog-output Q0.0 2047
+./set-pwm-output Q0.1 2047
 ```
-This will output a 50% duty cycle PWM in Q0.0.
+This will output a 50% duty cycle PWM in Q0.1.
 
 
 ### <a name="get-digital-input"></a>get-digital-input
 This application prints out the value of a digital input.
 
-The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initPins()** function. Then, as in Arduino programming, it sets the given pin to input mode, and it prints it's value: 0 or 1.
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initExpandedGPIO(restart)** function. Then, as in Arduino programming, it sets the given pin to input mode, and it prints it's value: 0 or 1.
 
 Apart from using the `build.sh` script, you can build the executable file called `get-digital-output` with **g++**:
 ```
@@ -211,7 +221,7 @@ And it will print the value of I0.0 at the moment.
 ### <a name="get-analog-input"></a>get-analog-input
 This application prints out the value of an analog input.
 
-The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initPins()** function. Then, as in Arduino programming, it sets the given pin to input mode, and it prints it's analog value.
+The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initExpandedGPIO(restart)** function. Then, as in Arduino programming, it sets the given pin to input mode, and it prints it's analog value.
 
 Apart from using the `build.sh` script, you can build the executable file called `get-analog-output` with **g++**:
 ```
@@ -493,6 +503,7 @@ Pin I0.6 value: 0
 ```
 RPIPLC_V3 (deprecated)
 RPIPLC_V4
+RPIPLC_V5
 ```
 
 
