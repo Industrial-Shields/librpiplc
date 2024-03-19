@@ -62,7 +62,7 @@ static const uint32_t analogInputs[] = {
 static const size_t numAnalogInputs = sizeof(analogInputs) / sizeof(uint32_t);
 
 static const uint32_t digitalOutputs[] = {
-        PIN8, PWM1, PWM2, PWM3, OPTO_OUT_1, OPTO_OUT_2, P_RELAY,
+        PIN8, PWM1, PWM2, PWM3, OPTO_OUT_1, OPTO_OUT_2, P_RELAY, EXP1_RST, EXP2_RST,
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	Q0_0, Q0_1, Q0_2, Q0_3, Q0_4, Q0_5, Q0_6, Q0_7,
 
@@ -205,7 +205,7 @@ static const pin_name_t namedAnalogInputs[] = {
 static const size_t numNamedAnalogInputs = sizeof(namedAnalogInputs) / sizeof(pin_name_t);
 
 static const pin_name_t namedDigitalOutputs[] = {
-	{"PIN8", PIN8}, {"PWM1", PWM1}, {"PWM2", PWM2}, {"PWM3", PWM3}, {"OPTO_OUT_1", OPTO_OUT_1}, {"OPTO_OUT_2", OPTO_OUT_2}, {"PRELAY", P_RELAY},
+	{"PIN8", PIN8}, {"PWM1", PWM1}, {"PWM2", PWM2}, {"PWM3", PWM3}, {"OPTO_OUT_1", OPTO_OUT_1}, {"OPTO_OUT_2", OPTO_OUT_2}, {"PRELAY", P_RELAY}, {"EXP1_RST", EXP1_RST}, {"EXP2_RST", EXP2_RST},
 
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"Q0.0", Q0_0}, {"Q0.1", Q0_1}, {"Q0.2", Q0_2}, {"Q0.3", Q0_3}, {"Q0.4", Q0_4}, {"Q0.5", Q0_5}, {"Q0.6", Q0_6}, {"Q0.7", Q0_7},

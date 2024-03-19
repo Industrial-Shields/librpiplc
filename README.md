@@ -77,9 +77,9 @@ If you want to compile the tests for all PLC versions, or all PLC models, or bot
 ```
 cmake -B "build" -DPLC_VERSION=ALL -DPLC_MODEL=ALL
 ```
-And if you want to compile in Debug mode (with sanitizing included), call `cmake -B` with `-DCMAKE_BUILD_TYPE=Release`:
+And if you want to compile in Debug mode (with sanitizing included), call `cmake -B` with `-DCMAKE_BUILD_TYPE=Debug`:
 ```
-cmake -B "build" -DPLC_VERSION=ALL -DPLC_MODEL=ALL -DCMAKE_BUILD_TYPE=Release
+cmake -B "build" -DPLC_VERSION=ALL -DPLC_MODEL=ALL -DCMAKE_BUILD_TYPE=Debug
 ```
 
 
