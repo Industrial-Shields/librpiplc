@@ -13,8 +13,8 @@ using namespace std;
 
 
 int main(int argc, const char* argv[]) {
-	if (argc != 3) {
-		fprintf(stderr, "Usage: %s <io-name> <value>\n", argv[0]);
+	if (argc != 3 && argc != 4) {
+		fprintf(stderr, "Usage: %s <io-name> <value> OPTIONAL_PWM_FREQ\n", argv[0]);
 		return -2;
 	}
 
@@ -32,6 +32,20 @@ int main(int argc, const char* argv[]) {
 		return -4;
 	}
 
+	int64_t pwm_freq;
+	if (argc == 4) {
+		try {
+			pwm_freq = stoi(argv[3]);
+		}
+		catch (const exception& e) {
+			fprintf(stderr, "Error: %s\n", e.what());
+			return -5;
+		}
+	}
+	else {
+		pwm_freq = -1;
+	}
+
 	const pin_name_t* pin = find_pin<namedPWMOutputs, numNamedPWMOutputs>(argv[1]);
 
 	if (pin != nullptr) {
@@ -46,6 +60,20 @@ int main(int argc, const char* argv[]) {
 		if (ret != 0) {
 			PERROR_WITH_LINE("pinMode fail");
 			exit(-1);
+		}
+
+		if (pwm_freq != -1) {
+			ret = analogWriteSetFrequency(pin->pin, pwm_freq);
+			if (ret != 0) {
+				if (errno == ERANGE) {
+					fprintf(stderr, "PWM frequency not valid\n");
+					return -6;
+				}
+				else {
+					PERROR_WITH_LINE("analogWriteSetFrequency fail");
+					exit(-1);
+				}
+			}
 		}
 
 		ret = analogWrite(pin->pin, value_to_write);
