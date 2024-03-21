@@ -93,6 +93,7 @@ static const uint32_t digitalOutputs[] = {
 static const size_t numDigitalOutputs = sizeof(digitalOutputs) / sizeof(uint32_t);
 
 static const uint32_t PWMOutputs[] = {
+	PWM1, PWM2, PWM3, EXP1_RST, EXP2_RST,
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	Q0_0, Q0_1, Q0_2, Q0_3, Q0_4, Q0_5, Q0_6, Q0_7,
 
@@ -237,6 +238,7 @@ static const pin_name_t namedDigitalOutputs[] = {
 static const size_t numNamedDigitalOutputs = sizeof(namedDigitalOutputs) / sizeof(pin_name_t);
 
 static const pin_name_t namedPWMOutputs[] = {
+	{"PWM1", PWM1}, {"PWM2", PWM2}, {"PWM3", PWM3}, {"EXP1_RST", EXP1_RST}, {"EXP2_RST", EXP2_RST},
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"Q0.0", Q0_0}, {"Q0.1", Q0_1}, {"Q0.2", Q0_2}, {"Q0.3", Q0_3}, {"Q0.4", Q0_4}, {"Q0.5", Q0_5}, {"Q0.6", Q0_6}, {"Q0.7", Q0_7},
 

@@ -50,6 +50,16 @@ int normal_gpio_write(uint32_t pin, uint8_t value) {
 	return rpi_gpio_write(pin, value);
 }
 
+int normal_gpio_pwm_frequency(uint32_t pin, uint32_t freq) {
+	errno = ENOTSUP;
+	return -1;
+}
+
+int normal_gpio_pwm_write(uint32_t pin, uint16_t value) {
+	errno = ENOTSUP;
+	return -1;
+}
+
 int normal_gpio_read(uint32_t pin, uint8_t* read) {
 	return rpi_gpio_read(pin, read);
 }
