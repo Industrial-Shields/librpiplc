@@ -53,7 +53,7 @@ You can check the available versions in here: https://github.com/Industrial-Shie
 3. Go to the library directory and install the library with the following command:
 ```
 cd librpiplc/
-cmake -B build/ -DRPIPLC_V<version> $DRPIPLC_<model>
+cmake -B build/ -DPLC_VERSION=<version> -DPLC_MODEL=<model>
 cmake --build build/ -- -j $(nproc)
 sudo cmake --install build/
 sudo chown -R $USER:$USER ~/test/

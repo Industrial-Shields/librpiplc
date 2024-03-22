@@ -48,6 +48,10 @@ int rpi_gpio_deinit(void) {
 
 int rpi_gpio_set_pin_mode(uint32_t pin, uint8_t mode) {
         int* gpio_fd = &rpi_gpios_fds[pin];
+        if (*gpio_fd >= 0) {
+	        close(*gpio_fd);
+	        *gpio_fd = -1;
+        }
 
 	switch (mode) {
 	case RPI_GPIO_INPUT:
