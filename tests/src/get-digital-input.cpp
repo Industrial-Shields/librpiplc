@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <cstdio>
 #include <string>
+#include <cerrno>
 
 using namespace std;
 
@@ -11,10 +12,16 @@ using namespace std;
 #include "find-pin.hpp"
 
 
-int main (int argc, const char* argv[]) {
+
+int main(int argc, const char* argv[]) {
+	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+		PERROR_WITH_LINE("initExpandedGPIO fail");
+	        return -1;
+	}
+
 	if (argc != 2) {
 		fprintf(stderr, "Usage: %s <io-name>\n", argv[0]);
-		return -2;
+		return 1;
 	}
 
         const pin_name_t* pin = find_pin<namedDigitalInputs, numNamedDigitalInputs>(argv[1]);
@@ -23,24 +30,11 @@ int main (int argc, const char* argv[]) {
 	}
 
 	if (pin != nullptr) {
-		int ret;
-		ret = initExpandedGPIO(false);
-		if (ret != 0) {
-			PERROR_WITH_LINE("initExpandedGPIO fail");
-			exit(-1);
-		}
-
-		ret = pinMode(pin->pin, INPUT);
-		if (ret != 0) {
-			PERROR_WITH_LINE("pinMode fail");
-			exit(-1);
-		}
-
 		printf("%u\n", digitalRead(pin->pin));
 		return 0;
 	}
 	else {
 		fprintf(stderr, "\"%s\" is an unknown pin\n", argv[1]);
-		return -1;
+		return 2;
 	}
 }

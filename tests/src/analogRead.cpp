@@ -1,22 +1,22 @@
 #include <cstdint>
 #include <cstddef>
 #include <cstdio>
+#include <cerrno>
 
 #define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
 
 #include "pins-references.hpp"
 
-void setup() {
-	printf("Number of analog inputs: %zu\n\n", numNamedAnalogInputs);
 
-	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
-		int ret = pinMode(namedAnalogInputs[i].pin, INPUT);
-		if (ret != 0) {
-			PERROR_WITH_LINE("pinMode fail");
-			exit(-1);
-		}
+
+void setup() {
+	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+		PERROR_WITH_LINE("initExpandedGPIO failed");
+		exit(-1);
 	}
+
+	printf("Number of analog inputs: %zu\n\n", numNamedAnalogInputs);
 }
 
 void loop() {

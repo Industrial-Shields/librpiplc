@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <cstddef>
 #include <cstdio>
+#include <cerrno>
 
 #define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
@@ -9,16 +10,17 @@
 
 uint32_t value = 0xFFFFFFFF;
 
+
+
 void setup() {
+	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+		PERROR_WITH_LINE("initExpandedGPIO failed");
+		exit(-1);
+	}
+
 	printf("Number of digital outputs: %zu\n", numDigitalOutputs);
 
-	for (size_t i = 0; i < numDigitalOutputs; i++) {
-		int ret = pinMode(digitalOutputs[i], OUTPUT);
-		if (ret != 0) {
-			PERROR_WITH_LINE("pinMode fail");
-			exit(-1);
-		}
-	}
+	// TODO: digitalWriteAll doesn't work with direct pins
 }
 
 void loop() {

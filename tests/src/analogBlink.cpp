@@ -1,6 +1,9 @@
 #include <cstdint>
 #include <cstddef>
 #include <cstdio>
+#include <cerrno>
+#include <vector>
+#include <iostream>
 
 #define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
@@ -10,25 +13,50 @@
 const static uint16_t values[] = {0, 511, 1023, 2047, 4095, 2047, 1023, 511};
 const static size_t numValues = sizeof(values) / sizeof(uint16_t);
 
-void setup() {
-	printf("Number of analog outputs: %zu\n", numAnalogOutputs);
+static std::vector<pin_name_t> analogBlinking;
+static size_t analogBlinkingSize = 0;
 
-	for (size_t i = 0; i < numAnalogOutputs; i++) {
-		int ret = pinMode(analogOutputs[i], OUTPUT);
-		if (ret != 0) {
+void setup() {
+	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+		PERROR_WITH_LINE("initExpandedGPIO failed");
+		exit(-1);
+	}
+
+	printf("%zu analog outputs: ", /*numNamedDigitalInputsOutputs +*/ numNamedAnalogOutputs);
+
+	// TODO: Currently PWM in direct GPIOs are not supported
+	/*
+	// Init pins that can be inputs or outputs
+	for (size_t c = 0; c < numNamedDigitalInputsOutputs; c++) {
+		analogBlinking.push_back(namedDigitalInputsOutputs[c]);
+
+		if (pinMode(namedDigitalInputsOutputs[c].pin, OUTPUT) != 0) {
 			PERROR_WITH_LINE("pinMode fail");
 			exit(-1);
 		}
+
+		printf("%s ", namedDigitalInputsOutputs[c].name);
 	}
+	*/
+
+	const size_t last_analog = numNamedAnalogOutputs - 1;
+	for (size_t c = 0; c < last_analog; c++) {
+	        analogBlinking.push_back(namedAnalogOutputs[c]);
+		printf("%s ", namedAnalogOutputs[c].name);
+	}
+	analogBlinking.push_back(namedAnalogOutputs[last_analog]);
+	printf("%s\n", namedAnalogOutputs[last_analog].name);
+
+	analogBlinkingSize = analogBlinking.size();
 }
 
 void loop() {
-	for (size_t i = 0; i < numValues; i++) {
-		printf("Set value %d\n", values[i]);
+	for (size_t v = 0; v < numValues; v++) {
+		printf("Set value %d\n", values[v]);
 
-		for (size_t j = 0; j < numAnalogOutputs; j++) {
-			int ret = analogWrite(analogOutputs[j], values[i]);
-			if (ret != 0) {
+		for (size_t p = 0; p < analogBlinkingSize; p++) {
+			if (analogWrite(analogBlinking[p].pin, values[v]) != 0) {
+				fprintf(stderr, "Pin %s ", analogBlinking[p].name);
 				PERROR_WITH_LINE("analogWrite fail");
 				exit(-1);
 			}

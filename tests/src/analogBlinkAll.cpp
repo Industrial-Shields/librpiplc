@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <cstddef>
 #include <cstdio>
+#include <cerrno>
 
 #define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
@@ -10,16 +11,19 @@
 const static uint16_t values[] = {0, 511, 1023, 2047, 4095, 2047, 1023, 511};
 const static int numValues = sizeof(values) / sizeof(uint16_t);
 
-void setup() {
-  	printf("Number of analog outputs: %zu\n", numAnalogOutputs);
 
-	for (size_t i = 0; i < numAnalogOutputs; i++) {
-		int ret = pinMode(analogOutputs[i], OUTPUT);
-		if (ret != 0) {
-			PERROR_WITH_LINE("pinMode fail");
-			exit(-1);
-		}
+
+void setup() {
+	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+		PERROR_WITH_LINE("initExpandedGPIO failed");
+		exit(-1);
 	}
+
+	printf("%zu analog outputs: ", /*numNamedDigitalInputsOutputs +*/ numNamedAnalogOutputs);
+
+	/* TODO: Currently PWM in direct GPIOs are not supported. And also analogWriteAll doesn't work
+	 * with direct pins
+	 */
 }
 
 static bool is_output_analog(uint8_t addr, uint8_t index) {

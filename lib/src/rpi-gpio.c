@@ -84,6 +84,12 @@ int rpi_gpio_set_pin_mode(uint32_t pin, uint8_t mode) {
 
 int rpi_gpio_read(uint32_t pin, uint8_t* value) {
         const int* gpio_fd = &rpi_gpios_fds[pin];
+	if (*gpio_fd < 0) {
+		int ret = rpi_gpio_set_pin_mode(pin, RPI_GPIO_INPUT);
+		if (ret != 0) {
+			return ret;
+		}
+	}
 
 	struct gpio_v2_line_values values;
 	memset(&values, 0, sizeof(values));
@@ -100,6 +106,12 @@ int rpi_gpio_read(uint32_t pin, uint8_t* value) {
 
 int rpi_gpio_write(uint32_t pin, uint8_t value) {
 	const int* gpio_fd = &rpi_gpios_fds[pin];
+	if (*gpio_fd < 0) {
+		int ret = rpi_gpio_set_pin_mode(pin, RPI_GPIO_OUTPUT);
+		if (ret != 0) {
+			return ret;
+		}
+	}
 
 	struct gpio_v2_line_values values;
 	memset(&values, 0, sizeof(values));

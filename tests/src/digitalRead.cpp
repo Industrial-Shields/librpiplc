@@ -1,6 +1,7 @@
 #include <cstdint>
 #include <cstddef>
 #include <cstdio>
+#include <cerrno>
 
 #define __ARDUINO_FUNCTIONS__
 #include <rpiplc.h>
@@ -9,24 +10,15 @@
 
 const size_t numDigitals  = numNamedDigitalInputs + numNamedAnalogInputs;
 
-void setup() {
-	printf("Number of digital inputs: %zu\n\n", numDigitals);
 
-	int ret;
-	for (size_t i = 0; i < numNamedDigitalInputs; i++) {
-		ret = pinMode(namedDigitalInputs[i].pin, INPUT);
-		if (ret != 0) {
-			PERROR_WITH_LINE("pinMode fail");
-			exit(-1);
-		}
+
+void setup() {
+	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+		PERROR_WITH_LINE("initExpandedGPIO failed");
+		exit(-1);
 	}
-	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
-		ret = pinMode(namedAnalogInputs[i].pin, INPUT);
-		if (ret != 0) {
-			PERROR_WITH_LINE("pinMode fail");
-			exit(-1);
-		}
-	}
+
+	printf("Number of digital inputs: %zu\n\n", numDigitals);
 }
 
 void loop() {

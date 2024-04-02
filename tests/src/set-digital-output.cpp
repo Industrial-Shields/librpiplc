@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <iostream>
 #include <string>
+#include <cerrno>
 
 using namespace std;
 
@@ -13,9 +14,14 @@ using namespace std;
 
 
 int main(int argc, const char* argv[]) {
+	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+		PERROR_WITH_LINE("initExpandedGPIO fail");
+	        return -1;
+	}
+
 	if (argc != 3) {
 		fprintf(stderr, "Usage: %s <io-name> <value>\n", argv[0]);
-		return -2;
+		return 1;
 	}
 
 	int value_to_write;
@@ -24,42 +30,31 @@ int main(int argc, const char* argv[]) {
 	}
 	catch (const exception& e) {
 		fprintf(stderr, "Error: %s\n", e.what());
-		return -3;
+		return 3;
 	}
 
 	if (value_to_write != 0 && value_to_write != 1) {
 		fprintf(stderr, "Out of range: %d\n", value_to_write);
-		return -4;
+		return 4;
 	}
 
 	const pin_name_t* pin = find_pin<namedDigitalOutputs, numNamedDigitalOutputs>(argv[1]);
+	if (pin == nullptr) {
+		pin = find_pin<namedAnalogOutputs, numNamedAnalogOutputs>(argv[1]);
+	}
 
 	if (pin != nullptr) {
-		int ret;
-		ret = initExpandedGPIO(false);
-		if (ret != 0) {
-			PERROR_WITH_LINE("initExpandedGPIO fail");
-			exit(-1);
-		}
-
-		ret = pinMode(pin->pin, OUTPUT);
-		if (ret != 0) {
-			PERROR_WITH_LINE("pinMode fail");
-			exit(-1);
-		}
-
-		ret = digitalWrite(pin->pin, value_to_write);
-		ret = pinMode(pin->pin, OUTPUT);
-		if (ret != 0) {
+		if (digitalWrite(pin->pin, value_to_write) != 0) {
 			PERROR_WITH_LINE("digitalWrite fail");
-			exit(-1);
+			return 5;
 		}
 
 		printf("Pin %s set at %d\n", pin->name, value_to_write);
 		return 0;
 	}
+
 	else {
 		fprintf(stderr, "\"%s\" is an unknown pin\n", argv[1]);
-		return -1;
+		return 2;
 	}
 }
