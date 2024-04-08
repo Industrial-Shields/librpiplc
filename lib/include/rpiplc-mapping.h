@@ -1,6 +1,11 @@
 #ifndef __RPIPLC_MAPPING_H__
 #define __RPIPLC_MAPPING_H__
 
+/**
+ * This header is used to define which version of the PLC mappings
+ * will be imported.
+ */
+
 #if defined(RPIPLC_V5)
 #include "rpiplc-mapping-v5.h"
 

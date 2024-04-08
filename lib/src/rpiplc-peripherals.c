@@ -6,6 +6,7 @@
 #include <time.h>
 #include <errno.h>
 
+// All I2C devices are connected at /dev/i2c-1
 const uint8_t I2C_BUS = 1;
 
 const uint8_t NORMAL_GPIO_INPUT = 0;
@@ -17,7 +18,9 @@ const uint8_t MCP23008[] = {
 const size_t NUM_MCP23008 = sizeof(MCP23008) / sizeof(uint8_t);
 
 const uint8_t ADS1015[] = {
+#ifdef RPIPLC_V3
 	0x48, 0x49, 0x4a, 0x4b,
+#endif
 };
 const size_t NUM_ADS1015 = sizeof(ADS1015) / sizeof(uint8_t);
 

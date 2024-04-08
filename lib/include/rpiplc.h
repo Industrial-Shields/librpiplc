@@ -21,6 +21,25 @@ extern "C" {
 #endif
 
 #ifdef __ARDUINO_FUNCTIONS__
+
+	/**
+	 * @brief Main function for Arduino compatibility.
+	 *
+	 * This function initializes the program by calling the "setup" function
+	 * provided by the user, then enters a continuous loop calling the "loop"
+	 * function repeatedly. It is meant to mimic the behavior of Arduino
+	 * sketches.
+	 *
+	 * In order to use it, you need to define "__ARDUINO_FUNCTIONS__" macro
+	 * BEFORE including <rpiplc.h>.
+	 *
+	 * Since we are in a Linux system, both argc and argv are also provided
+	 * to give the possibility of reading arguments given in the shell.
+	 *
+	 *
+	 * @return Always returns 1 (it should never happen, as the while cannot
+	 *         be exited).
+	 */
 	int argc;
 	const char** argv;
 
