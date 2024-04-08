@@ -1,8 +1,11 @@
 # librpiplc
-
 ### by Industrial Shields
+
 **librpiplc** implements useful functions to use Raspberry based Industrial Shields PLCs for industrial environments. It also contains some adaptations based on the code structure of the Arduino IDE to make it more familiar.
 
+
+## Licensing
+This library is licensed under the LGPL-3.0-or-later. The test programs are licensed under the GPL-3.0-or-later.
 
 
 ## Prerequisites
