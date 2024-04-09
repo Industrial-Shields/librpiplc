@@ -35,7 +35,10 @@ static size_t digitalBlinkingSize = 0;
 
 
 void setup() {
-	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+	printf("librpiplc version: %s\n", LIB_RPIPLC_VERSION);
+	fflush(stdout);
+
+	if (initExpandedGPIO(false) < 0) {
 		PERROR_WITH_LINE("initExpandedGPIO failed");
 		exit(-1);
 	}

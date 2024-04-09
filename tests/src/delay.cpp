@@ -26,7 +26,10 @@ int counter = 0;
 
 
 
-void setup() {}
+void setup() {
+	printf("librpiplc version: %s\n", LIB_RPIPLC_VERSION);
+	fflush(stdout);
+}
 
 void loop() {
 	printf("%d\n", counter++);

@@ -31,7 +31,7 @@ using namespace std;
 
 
 int main(int argc, const char* argv[]) {
-	if (initExpandedGPIO(false) != 0 && errno != EALREADY) {
+	if (initExpandedGPIO(false) < 0) {
 		PERROR_WITH_LINE("initExpandedGPIO fail");
 	        return -1;
 	}
