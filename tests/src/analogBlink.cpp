@@ -59,15 +59,17 @@ void setup() {
 	}
 	*/
 
-	const size_t last_analog = numNamedAnalogOutputs - 1;
-	for (size_t c = 0; c < last_analog; c++) {
-	        analogBlinking.push_back(namedAnalogOutputs[c]);
-		printf("%s ", namedAnalogOutputs[c].name);
-	}
-	analogBlinking.push_back(namedAnalogOutputs[last_analog]);
-	printf("%s\n", namedAnalogOutputs[last_analog].name);
+	if (numNamedAnalogOutputs > 0) {
+		const size_t last_analog = numNamedAnalogOutputs - 1;
+		for (size_t c = 0; c < last_analog; c++) {
+			analogBlinking.push_back(namedAnalogOutputs[c]);
+			printf("%s ", namedAnalogOutputs[c].name);
+		}
+		analogBlinking.push_back(namedAnalogOutputs[last_analog]);
+		printf("%s\n", namedAnalogOutputs[last_analog].name);
 
-	analogBlinkingSize = analogBlinking.size();
+		analogBlinkingSize = analogBlinking.size();
+	}
 }
 
 void loop() {
