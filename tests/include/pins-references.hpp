@@ -30,8 +30,8 @@ typedef struct {
         uint32_t pin;
 } pin_name_t;
 
-#if defined(RPIPLC_V5)
-#include "pins-references-v5.hpp"
+#if defined(RPIPLC_V6)
+#include "pins-references-v6.hpp"
 
 #elif defined(RPIPLC_V4)
 #include "pins-references-v4.hpp"

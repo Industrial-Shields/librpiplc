@@ -506,7 +506,7 @@ Pin I0.6 value: 0
 ```
 RPIPLC_V3 (deprecated)
 RPIPLC_V4
-RPIPLC_V5
+RPIPLC_V6
 ```
 
 

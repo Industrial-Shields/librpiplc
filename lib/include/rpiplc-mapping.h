@@ -25,8 +25,8 @@
  * will be imported.
  */
 
-#if defined(RPIPLC_V5)
-#include "rpiplc-mapping-v5.h"
+#if defined(RPIPLC_V6)
+#include "rpiplc-mapping-v6.h"
 
 #elif defined(RPIPLC_V4)
 #include "rpiplc-mapping-v4.h"

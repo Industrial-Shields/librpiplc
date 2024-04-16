@@ -15,6 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "pins-references.hpp"
 #ifndef __PINS_REFERENCES_H__
 #error "Not importing from pins_references.hpp"
 #endif
@@ -23,6 +24,9 @@
 #include <cstddef>
 
 // Pins arrays
+static const uint32_t digitalInputsOutputs[] = {};
+static const size_t numDigitalInputOutput = sizeof(digitalInputsOutputs) / sizeof(uint32_t);
+
 static const uint32_t digitalInputs[] = {
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	I0_0, I0_1, I0_2, I0_3, I0_4, I0_5, I0_6,
@@ -163,6 +167,9 @@ static const size_t numAnalogOutputs = sizeof(analogOutputs) / sizeof(uint32_t);
 
 
 // Pin-name arrays
+static const pin_name_t namedDigitalInputsOutputs[] = {};
+static const size_t numNamedDigitalInputsOutputs = sizeof(namedDigitalInputsOutputs) / sizeof(pin_name_t);
+
 static const pin_name_t namedDigitalInputs[] = {
 #if defined(RPIPLC_21) || defined(RPIPLC_38AR) || defined(RPIPLC_42) || defined(RPIPLC_53ARR) || defined(RPIPLC_54ARA) || defined(RPIPLC_57AAR) || defined(RPIPLC_58)
 	{"I0.0", I0_0}, {"I0.1", I0_1}, {"I0.2", I0_2}, {"I0.3", I0_3}, {"I0.4", I0_4}, {"I0.5", I0_5}, {"I0.6", I0_6},

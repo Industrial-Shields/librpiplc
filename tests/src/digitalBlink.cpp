@@ -57,15 +57,17 @@ void setup() {
 		printf("%s ", namedDigitalInputsOutputs[c].name);
 	}
 
-	const size_t last_digital = numNamedDigitalOutputs - 1;
-	for (size_t c = 0; c < last_digital; c++) {
-	        digitalBlinking.push_back(namedDigitalOutputs[c]);
-		printf("%s ", namedDigitalOutputs[c].name);
-	}
-	digitalBlinking.push_back(namedDigitalOutputs[last_digital]);
-	printf("%s\n", namedDigitalOutputs[last_digital].name);
+	if (numNamedDigitalOutputs > 0) {
+		const size_t last_digital = numNamedDigitalOutputs - 1;
+		for (size_t c = 0; c < last_digital; c++) {
+			digitalBlinking.push_back(namedDigitalOutputs[c]);
+			printf("%s ", namedDigitalOutputs[c].name);
+		}
+		digitalBlinking.push_back(namedDigitalOutputs[last_digital]);
+		printf("%s\n", namedDigitalOutputs[last_digital].name);
 
-	digitalBlinkingSize = digitalBlinking.size();
+		digitalBlinkingSize = digitalBlinking.size();
+	}
 }
 
 void loop() {
