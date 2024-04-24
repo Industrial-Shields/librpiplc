@@ -60,6 +60,7 @@ cmake -B build/ -DPLC_VERSION=<version> -DPLC_MODEL=<model>
 cmake --build build/ -- -j $(nproc)
 sudo cmake --install build/
 sudo chown -R $USER:$USER ~/test/
+sudo ldconfig
 ```
 Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library, including the tests for the RPi PLC 21 V4:
 ```
@@ -67,12 +68,14 @@ cmake -B "build" -DPLC_VERSION=RPIPLC_V4 -DPLC_MODEL=RPIPLC_21
 cmake --build build/ -- -j $(nproc)
 sudo cmake --install build/
 sudo chown -R $USER:$USER ~/test/
+sudo ldconfig
 ```
 If you don't want to install the test files for your PLC, you can skip the version and model flags:
 ```
 cmake -B "build"
 cmake --build build/ -- -j $(nproc)
 sudo cmake --install build/
+sudo ldconfig
 ```
 
 ### Other options
