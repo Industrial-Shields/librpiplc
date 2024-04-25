@@ -69,7 +69,7 @@ extern "C" {
 		argc = _argc; argv = _argv;
 
 		int __attribute__((unused)) _returnInitExpandedGPIO_ = initExpandedGPIO(false);
-		assert(_returnInitExpandedGPIO_ == 0);
+		assert(_returnInitExpandedGPIO_ >= 0);
 
 	        setup();
 

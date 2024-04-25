@@ -92,8 +92,12 @@ cmake -B "build" -DPLC_VERSION=ALL -DPLC_MODEL=ALL -DCMAKE_BUILD_TYPE=Debug
 ## Compilation
 **g++** is a GNU project C and C++ compiler. When you invoke **g++**, it normally does preprocessing, compilation, assembly and linking. This program can also accept options and file names as operands. If you want to compile your program to use our library (or you want to manually compile our tests), you have to call **g++** with the following arguments:
 ```
-g++ -o file file.cpp -l rpiplc -I /usr/local/include/librpiplc -D PLC_VERSION -D PLC_MODEL`
+g++ -o file file.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -D PLC_VERSION -D PLC_MODEL
+```
 
+If you already had our library installed (because you are using one of our images), you have to change the included paths from `/usr/local...` to `/usr...`:
+```
+g++ -o file file.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -D PLC_VERSION -D PLC_MODEL
 ```
 
 `-o file`: Place the output executable in file `file`.
@@ -104,10 +108,15 @@ g++ -o file file.cpp -l rpiplc -I /usr/local/include/librpiplc -D PLC_VERSION -D
 
 `-D name=definition`. It is used to define macros before preprocessing occurs. It is ideal to define configuration macros, like the version or the model of the PLC.
 
-Example to build the program for RPi PLC 38AR V3:
+Examples to build the program for RPi PLC 38AR V3:
 ```
-g++ -o file file.cpp -l rpiplc -I /usr/local/include/librpiplc -D RPIPLC_V3 -D RPIPLC_38AR
+g++ -o file file.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -D RPIPLC_V3 -D RPIPLC_38AR
 ```
+or if you have the original image
+```
+g++ -o file file.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -D RPIPLC_V3 -D RPIPLC_38AR
+```
+
 
 *Know more: https://linux.die.net/man/1/g++*
 
@@ -153,9 +162,13 @@ This application sets a digital output or relay to the specified value.
 
 The **main()** function first checks that the given arguments are correct, and then initializes the pin ICs with the **initExpandedGPIO(restart)** function. Then, as in Arduino programming, it sets the given pin to output mode, and it writes to it the specified value in the second parameter: either 1 (HIGH) or 0 (LOW).
 
-Apart from using the `build.sh` script, you can build the executable file called `set-digital-output` with **g++**:
+Apart from using the `build.sh` script, you can build the executable file called `set-digital-output` with **g++**. Assuming you are inside the `librpiplc/tests/src` directory:
 ```
-g++ -o set-digital-output set-digital-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o set-digital-output set-digital-output.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+or if you have the original image
+```
+g++ -o set-digital-output set-digital-output.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
 
 Execute the compiled file named `set-digital-output` with two parameters:
@@ -175,7 +188,11 @@ The **main()** function first checks that the given arguments are correct, and t
 
 Apart from using the `build.sh` script, you can build the executable file called `set-analog-output` with **g++**:
 ```
-g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+or if you have the original image
+```
+g++ -o set-analog-output set-analog-output.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
 
 Execute the compiled file named `set-analog-output` with two parameters:
@@ -194,7 +211,11 @@ The **main()** function first checks that the given arguments are correct, and t
 
 Apart from using the `build.sh` script, you can build the executable file called `set-pwm-output` with **g++**:
 ```
-g++ -o set-pwm-output set-pwm-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o set-pwm-output set-pwm-output.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+or if you have the original image
+```
+g++ -o set-pwm-output set-pwm-output.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
 
 All the digital outputs can output PWM signals using the `set-pwm-output` program, but using it in digital outputs.
@@ -214,8 +235,13 @@ The **main()** function first checks that the given arguments are correct, and t
 
 Apart from using the `build.sh` script, you can build the executable file called `get-digital-output` with **g++**:
 ```
-g++ -o get-digital-output get-digital-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o get-digital-input get-digital-input.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
+or if you have the original image
+```
+g++ -o get-digital-input get-digital-input.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+
 Execute the compiled file named `get-digital-input` with the input as parameter.
 ```
 ./get-digital-input I0.0
@@ -231,8 +257,13 @@ The **main()** function first checks that the given arguments are correct, and t
 
 Apart from using the `build.sh` script, you can build the executable file called `get-analog-output` with **g++**:
 ```
-g++ -o get-analog-output get-analog-output.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o get-analog-input get-analog-input.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
+or if you have the original image
+```
+g++ -o get-analog-input get-analog-input.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+
 Execute the compiled file named `get-analog-input` with the input as parameter.
 ```
 ./get-analog-input I0.7
@@ -273,7 +304,11 @@ void loop() {
 
 To compile the executable file called `analogBlink` with **g++**:
 ```
-g++ -o analogBlink analogBlink.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o analogBlink analogBlink.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+or if you have the original image
+```
+g++ -o analogBlink analogBlink.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
 
 Execute the created file named `analogBlink` to run the application, and you will get an output every 1000 milliseconds: 
@@ -297,7 +332,11 @@ This application is the same as <a name="analogBlink"></a>analogBlink, but it is
 
 To compile the executable file called `analogBlinkAll` with **g++**:
 ```
-g++ -o analogBlinkAll analogBlinkAll.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o analogBlinkAll analogBlinkAll.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+or if you have the original image
+```
+g++ -o analogBlinkAll analogBlinkAll.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
 
 Execute the created file named `analogBlinkAll` to run the application, and you will get an output every 1000 milliseconds:
@@ -345,7 +384,11 @@ void loop() {
 
 To compile the executable file called `analogRead` with **g++**:
 ```
-g++ -o analogRead analogRead.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o analogRead analogRead.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+or if you have the original image
+```
+g++ -o analogRead analogRead.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
 
 Execute the created file named `analogRead` to run the application, and you will get an output every 1000 milliseconds:
@@ -376,8 +419,13 @@ void loop() {
 
 Compile the application executing the following command:
 ```
-g++ -o delay delay.cpp -l rpiplc -I /usr/local/include/librpiplc -DRPIPLC_V4 -DRPIPLC_21
+g++ -o delay delay.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
+or if you have the original image
+```
+g++ -o delay delay.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+
 And if you run it executing the following, you will get an output every 1000 milliseconds:
 ```
 ./delay
@@ -422,8 +470,13 @@ void loop() {
 
 Compile the application executing the following command:
 ```
-g++ -o digitalBlink digitalBlink.cpp -l rpiplc -I /usr/local/include/librpiplc -DRPIPLC_V4 -DRPIPLC_21
+g++ -o digitalBlink digitalBlink.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
+or if you have the original image
+```
+g++ -o digitalBlink digitalBlink.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+```
+
 The output on the terminal will show you this when you run the program:
 ```
 ./digitalBlink
@@ -441,8 +494,13 @@ This application is the same as <a name="digitalBlink"></a>digitalBlink, but it 
 
 To compile the executable file called `digitalBlinkAll` with **g++**:
 ```
-g++ -o digitalBlinkAll digitalBlinkAll.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o digitalBlinkAll digitalBlinkAll.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
 ```
+or if you have the original image
+```
+g++ -o digitalBlinkAll digitalBlinkAll.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+```
+
 
 Execute the created file named `digitalBlinkAll` to run the application, and you will get an output every 1000 milliseconds:
 ```
@@ -487,7 +545,11 @@ void loop() {
 
 To compile the executable file called `digitalRead` with **g++**:
 ```
-g++ -o digitalRead digitalRead.cpp -l rpiplc -I /usr/local/include/librpiplc/ -I /usr/local/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
+g++ -o digitalRead digitalRead.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -I../include -DRPIPLC_V4 -DRPIPLC_21
+```
+or if you have the original image
+```
+g++ -o digitalRead digitalRead.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/librpiplc/include/include -DRPIPLC_V4 -DRPIPLC_21
 ```
 
 Execute the created file named `digitalRead` to run the application, and you will get an output every 1000 milliseconds:
