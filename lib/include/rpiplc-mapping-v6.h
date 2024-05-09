@@ -26,12 +26,13 @@
 #define PIN_EXP1_RST   	0x0000410C;
 #define PIN_EXP2_RST  	0x0000410D;
 
-#define PIN_8	8
+#define PIN_8	        8
 #define PIN_P_RELAY	26
 #define PIN_OPTO_OUT2	27
 #define PIN_OPTO_OUT1	13
 #define PIN_OPTO_IN2	5
-#define PIN_OPTO_IN1	12
+#define PIN_OPTO_IN1    12
+#define PIN_INT31       4
 
 static const uint32_t PIN8 = PIN_8;
 static const uint32_t P_RELAY = PIN_P_RELAY;
@@ -39,6 +40,7 @@ static const uint32_t OPTO_OUT_2 = PIN_OPTO_OUT2;
 static const uint32_t OPTO_OUT_1 = PIN_OPTO_OUT1;
 static const uint32_t OPTO_IN_2 = PIN_OPTO_IN2;
 static const uint32_t OPTO_IN_1 = PIN_OPTO_IN1;
+static const uint32_t INT31 = PIN_INT31;
 
 static const uint32_t EXP1_RST = PIN_EXP1_RST;
 static const uint32_t EXP2_RST = PIN_EXP2_RST;
