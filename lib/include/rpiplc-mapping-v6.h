@@ -23,9 +23,6 @@
 
 #include <stdint.h>
 
-#define PIN_PWM3	0x00004109
-#define PIN_PWM2	0x0000410A
-#define PIN_PWM1	0x0000410B
 #define PIN_EXP1_RST   	0x0000410C;
 #define PIN_EXP2_RST  	0x0000410D;
 
@@ -42,9 +39,6 @@ static const uint32_t OPTO_OUT_2 = PIN_OPTO_OUT2;
 static const uint32_t OPTO_OUT_1 = PIN_OPTO_OUT1;
 static const uint32_t OPTO_IN_2 = PIN_OPTO_IN2;
 static const uint32_t OPTO_IN_1 = PIN_OPTO_IN1;
-static const uint32_t PWM3 = PIN_PWM3;
-static const uint32_t PWM2 = PIN_PWM2;
-static const uint32_t PWM1 = PIN_PWM1;
 
 static const uint32_t EXP1_RST = PIN_EXP1_RST;
 static const uint32_t EXP2_RST = PIN_EXP2_RST;
