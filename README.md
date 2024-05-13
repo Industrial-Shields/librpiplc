@@ -31,7 +31,7 @@ git --version && cmake --version
 
 
 ### `/boot/config.txt` setup
-Make sure that the `/boot/config.txt` file has all the parameters appropriate for your RPi PLC version.
+Make sure that the `/boot/config.txt` file has all the parameters appropriate for your Raspberry PLC version.
 
 **TODO: Method to only install /boot/config.txt, without using install.sh**
 
@@ -48,12 +48,12 @@ cd
 
 2. Run the following command to clone the repository:
 ```
-git clone -b <tagname> https://github.com/Industrial-Shields/librpiplc.git
+git clone -b v<tag-version> https://github.com/Industrial-Shields/librpiplc.git
 ```
-Where `<tagname>` is the version you wish to download. Before this unification, you had to choose between versions 1.X.X (for V3 PLCs) or 2.X.X (for V4 PLCs). As of 3.X.X this library is compatible with our PLCs regardless of it's version.
+Where `<tag-version>` is the version number you wish to download. Before this unification, you had to choose between versions 1.X.X (for V3 PLCs) or 2.X.X (for V4 PLCs). As of 3.X.X, this library is compatible with all our Raspberry PLCs regardless of it's version. At the moment of writing, this library is available to Raspberry PLCs V6, V4 and V3.
 You can check the available versions in here: https://github.com/Industrial-Shields/librpiplc/tags
 
-3. Go to the library directory and install the library with the following command:
+3. Go to the library directory and install the library with the following commands:
 ```
 cd librpiplc/
 cmake -B build/ -DPLC_VERSION=<version> -DPLC_MODEL=<model>
@@ -62,7 +62,7 @@ sudo cmake --install build/
 sudo chown -R $USER:$USER ~/test/
 sudo ldconfig
 ```
-Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library, including the tests for the RPi PLC 21 V4:
+Where `<version>` is the [version number](#available-versions) and `<model>` is the [model number](#model-number). For example, if you want to build the library, including the tests for the Raspberry PLC 21 V4:
 ```
 cmake -B "build" -DPLC_VERSION=RPIPLC_V4 -DPLC_MODEL=RPIPLC_21
 cmake --build build/ -- -j $(nproc)
@@ -108,7 +108,7 @@ g++ -o file file.cpp -l rpiplc -I/usr/include/librpiplc/include -I/usr/include/l
 
 `-D name=definition`. It is used to define macros before preprocessing occurs. It is ideal to define configuration macros, like the version or the model of the PLC.
 
-Examples to build the program for RPi PLC 38AR V3:
+Examples to build the program for Raspberry PLC 38AR V3:
 ```
 g++ -o file file.cpp -l rpiplc -I/usr/local/include/librpiplc/include -I/usr/local/include/librpiplc/include/include -D RPIPLC_V3 -D RPIPLC_38AR
 ```
