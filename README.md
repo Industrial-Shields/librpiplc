@@ -31,7 +31,7 @@ git --version && cmake --version
 
 
 ### `/boot/config.txt` setup
-Make sure that the `/boot/config.txt` file has all the parameters appropriate for your Raspberry PLC version.
+Make sure that the `/boot/config.txt` file has all the parameters appropriate for your Raspberry-based PLC version.
 
 **TODO: Method to only install /boot/config.txt, without using install.sh**
 
@@ -50,7 +50,7 @@ cd
 ```
 git clone -b v<tag-version> https://github.com/Industrial-Shields/librpiplc.git
 ```
-Where `<tag-version>` is the version number you wish to download. Before this unification, you had to choose between versions 1.X.X (for V3 PLCs) or 2.X.X (for V4 PLCs). As of 3.X.X, this library is compatible with all our Raspberry PLCs regardless of it's version. At the moment of writing, this library is available to Raspberry PLCs V6, V4 and V3.
+Where `<tag-version>` is the version number you wish to download. Before this unification, you had to choose between versions 1.X.X (for V3 PLCs) or 2.X.X (for V4 PLCs). As of 3.X.X, this library is compatible with all our Raspberry PLCs regardless of it's version. At the moment of writing, this library is available to Raspberry PLCs V6, V4 and V3, and UPSafePi V6.
 You can check the available versions in here: https://github.com/Industrial-Shields/librpiplc/tags
 
 3. Go to the library directory and install the library with the following commands:
@@ -139,7 +139,8 @@ librpiplc contains several tests in order to verify the correct operation of the
 1. [digitalBlinkAll](#digitalBlinkAll)
 1. [digitalRead](#digitalRead)
 1. [Available PLC versions](#available-versions)
-1. [Available PLC models](#available-models)
+1. [Available PLC models for Raspberry PLC](#available-models)
+1. [Available PLC models for UPSafePi](#available-models-upsafepi)
 
 
 ### <a name="loop-setup-functions"></a>Arduino **setup()** and **loop()** functions
@@ -572,10 +573,11 @@ Pin I0.6 value: 0
 RPIPLC_V3 (deprecated)
 RPIPLC_V4
 RPIPLC_V6
+UPSAFEPI_V6
 ```
 
 
-### <a name="available-models"></a>Available PLC models
+### <a name="available-models"></a>Available PLC models for Raspberry PLC
 ```
 RPIPLC (for Raspberry PLC CPU)
 RPIPLC_19R
@@ -589,4 +591,10 @@ RPIPLC_54ARA
 RPIPLC_57AAR
 RPIPLC_57R
 RPIPLC_58
+```
+
+
+### <a name="available-models-upsafepi"></a>Available PLC models for UPSafePi
+```
+UPSAFEPI
 ```
