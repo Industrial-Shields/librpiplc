@@ -61,17 +61,17 @@ void loop() {
 	for (size_t val = 0; val < numValues; val++) {
 		printf("Set value %d\n", values[val]);
 
-		for (size_t pca = 0; pca < NUM_PCA9685; pca++) {
+		for (size_t pca = 0; pca < NUM_ARRAY_PCA9685; pca++) {
 			uint16_t analogValues[PCA9685_NUM_OUTPUTS];
 			for (size_t ch = 0; ch < PCA9685_NUM_OUTPUTS; ch++) {
-				if (is_output_analog(PCA9685[pca], ch)) {
+				if (is_output_analog(ARRAY_PCA9685[pca], ch)) {
 					analogValues[ch] = values[val];
 				}
 				else {
 					analogValues[ch] = 0;
 				}
 			}
-			int ret = analogWriteAll(PCA9685[pca], analogValues);
+			int ret = analogWriteAll(ARRAY_PCA9685[pca], analogValues);
 		        if (ret != 0) {
 				PERROR_WITH_LINE("analogWrite fail");
 				exit(-1);
