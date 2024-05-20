@@ -34,9 +34,6 @@
 #elif defined(RPIPLC_V3)
 #include "rpiplc-mapping-v3.h"
 
-#elif defined(UPSAFEPI_V6)
-#include "upsafepi-mapping-v6.h"
-
 #else
 #error "No selected PLC version"
 #endif

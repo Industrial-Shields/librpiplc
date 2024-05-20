@@ -22,36 +22,4 @@
 
 #include "plc-peripherals.h"
 
-#ifdef UPSAFEPI_V6
-const int I2C_BUS = PERIPHERALS_NO_I2C_BUS;
-#else
-// All I2C devices are connected at /dev/i2c-1
-const int I2C_BUS = 1;
-#endif
-
-const uint8_t ARRAY_MCP23008[] = {
-	0x20, 0x21
-};
-const size_t NUM_ARRAY_MCP23008 = sizeof(ARRAY_MCP23008) / sizeof(uint8_t);
-
-const uint8_t ARRAY_ADS1015[] = {
-#ifdef RPIPLC_V3
-	0x48, 0x49, 0x4a, 0x4b,
-#endif
-};
-const size_t NUM_ARRAY_ADS1015 = sizeof(ARRAY_ADS1015) / sizeof(uint8_t);
-
-const uint8_t ARRAY_PCA9685[]  = {
-	0x40, 0x41,
-};
-const size_t NUM_ARRAY_PCA9685 = sizeof(ARRAY_PCA9685) / sizeof(uint8_t);
-
-const uint8_t ARRAY_LTC2309[] = {
-	0x08, 0x0a, 0x28
-};
-const size_t NUM_ARRAY_LTC2309 = sizeof(ARRAY_LTC2309) / sizeof(uint8_t);
-
-const uint8_t ARRAY_MCP23017[] = {};
-const size_t NUM_ARRAY_MCP23017 = sizeof(ARRAY_MCP23017) / sizeof(uint8_t);
-
 #endif // __RPIPLC_PERIPHERALS_H__

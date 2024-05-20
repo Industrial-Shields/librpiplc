@@ -49,6 +49,7 @@ function(build_one_test TEST_SOURCES VERSION MODEL)
 	endforeach()
 endfunction()
 
+
 foreach(VERSION ${VERSIONS_LIST})
 	foreach(MODEL ${MODELS_LIST})
 		build_one_test("${TEST_SOURCES}" "${VERSION}" "${MODEL}")
