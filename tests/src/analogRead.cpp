@@ -37,6 +37,11 @@ void setup() {
 	}
 
 	printf("Number of analog inputs: %zu\n\n", numNamedAnalogInputs);
+
+	for (size_t i = 0; i < numNamedAnalogInputs; i++) {
+		pinMode(namedAnalogInputs[i].pin, INPUT);
+	}
+
 }
 
 void loop() {

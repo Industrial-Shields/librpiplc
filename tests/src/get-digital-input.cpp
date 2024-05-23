@@ -47,6 +47,7 @@ int main(int argc, const char* argv[]) {
 	}
 
 	if (pin != nullptr) {
+		pinMode(pin->pin, INPUT);
 		printf("%u\n", digitalRead(pin->pin));
 		return 0;
 	}

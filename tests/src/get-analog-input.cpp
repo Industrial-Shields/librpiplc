@@ -44,6 +44,7 @@ int main(int argc, const char* argv[]) {
         const pin_name_t* pin = find_pin<namedAnalogInputs, numNamedAnalogInputs>(argv[1]);
 
 	if (pin != nullptr) {
+		pinMode(pin->pin, INPUT);
 		printf("%u\n", analogRead(pin->pin));
 		return 0;
 	}

@@ -50,6 +50,8 @@ static bool is_output_analog(uint8_t addr, uint8_t index) {
 	uint32_t pin = ((addr << 8) | index);
 	for (size_t c = 0; c < numAnalogOutputs; c++) {
 		if (pin == analogOutputs[c]) {
+			pinMode(pin, OUTPUT);
+
 			return true;
 		}
 	}

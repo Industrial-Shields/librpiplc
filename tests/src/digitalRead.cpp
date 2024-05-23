@@ -39,6 +39,13 @@ void setup() {
 	}
 
 	printf("Number of digital inputs: %zu\n\n", numDigitals);
+
+	for (size_t c = 0; c < numDigitalInputs; c++) {
+		pinMode(digitalInputs[c], INPUT);
+	}
+	for (size_t c = 0; c < numAnalogInputs; c++) {
+		pinMode(analogInputs[c], INPUT);
+	}
 }
 
 void loop() {

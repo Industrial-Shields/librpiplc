@@ -61,6 +61,8 @@ int main(int argc, const char* argv[]) {
 	}
 
 	if (pin != nullptr) {
+		pinMode(pin->pin, OUTPUT);
+
 		if (digitalWrite(pin->pin, value_to_write) != 0) {
 			PERROR_WITH_LINE("digitalWrite fail");
 			return 5;

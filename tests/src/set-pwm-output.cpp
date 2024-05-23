@@ -72,6 +72,8 @@ int main(int argc, const char* argv[]) {
 	const pin_name_t* pin = find_pin<namedPWMOutputs, numNamedPWMOutputs>(argv[1]);
 
 	if (pin != nullptr) {
+		pinMode(pin->pin, OUTPUT);
+
 		if (pwm_freq != -1 &&
 		    analogWriteSetFrequency(pin->pin, pwm_freq) != 0) {
 			if (errno == ERANGE) {

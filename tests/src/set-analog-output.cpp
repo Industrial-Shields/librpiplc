@@ -58,6 +58,8 @@ int main(int argc, const char* argv[]) {
 	const pin_name_t* pin = find_pin<namedAnalogOutputs, numNamedAnalogOutputs>(argv[1]);
 
 	if (pin != nullptr) {
+		pinMode(pin->pin, OUTPUT);
+
 		if (analogWrite(pin->pin, value_to_write) != 0) {
 			PERROR_WITH_LINE("analogWrite fail");
 			return 5;

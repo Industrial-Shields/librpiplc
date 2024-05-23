@@ -41,6 +41,10 @@ void setup() {
 	printf("Number of digital outputs: %zu\n", numDigitalOutputs);
 
 	// TODO: digitalWriteAll doesn't work with direct pins
+
+	for (size_t c = 0; c < numDigitalOutputs; c++) {
+		pinMode(digitalOutputs[c], OUTPUT);
+	}
 }
 
 void loop() {

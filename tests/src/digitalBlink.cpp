@@ -61,6 +61,9 @@ void setup() {
 		const size_t last_digital = numNamedDigitalOutputs - 1;
 		for (size_t c = 0; c < last_digital; c++) {
 			digitalBlinking.push_back(namedDigitalOutputs[c]);
+
+			pinMode(namedDigitalOutputs[c].pin, OUTPUT);
+
 			printf("%s ", namedDigitalOutputs[c].name);
 		}
 		digitalBlinking.push_back(namedDigitalOutputs[last_digital]);
