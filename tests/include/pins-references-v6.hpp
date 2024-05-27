@@ -23,9 +23,7 @@
 #include <cstddef>
 
 // Pins arrays
-static const uint32_t digitalInputsOutputs[] = {
-	PIN8,
-};
+static const uint32_t digitalInputsOutputs[] = {};
 static const size_t numDigitalInputOutput = sizeof(digitalInputsOutputs) / sizeof(uint32_t);
 
 static const uint32_t digitalInputs[] = {
@@ -171,9 +169,7 @@ static const size_t numAnalogOutputs = sizeof(analogOutputs) / sizeof(uint32_t);
 
 
 // Pin-name arrays
-static const pin_name_t namedDigitalInputsOutputs[] = {
-        {"PIN8", PIN8},
-};
+static const pin_name_t namedDigitalInputsOutputs[] = {};
 static const size_t numNamedDigitalInputsOutputs = sizeof(namedDigitalInputsOutputs) / sizeof(pin_name_t);
 
 static const pin_name_t namedDigitalInputs[] = {
