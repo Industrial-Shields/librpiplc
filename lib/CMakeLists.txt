@@ -20,6 +20,7 @@ include_directories(include)
 
 # Source files
 file(GLOB LIB_SOURCES "src/*.c")
+list(FILTER LIB_SOURCES EXCLUDE REGEX "src/peripherals-variables.c$")
 
 add_library(${LIBNAME} SHARED ${LIB_SOURCES} ${LIB_HEADERS})
 
@@ -61,3 +62,6 @@ install(TARGETS ${LIBNAME}
 # And its header files
 install(DIRECTORY include/ DESTINATION include/lib${LIBNAME})
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals/include/ DESTINATION include/lib${LIBNAME})
+
+# Install the final .c to link against when compiling the final program (along the dynamic library)
+install(FILES "src/peripherals-variables.c" DESTINATION "include/lib${LIBNAME}/")
