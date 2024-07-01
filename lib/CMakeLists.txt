@@ -31,7 +31,7 @@ include(ExternalProject)
 ExternalProject_Add(
 	plc-peripherals
 	GIT_REPOSITORY https://github.com/Industrial-Shields/plc-peripherals.git
-	GIT_TAG v1.0.1
+	GIT_TAG v1.0.3
 	GIT_SUBMODULES ""
 	INSTALL_COMMAND ""
 	CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_C_FLAGS="-fPIC"
@@ -59,5 +59,5 @@ install(TARGETS ${LIBNAME}
         RUNTIME DESTINATION bin
 )
 # And its header files
-install(DIRECTORY include/ DESTINATION include/lib${LIBNAME}/include)
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals/include DESTINATION include/lib${LIBNAME}/include)
+install(DIRECTORY include/ DESTINATION include/lib${LIBNAME})
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals/include/ DESTINATION include/lib${LIBNAME})
