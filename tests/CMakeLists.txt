@@ -30,10 +30,9 @@ function(build_one_test TEST_SOURCES VERSION MODEL)
 		get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)
 
 		set(FULL_TEST_NAME "${TEST_NAME}_${VERSION}_${MODEL}")
-		set(ADDITIONAL_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/../lib/src/peripherals-variables.c")
 
 
-		add_executable(${FULL_TEST_NAME} ${TEST_SOURCE} ${ADDITIONAL_SOURCES})
+		add_executable(${FULL_TEST_NAME} ${TEST_SOURCE})
 
 		add_dependencies(${FULL_TEST_NAME} ${LIBNAME})
 		target_link_libraries(${FULL_TEST_NAME} ${LIBNAME})
