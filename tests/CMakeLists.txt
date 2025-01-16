@@ -35,6 +35,7 @@ function(build_one_test TEST_SOURCES VERSION MODEL)
 		add_executable(${FULL_TEST_NAME} ${TEST_SOURCE})
 
 		add_dependencies(${FULL_TEST_NAME} ${LIBNAME})
+		target_compile_options(${FULL_TEST_NAME} PRIVATE "${LIBRPIPLC_DEFAULT_COMPILE_FLAGS}")
 		target_link_libraries(${FULL_TEST_NAME} ${LIBNAME})
 
 		target_compile_definitions(${FULL_TEST_NAME} PUBLIC "${VERSION}" "${MODEL}")
@@ -45,7 +46,11 @@ function(build_one_test TEST_SOURCES VERSION MODEL)
 		set_target_properties(${FULL_TEST_NAME} PROPERTIES OUTPUT_NAME "${TEST_NAME}")
 
 
-		install(TARGETS ${FULL_TEST_NAME} DESTINATION $ENV{HOME}/test/${VERSION}/${MODEL})
+		if(CMAKE_BUILD_TYPE STREQUAL "DebPackage")
+			install(TARGETS ${FULL_TEST_NAME} DESTINATION lib/librpiplc/${VERSION}/${MODEL})
+		else()
+			install(TARGETS ${FULL_TEST_NAME} DESTINATION $ENV{HOME}/test/${VERSION}/${MODEL})
+		endif()
 	endforeach()
 endfunction()
 

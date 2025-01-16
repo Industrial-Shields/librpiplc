@@ -1,3 +1,14 @@
 /build/
 /.ccls-cache/
 /.cache/
+/obj-arm-linux-gnueabihf/
+/debian/tmp
+/debian/.debhelper
+/debian/librpiplc/
+/debian/librpiplc-dev/
+/debian/librpiplc-tests*/
+/debian/*.log
+/debian/*.substvars
+/debian/debhelper-build-stamp
+/debian/files
+/obj-aarch64-linux-gnu/

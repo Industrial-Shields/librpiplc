@@ -1,0 +1,5 @@
+librpiplc (3.0.3) bullseye bookworm; urgency=high
+
+  * Make it a .deb package.
+
+ -- Industrial Shields <support@industrialshields.com>  Thu, 02 Jan 2025 13:58:00 +0000

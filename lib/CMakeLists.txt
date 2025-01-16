@@ -15,49 +15,47 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-# Header files
-include_directories(include)
-
-# Source files
+# librpiplc header and source files
+file(GLOB LIB_HEADERS "include/*.h")
 file(GLOB LIB_SOURCES "src/*.c")
 
-add_library(${LIBNAME} SHARED ${LIB_SOURCES} ${LIB_HEADERS})
 
-set_target_properties(${LIBNAME} PROPERTIES LINKER_LANGUAGE C)
-
-# Link with the plc-peripherals library
-set(PLC_PERIPHERALS_LIB "${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals-build/libplc-peripherals.a")
+# Add plc-peripherals as external project
 include(ExternalProject)
 ExternalProject_Add(
 	plc-peripherals
 	GIT_REPOSITORY https://github.com/Industrial-Shields/plc-peripherals.git
-	GIT_TAG v1.0.1
+	GIT_TAG v1.0.6
 	GIT_SUBMODULES ""
 	INSTALL_COMMAND ""
-	CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_C_FLAGS="-fPIC"
-
+	CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
 	UPDATE_COMMAND ""
 )
-add_dependencies(${LIBNAME} plc-peripherals)
-target_link_libraries(${LIBNAME} PRIVATE "-Wl,--whole-archive" ${PLC_PERIPHERALS_LIB} "-Wl,--no-whole-archive")
+ExternalProject_Get_Property(plc-peripherals SOURCE_DIR BINARY_DIR)
 
 
-
-# Externalize the header files to other targets
+add_library(${LIBNAME} SHARED ${LIB_SOURCES})
 target_include_directories(${LIBNAME} PUBLIC
-	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-	${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals/include
-	$<INSTALL_INTERFACE:include/lib${LIBNAME}>
+	${SOURCE_DIR}/include
+	${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-
-
-
-# Install shared library
-install(TARGETS ${LIBNAME}
-        LIBRARY DESTINATION lib
-        ARCHIVE DESTINATION lib
-        RUNTIME DESTINATION bin
+target_compile_options(${LIBNAME} PRIVATE ${LIBRPIPLC_DEFAULT_COMPILE_FLAGS})
+target_link_options(${LIBNAME} PRIVATE
+    -Wl,--whole-archive
+    ${BINARY_DIR}/libplc-peripherals.a
+    -Wl,--no-whole-archive
 )
-# And its header files
-install(DIRECTORY include/ DESTINATION include/lib${LIBNAME}/include)
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals/include DESTINATION include/lib${LIBNAME}/include)
+add_dependencies(${LIBNAME} plc-peripherals)
+
+
+# Must be a matching pattern, because files are downloaded during the build process
+install(DIRECTORY ${SOURCE_DIR}/include/ DESTINATION include COMPONENT headers FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include COMPONENT headers FILES_MATCHING PATTERN "*.h")
+install(TARGETS ${LIBNAME} DESTINATION lib)
+
+
+set_target_properties(${LIBNAME} PROPERTIES
+  PUBLIC_HEADER "rpiplc.h"
+  VERSION 3.0.3
+  SOVERSION 3
+)

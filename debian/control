@@ -1,0 +1,55 @@
+Source: librpiplc
+Section: libs
+Priority: optional
+Maintainer: Industrial Shields <support@industrialshields.com>
+Build-Depends: cmake (>= 3.15), dh-cmake, dh-cmake-compat (= 1), dh-sequence-cmake, debhelper (>= 11)
+
+
+Package: librpiplc
+Architecture: any
+Priority: required
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Industrial Shields library for Raspberry-based PLCs
+ librpiplc implements useful functions to use Raspberry based
+ Industrial Shields PLCs for industrial environments. It also
+ contains some adaptations based on the code structure of the
+ Arduino IDE to make it more familiar.
+
+Package: librpiplc-dev
+Architecture: any
+Priority: required
+Description: Industrial Shields library headers for Raspberry-based PLCs
+ librpiplc implements useful functions to use Raspberry based
+ Industrial Shields PLCs for industrial environments. It also
+ contains some adaptations based on the code structure of the
+ Arduino IDE to make it more familiar.
+Depends: librpiplc (= ${binary:Version}), ${misc:Depends}
+
+
+
+Package: librpiplc-tests-rpiplc-v6
+Architecture: any
+Description: Industrial Shields test programs for Raspberry V6 PLCs
+ librpiplc implements useful functions to use Raspberry based
+ Industrial Shields PLCs for industrial environments. It also
+ contains some adaptations based on the code structure of the
+ Arduino IDE to make it more familiar.
+Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+
+Package: librpiplc-tests-rpiplc-v4
+Architecture: any
+Description: Industrial Shields test programs for Raspberry V4 PLCs
+ librpiplc implements useful functions to use Raspberry based
+ Industrial Shields PLCs for industrial environments. It also
+ contains some adaptations based on the code structure of the
+ Arduino IDE to make it more familiar.
+Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+
+Package: librpiplc-tests-rpiplc-v3
+Architecture: any
+Description: Industrial Shields test programs for Raspberry V3 PLCs
+ librpiplc implements useful functions to use Raspberry based
+ Industrial Shields PLCs for industrial environments. It also
+ contains some adaptations based on the code structure of the
+ Arduino IDE to make it more familiar.
+Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
