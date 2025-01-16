@@ -55,7 +55,7 @@ int rpi_gpio_deinit(void) {
 
         int* gpio_fd = rpi_gpios_fds;
 	for (size_t c = 0; c < MAX_RPI_GPIOS; c++) {
-		if (gpio_fd > 0) {
+		if (*gpio_fd >= 0) {
 			close(*gpio_fd);
 			*gpio_fd = -1;
 		}

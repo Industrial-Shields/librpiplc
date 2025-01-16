@@ -20,12 +20,15 @@
 #include "pins-references.hpp"
 
 template<const pin_name_t* PA, size_t N>
-const pin_name_t* find_pin(const char* name){
+const pin_name_t* find_pin(const char* name) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wtype-limits"
 	for (size_t i = 0; i < N; i++) {
 		if (strcmp(name, PA[i].name) == 0) {
 			return &PA[i];
 		}
 	}
+#pragma GCC diagnostic pop
 
 	return nullptr;
 }
