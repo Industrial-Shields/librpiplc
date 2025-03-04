@@ -36,7 +36,11 @@
 #define __ARRAY_PCA9685 ((const uint8_t[]){ 0x40, 0x41 })
 
 #ifndef RPIPLC_V3
+#if defined(RPIPLC_21) || defined(RPIPLC_19R)
+#define __ARRAY_LTC2309 ((const uint8_t[]){ 0x08, 0x0a })
+#else
 #define __ARRAY_LTC2309 ((const uint8_t[]){ 0x08, 0x0a, 0x28 })
+#endif
 #else
 #define __ARRAY_LTC2309 ((const uint8_t[]){})
 #endif
