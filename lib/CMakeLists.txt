@@ -31,7 +31,8 @@ include(ExternalProject)
 ExternalProject_Add(
 	plc-peripherals
 	GIT_REPOSITORY https://github.com/Industrial-Shields/plc-peripherals.git
-	GIT_TAG v1.0.1
+	GIT_TAG new-pins-enum
+	# SOURCE_DIR /home/pi/plc-peripherals
 	GIT_SUBMODULES ""
 	INSTALL_COMMAND ""
 	CMAKE_ARGS -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_C_FLAGS="-fPIC"
@@ -47,6 +48,7 @@ target_link_libraries(${LIBNAME} PRIVATE "-Wl,--whole-archive" ${PLC_PERIPHERALS
 target_include_directories(${LIBNAME} PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 	${CMAKE_CURRENT_BINARY_DIR}/plc-peripherals-prefix/src/plc-peripherals/include
+	# /home/pi/plc-peripherals/include
 	$<INSTALL_INTERFACE:include/lib${LIBNAME}>
 )
 
