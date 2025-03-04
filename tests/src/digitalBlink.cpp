@@ -38,9 +38,13 @@ void setup() {
 	printf("librpiplc version: %s\n", LIB_RPIPLC_VERSION);
 	fflush(stdout);
 
-	if (initExpandedGPIO(false) < 0) {
+	int result = initExpandedGPIO(false);
+	if (result < 0 || result == PLC_PERIHPERALS_STRUCT_INVALID) {
 		PERROR_WITH_LINE("initExpandedGPIO failed");
 		exit(-1);
+	}
+	else if (result > 1) {
+		fprintf(stderr, "WARNING: initExpandedGPIO returned %d\n", result);
 	}
 
 	printf("%zu digital outputs: ", numNamedDigitalInputsOutputs + numNamedDigitalOutputs);
