@@ -39,6 +39,9 @@ typedef struct {
 #elif defined(RPIPLC_V3)
 #include "pins-references-v3.hpp"
 
+#elif defined(UPSAFEPI_V6) && defined(UPSAFEPI)
+#include "pins-references-upsafepi-v6.hpp"
+
 #else
 #error "No selected PLC version"
 #endif

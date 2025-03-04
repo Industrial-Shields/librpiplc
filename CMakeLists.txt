@@ -63,32 +63,10 @@ This error prevents CMake from running an in-source build.")
 endif ()
 
 
-# Check that if the PLC version and model macros are passed are correct
-set(VERSIONS_LIST RPIPLC_V3 RPIPLC_V4 RPIPLC_V6)
-set(MODELS_LIST RPIPLC RPIPLC_19R RPIPLC_21 RPIPLC_38AR RPIPLC_38R RPIPLC_42
-	RPIPLC_50RRA RPIPLC_53ARR RPIPLC_54ARA RPIPLC_57AAR RPIPLC_57R RPIPLC_58)
-
-if(DEFINED PLC_VERSION OR DEFINED PLC_MODEL)
-	# Check that they are correct
-	if(NOT PLC_VERSION STREQUAL "ALL" AND NOT PLC_VERSION IN_LIST VERSIONS_LIST)
-		message(FATAL_ERROR "Invalid value for PLC_VERSION: ${PLC_VERSION}")
-	elseif(NOT PLC_MODEL STREQUAL "ALL" AND NOT PLC_MODEL IN_LIST MODELS_LIST)
-		message(FATAL_ERROR "Invalid value for PLC_MODEL: ${PLC_MODEL}")
-	endif()
-endif()
-
-
 # Add the librpiplc CMakeLists.txt
 add_subdirectory(lib)
 
 # Add the tests CMakeLists.txt only if version and model is given
 if(DEFINED PLC_VERSION AND DEFINED PLC_MODEL)
-	if(NOT PLC_VERSION STREQUAL "ALL")
-		set(VERSIONS_LIST ${PLC_VERSION})
-	endif()
-	if(NOT PLC_MODEL STREQUAL "ALL")
-		set(MODELS_LIST ${PLC_MODEL})
-	endif()
-
 	add_subdirectory(tests)
 endif()

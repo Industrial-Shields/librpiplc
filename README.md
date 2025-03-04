@@ -572,11 +572,13 @@ Pin I0.6 value: 0
 RPIPLC_V3 (deprecated)
 RPIPLC_V4
 RPIPLC_V6
+UPSAFEPI_V6
 ```
 
 
 ### <a name="available-models"></a>Available PLC models
 ```
+UPSAFEPI (for UPSafePis)
 RPIPLC (for Raspberry PLC CPU)
 RPIPLC_19R
 RPIPLC_21

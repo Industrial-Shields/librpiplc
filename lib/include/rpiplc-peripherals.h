@@ -24,18 +24,27 @@
 
 
 
+#if defined(RPIPLC_V3) || defined(RPIPLC_V4) || defined(RPIPLC_V6)
 #define __ARRAY_MCP23008 ((const uint8_t[]){ 0x20, 0x21 })
+#else
+#define __ARRAY_MCP23008 ((const uint8_t[]){})
+#endif
 
-#ifdef RPIPLC_V3
+#if defined(RPIPLC_V3)
 #define __ARRAY_ADS1015 ((const uint8_t[]){ 0x48, 0x49, 0x4a, 0x4b })
 #else
 #define __ARRAY_ADS1015 ((const uint8_t[]){})
 #endif
 
 
+#if defined(RPIPLC_V3) || defined(RPIPLC_V4) || defined(RPIPLC_V6)
 #define __ARRAY_PCA9685 ((const uint8_t[]){ 0x40, 0x41 })
+#else
+#define __ARRAY_PCA9685 ((const uint8_t[]){})
+#endif
 
-#ifndef RPIPLC_V3
+
+#if defined(RPIPLC_V4) || defined(RPIPLC_V6)
 #if defined(RPIPLC_21) || defined(RPIPLC_19R)
 #define __ARRAY_LTC2309 ((const uint8_t[]){ 0x08, 0x0a })
 #else

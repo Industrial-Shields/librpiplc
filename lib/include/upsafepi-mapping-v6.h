@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Industrial Shields. All rights reserved
+ * Copyright (c) 2025 Industrial Shields. All rights reserved
  *
  * This file is part of librpiplc.
  *
@@ -18,29 +18,10 @@
  */
 
 #ifndef __RPIPLC_MAPPING_H__
-#define __RPIPLC_MAPPING_H__
-
-#include <expanded-gpio.h>
-
-/**
- * This header is used to define which version of the PLC mappings
- * will be imported.
- */
-
-#if defined(RPIPLC_V6)
-#include "rpiplc-mapping-v6.h"
-
-#elif defined(RPIPLC_V4)
-#include "rpiplc-mapping-v4.h"
-
-#elif defined(RPIPLC_V3)
-#include "rpiplc-mapping-v3.h"
-
-#elif defined(UPSAFEPI_V6) && defined(UPSAFEPI)
-#include "upsafepi-mapping-v6.h"
-
-#else
-#error "No selected PLC version"
+#error "Not importing from rpiplc-mapping.h"
 #endif
 
-#endif
+#include <stdint.h>
+
+#define PIN_DE_RE             MAKE_PIN_DIRECT(27)
+static const uint32_t DE_RE = PIN_DE_RE;
