@@ -20,6 +20,8 @@
 #ifndef __RPIPLC_MAPPING_H__
 #define __RPIPLC_MAPPING_H__
 
+#include <expanded-gpio.h>
+
 /**
  * This header is used to define which version of the PLC mappings
  * will be imported.
