@@ -33,10 +33,8 @@ static int rpi_gpios_fds[MAX_RPI_GPIOS];
 static int gpiochip_fd = -1;
 
 int rpi_gpio_init(void) {
-        int* gpio_fd = rpi_gpios_fds;
-	for (uint32_t c = 0; c < MAX_RPI_GPIOS; c++) {
-		*gpio_fd = -1;
-		++gpio_fd;
+	if (gpiochip_fd >= 0) {
+		return 1;
 	}
 
 	gpiochip_fd = open("/dev/gpiochip0", O_RDONLY);
@@ -44,14 +42,25 @@ int rpi_gpio_init(void) {
 		return gpiochip_fd;
 	}
 
+        int* gpio_fd = rpi_gpios_fds;
+	for (uint32_t c = 0; c < MAX_RPI_GPIOS; c++) {
+		*gpio_fd = -1;
+		++gpio_fd;
+	}
+
 	return 0;
 }
 
 int rpi_gpio_deinit(void) {
+	if (gpiochip_fd < 0) {
+		return 1;
+	}
+
 	int ret = close(gpiochip_fd);
 	if (ret != 0) {
 		return ret;
 	}
+	gpiochip_fd = -1;
 
         int* gpio_fd = rpi_gpios_fds;
 	for (size_t c = 0; c < MAX_RPI_GPIOS; c++) {
@@ -83,7 +92,7 @@ int rpi_gpio_set_pin_mode(uint32_t pin, uint8_t mode) {
 		errno = EINVAL;
 		return -1;
 	}
-	
+
         struct gpio_v2_line_request req;
         memset(&req, 0, sizeof(req));
 
@@ -94,7 +103,7 @@ int rpi_gpio_set_pin_mode(uint32_t pin, uint8_t mode) {
 
         int ret = ioctl(gpiochip_fd, GPIO_V2_GET_LINE_IOCTL, &req);
         if (ret != 0) {
-	        return ret; 
+	        return ret;
         }
 
         *gpio_fd = req.fd;

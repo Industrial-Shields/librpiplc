@@ -35,8 +35,8 @@ extern "C" {
 	 *
 	 * This function initializes the GPIO interface by opening the GPIO character device.
 	 *
-	 * @return 0 if successful, -1 if there was an error. Errnos set by this function
-	 *         are those set by the "open" system call.
+	 * @return 0 if successful, 1 if it was already initialized, or -1 if there was an error.
+	 *         Errnos set by this function are those set by the "open" system call.
 	 */
         int rpi_gpio_init(void);
 
@@ -45,8 +45,8 @@ extern "C" {
 	 *
 	 * This function de-initializes the GPIO interface by closing the GPIO character device.
 	 *
-	 * @return 0 if successful, -1 if there was an error. Errnos set by this function
-	 *         are those set by the "close" system call.
+	 * @return 0 if successful, 1 if it was already initialized, or -1 if there was an error.
+	 *         Errnos set by this function are those set by the "close" system call.
 	 */
         int rpi_gpio_deinit(void);
 
