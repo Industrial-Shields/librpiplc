@@ -26,8 +26,8 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 11)
 
 # Enable some warning flags
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -fanalyzer")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -fanalyzer")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -fanalyzer")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fanalyzer")
 set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
 
 # Determine build type
