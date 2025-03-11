@@ -573,12 +573,12 @@ RPIPLC_V3 (deprecated)
 RPIPLC_V4
 RPIPLC_V6
 UPSAFEPI_V6
+TOUCHBERRY_PI_V1
 ```
 
 
 ### <a name="available-models"></a>Available PLC models
 ```
-UPSAFEPI (for UPSafePis)
 RPIPLC (for Raspberry PLC CPU)
 RPIPLC_19R
 RPIPLC_21
@@ -591,4 +591,6 @@ RPIPLC_54ARA
 RPIPLC_57AAR
 RPIPLC_57R
 RPIPLC_58
+UPSAFEPI (for UPSafePis)
+TOUCHBERRY_PI (for TouchBerry Pis)
 ```

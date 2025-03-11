@@ -53,12 +53,12 @@ void setup() {
 	for (size_t c = 0; c < numNamedDigitalInputsOutputs; c++) {
 		digitalBlinking.push_back(namedDigitalInputsOutputs[c]);
 
+		printf("%s ", namedDigitalInputsOutputs[c].name);
+
 		if (pinMode(namedDigitalInputsOutputs[c].pin, OUTPUT) != 0) {
 			PERROR_WITH_LINE("pinMode fail");
 			exit(-1);
 		}
-
-		printf("%s ", namedDigitalInputsOutputs[c].name);
 	}
 
 	if (numNamedDigitalOutputs > 0) {
@@ -66,9 +66,9 @@ void setup() {
 		for (size_t c = 0; c < last_digital; c++) {
 			digitalBlinking.push_back(namedDigitalOutputs[c]);
 
-			pinMode(namedDigitalOutputs[c].pin, OUTPUT);
-
 			printf("%s ", namedDigitalOutputs[c].name);
+
+			pinMode(namedDigitalOutputs[c].pin, OUTPUT);
 		}
 		digitalBlinking.push_back(namedDigitalOutputs[last_digital]);
 		printf("%s\n", namedDigitalOutputs[last_digital].name);

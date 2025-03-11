@@ -32,6 +32,8 @@
 
 #if defined(RPIPLC_V3)
 #define __ARRAY_ADS1015 ((const uint8_t[]){ 0x48, 0x49, 0x4a, 0x4b })
+#elif defined(TOUCHBERRY_PI_V1)
+#define __ARRAY_ADS1015 ((const uint8_t[]){ 0x49 })
 #else
 #define __ARRAY_ADS1015 ((const uint8_t[]){})
 #endif

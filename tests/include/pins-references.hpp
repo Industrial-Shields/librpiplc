@@ -42,6 +42,9 @@ typedef struct {
 #elif defined(UPSAFEPI_V6) && defined(UPSAFEPI)
 #include "pins-references-upsafepi-v6.hpp"
 
+#elif defined(TOUCHBERRY_PI_V1) && defined(TOUCHBERRY_PI)
+#include "pins-references-touchberry-pi-v1.hpp"
+
 #else
 #error "No selected PLC version"
 #endif

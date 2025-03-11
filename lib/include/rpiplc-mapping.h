@@ -39,6 +39,9 @@
 #elif defined(UPSAFEPI_V6) && defined(UPSAFEPI)
 #include "upsafepi-mapping-v6.h"
 
+#elif defined(TOUCHBERRY_PI_V1) && defined(TOUCHBERRY_PI)
+#include "touchberry-pi-mapping-v1.h"
+
 #else
 #error "No selected PLC version"
 #endif

@@ -68,9 +68,9 @@ void setup() {
 		for (size_t c = 0; c < last_analog; c++) {
 			analogBlinking.push_back(namedAnalogOutputs[c]);
 
-			pinMode(namedAnalogOutputs[c].pin, OUTPUT);
-
 			printf("%s ", namedAnalogOutputs[c].name);
+
+			pinMode(namedAnalogOutputs[c].pin, OUTPUT);
 		}
 		analogBlinking.push_back(namedAnalogOutputs[last_analog]);
 		printf("%s\n", namedAnalogOutputs[last_analog].name);
