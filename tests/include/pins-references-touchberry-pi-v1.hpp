@@ -32,7 +32,7 @@ static const size_t numDigitalInputs = sizeof(digitalInputs) / sizeof(uint32_t);
 static const uint32_t analogInputs[] = {I0_4_20, I1_4_20, I0, I1};
 static const size_t numAnalogInputs = sizeof(analogInputs) / sizeof(uint32_t);
 
-static const uint32_t digitalOutputs[] = {CS0, CS1, RE, DE, O0, O1, O2, O3, O4};
+static const uint32_t digitalOutputs[] = {RE, DE, O0, O1, O2, O3, O4};
 static const size_t numDigitalOutputs = sizeof(digitalOutputs) / sizeof(uint32_t);
 
 static const uint32_t PWMOutputs[] = {EXP1_PWM};
@@ -69,8 +69,6 @@ static const pin_name_t namedAnalogInputs[] = {
 static const size_t numNamedAnalogInputs = sizeof(namedAnalogInputs) / sizeof(pin_name_t);
 
 static const pin_name_t namedDigitalOutputs[] = {
-    {"CS0", CS0},
-    {"CS1", CS1},
     {"RE", RE},
     {"DE", DE},
     {"O0", O0},
