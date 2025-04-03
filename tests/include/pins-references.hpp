@@ -45,6 +45,9 @@ typedef struct {
 #elif defined(TOUCHBERRY_PI_V1) && defined(TOUCHBERRY_PI)
 #include "pins-references-touchberry-pi-v1.hpp"
 
+#elif defined(GATEBERRY_V9) && defined(GATEBERRY)
+#include "pins-references-gateberry-v9.hpp"
+
 #else
 #error "No selected PLC version"
 #endif
