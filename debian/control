@@ -29,6 +29,7 @@ Depends: librpiplc (= ${binary:Version}), ${misc:Depends}
 
 Package: librpiplc-tests-rpiplc-v6
 Architecture: any
+Priority: optional
 Description: Industrial Shields test programs for Raspberry V6 PLCs
  librpiplc implements useful functions to use Raspberry based
  Industrial Shields PLCs for industrial environments. It also
@@ -38,6 +39,7 @@ Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 
 Package: librpiplc-tests-rpiplc-v4
 Architecture: any
+Priority: optional
 Description: Industrial Shields test programs for Raspberry V4 PLCs
  librpiplc implements useful functions to use Raspberry based
  Industrial Shields PLCs for industrial environments. It also
@@ -47,6 +49,7 @@ Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 
 Package: librpiplc-tests-rpiplc-v3
 Architecture: any
+Priority: optional
 Description: Industrial Shields test programs for Raspberry V3 PLCs
  librpiplc implements useful functions to use Raspberry based
  Industrial Shields PLCs for industrial environments. It also
@@ -56,6 +59,7 @@ Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 
 Package: librpiplc-tests-touchberry-pi-v1
 Architecture: any
+Priority: optional
 Description: Industrial Shields test programs for TouchBerry V1 PLCs
  librpiplc implements useful functions to use Raspberry based
  Industrial Shields PLCs for industrial environments. It also
@@ -65,6 +69,7 @@ Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 
 Package: librpiplc-tests-upsafepi-v6
 Architecture: any
+Priority: optional
 Description: Industrial Shields test programs for UPSafePi V6 PLCs
  librpiplc implements useful functions to use Raspberry based
  Industrial Shields PLCs for industrial environments. It also
@@ -74,6 +79,7 @@ Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 
 Package: librpiplc-tests-gateberry-v9
 Architecture: any
+Priority: optional
 Description: Industrial Shields test programs for GateBerry V9 PLCs
  librpiplc implements useful functions to use Raspberry based
  Industrial Shields PLCs for industrial environments. It also
