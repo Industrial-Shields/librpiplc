@@ -53,3 +53,30 @@ Description: Industrial Shields test programs for Raspberry V3 PLCs
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
 Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+
+Package: librpiplc-tests-touchberry-pi-v1
+Architecture: any
+Description: Industrial Shields test programs for TouchBerry V1 PLCs
+ librpiplc implements useful functions to use Raspberry based
+ Industrial Shields PLCs for industrial environments. It also
+ contains some adaptations based on the code structure of the
+ Arduino IDE to make it more familiar.
+Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+
+Package: librpiplc-tests-upsafepi-v6
+Architecture: any
+Description: Industrial Shields test programs for UPSafePi V6 PLCs
+ librpiplc implements useful functions to use Raspberry based
+ Industrial Shields PLCs for industrial environments. It also
+ contains some adaptations based on the code structure of the
+ Arduino IDE to make it more familiar.
+Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+
+Package: librpiplc-tests-gateberry-v9
+Architecture: any
+Description: Industrial Shields test programs for GateBerry V9 PLCs
+ librpiplc implements useful functions to use Raspberry based
+ Industrial Shields PLCs for industrial environments. It also
+ contains some adaptations based on the code structure of the
+ Arduino IDE to make it more familiar.
+Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
