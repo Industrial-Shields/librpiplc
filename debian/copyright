@@ -1,0 +1,7 @@
+Files: lib/*
+Copyright: 2024 Industrial Shields <support@industrialshields.com>
+License: LGPL-3+
+
+Files: tests/*
+Copyright: 2024 Industrial Shields <support@industrialshields.com>
+License: GPL-3+

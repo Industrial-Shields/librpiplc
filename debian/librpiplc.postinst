@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+HOME_DIR=$(getent passwd 1000 | cut -d: -f6)
+
+if [ -d "$HOME_DIR" ]; then
+   if [ ! -d "$HOME_DIR/test" ]; then
+     ln -sr /usr/lib/librpiplc $HOME_DIR/test
+   fi
+fi

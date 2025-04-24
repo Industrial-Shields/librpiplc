@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+HOME_DIR="$(getent passwd 1000 | cut -d: -f6)"
+LINK_PATH="$HOME_DIR/test"
+TARGET_PATH="/usr/lib/librpiplc"
+
+if [ -L "$LINK_PATH" ]; then
+    LINK_TARGET=$(readlink "$LINK_PATH")
+    if [ -e "$LINK_TARGET" ]; then
+        ABSOLUTE_LINK_TARGET=$(realpath "$LINK_TARGET")
+    else
+        ABSOLUTE_LINK_TARGET=""
+    fi
+
+    if [ "$ABSOLUTE_LINK_TARGET" == "$TARGET_PATH" ] || [ -z "$ABSOLUTE_LINK_TARGET" ]; then
+	echo "Deleting test symlink..."
+        rm "$LINK_PATH"
+    fi
+fi

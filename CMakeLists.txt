@@ -18,17 +18,29 @@
 cmake_minimum_required(VERSION 3.18.4)
 project("RPi PLC GPIO Control")
 
+# Name of the library
+set(LIBNAME rpiplc)
+
 # Set C and C++ standards
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 11)
 
-# Enable some warning flags
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -fanalyzer")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fanalyzer")
-set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
+# Enable some warning flags, and force them as errors
+if(NOT LIBRPIPLC_DEFAULT_COMPILE_FLAGS)
+	set(LIBRPIPLC_DEFAULT_COMPILE_FLAGS
+		-Wall
+		-Wextra
+		-fanalyzer
+		-Werror
+	)
+endif()
+# Force PIE executables
+include(CheckPIESupported)
+check_pie_supported() # If not called, -pie is not passed to the linker
+set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+
 
 # Determine build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -38,21 +50,17 @@ endif()
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-	set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Og -g -fno-omit-frame-pointer")
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${CMAKE_C_FLAGS_DEBUG}")
+	add_compile_definitions("DEBUG")
+	set(LIBRPIPLC_DEFAULT_COMPILE_FLAGS "${LIBRPIPLC_DEFAULT_COMPILE_FLAGS} -O0 -g -fno-omit-frame-pointer")
 else()
+	add_compile_definitions("NDEBUG")
 	# Change -O3 optimization to -O2
-	string(REPLACE "-O3" "-O2" CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${CMAKE_CXX_FLAGS_RELEASE}")
+	string(REPLACE "-O3" "-O2" LIBRPIPLC_DEFAULT_COMPILE_FLAGS "${LIBRPIPLC_DEFAULT_COMPILE_FLAGS}")
 endif()
 
 
 # Enable compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-
-# Name of the library
-set(LIBNAME rpiplc)
 
 
 # If is not an out of source build, cause fatal error to
@@ -65,6 +73,7 @@ endif ()
 
 # Add the librpiplc CMakeLists.txt
 add_subdirectory(lib)
+
 
 # Add the tests CMakeLists.txt only if version and model is given
 if(DEFINED PLC_VERSION AND DEFINED PLC_MODEL)
