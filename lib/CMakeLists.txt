@@ -59,6 +59,6 @@ install(TARGETS ${LIBNAME} DESTINATION lib)
 
 set_target_properties(${LIBNAME} PROPERTIES
   PUBLIC_HEADER "rpiplc.h"
-  VERSION 3.0.3
-  SOVERSION 3
+  VERSION 4.0.0
+  SOVERSION 4
 )
