@@ -25,3 +25,14 @@
 
 #define PIN_DE_RE             MAKE_PIN_DIRECT(27)
 static const uint32_t DE_RE = PIN_DE_RE;
+
+#define PIN_EXP_RST           MAKE_PIN_DIRECT(26)
+#define PIN_EXP_CS            MAKE_PIN_DIRECT(11)
+#define PIN_EXP_AN            MAKE_PIN_DIRECT(16)
+#define PIN_EXP_PWM           MAKE_PIN_DIRECT(20)
+#define PIN_EXP_INT           MAKE_PIN_DIRECT(21)
+static const uint32_t EXP_RST = PIN_EXP_RST;
+static const uint32_t EXP_CS =  PIN_EXP_CS;
+static const uint32_t EXP_AN =  PIN_EXP_AN;
+static const uint32_t EXP_PWM = PIN_EXP_PWM;
+static const uint32_t EXP_INT = PIN_EXP_INT;

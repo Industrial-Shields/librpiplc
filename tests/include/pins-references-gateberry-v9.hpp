@@ -26,13 +26,13 @@
 static const uint32_t digitalInputsOutputs[] = {};
 static const size_t numDigitalInputOutput = sizeof(digitalInputsOutputs) / sizeof(uint32_t);
 
-static const uint32_t digitalInputs[] = {};
+static const uint32_t digitalInputs[] = {EXP_INT};
 static const size_t numDigitalInputs = sizeof(digitalInputs) / sizeof(uint32_t);
 
 static const uint32_t analogInputs[] = {};
 static const size_t numAnalogInputs = sizeof(analogInputs) / sizeof(uint32_t);
 
-static const uint32_t digitalOutputs[] = {DE_RE};
+static const uint32_t digitalOutputs[] = {DE_RE, EXP_PWM, EXP_RST};
 static const size_t numDigitalOutputs = sizeof(digitalOutputs) / sizeof(uint32_t);
 
 static const uint32_t PWMOutputs[] = {};
@@ -46,13 +46,13 @@ static const size_t numAnalogOutputs = sizeof(analogOutputs) / sizeof(uint32_t);
 static const pin_name_t namedDigitalInputsOutputs[] = {};
 static const size_t numNamedDigitalInputsOutputs = sizeof(namedDigitalInputsOutputs) / sizeof(pin_name_t);
 
-static const pin_name_t namedDigitalInputs[] = {};
+static const pin_name_t namedDigitalInputs[] = {{"EXP_INT", EXP_INT}};
 static const size_t numNamedDigitalInputs = sizeof(namedDigitalInputs) / sizeof(pin_name_t);
 
 static const pin_name_t namedAnalogInputs[] = {};
 static const size_t numNamedAnalogInputs = sizeof(namedAnalogInputs) / sizeof(pin_name_t);
 
-static const pin_name_t namedDigitalOutputs[] = {{"DE_RE", DE_RE}};
+static const pin_name_t namedDigitalOutputs[] = {{"DE_RE", DE_RE}, {"EXP_PWM", EXP_PWM}, {"EXP_RST", EXP_RST}};
 static const size_t numNamedDigitalOutputs = sizeof(namedDigitalOutputs) / sizeof(pin_name_t);
 
 static const pin_name_t namedPWMOutputs[] = {};
