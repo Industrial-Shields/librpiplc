@@ -1,10 +1,15 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
-HOME_DIR="$(getent passwd 1000 | cut -d: -f6)"
+HOME_DIR=$(getent passwd 1000 | cut -d: -f6)
+THOUSAND_USER=$(getent passwd 1000 | cut -d: -f1)
+if [ "$THOUSAND_USER" != "pi" ] || [ ! -d "$HOME_DIR" ]; then
+    # Only delete the test/ folder if the user pi has the 1000 UID
+    exit 0
+fi
+
 LINK_PATH="$HOME_DIR/test"
 TARGET_PATH="/usr/lib/librpiplc"
-
 if [ -L "$LINK_PATH" ]; then
     LINK_TARGET=$(readlink "$LINK_PATH")
     if [ -e "$LINK_TARGET" ]; then

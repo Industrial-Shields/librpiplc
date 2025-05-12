@@ -1,10 +1,16 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 HOME_DIR=$(getent passwd 1000 | cut -d: -f6)
+THOUSAND_USER=$(getent passwd 1000 | cut -d: -f1)
+if [ "$THOUSAND_USER" != "pi" ] || [ ! -d "$HOME_DIR" ]; then
+    # Only create the test/ folder if the user pi has the 1000 UID
+    exit 0
+fi
 
-if [ -d "$HOME_DIR" ]; then
-   if [ ! -d "$HOME_DIR/test" ]; then
-     ln -sr /usr/lib/librpiplc $HOME_DIR/test
-   fi
+SYMLINK_DIR="$HOME_DIR/test"
+if [ ! -d "$SYMLINK_DIR" ] && [ ! -L "$SYMLINK_DIR" ]; then
+    echo "Creating test symlink..."
+    ln -sr /usr/lib/librpiplc "$SYMLINK_DIR"
+    chown -h pi:pi "$SYMLINK_DIR"
 fi
