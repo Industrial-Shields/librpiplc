@@ -572,15 +572,18 @@ Pin I0.6 value: 0
 RPIPLC_V3 (deprecated)
 RPIPLC_V4
 RPIPLC_V6
+
 UPSAFEPI_V6
-TOUCHBERRY_PI_V1
+
 GATEBERRY_V9
+
+TOUCHBERRY_PI_V1
 ```
 
 
 ### <a name="available-models"></a>Available PLC models
 ```
-RPIPLC (for Raspberry PLC CPU)
+RPIPLC_CPU
 RPIPLC_19R
 RPIPLC_21
 RPIPLC_38AR
@@ -592,7 +595,10 @@ RPIPLC_54ARA
 RPIPLC_57AAR
 RPIPLC_57R
 RPIPLC_58
+
 UPSAFEPI (for UPSafePis)
-TOUCHBERRY_PI (for TouchBerry Pis)
+
 GATEBERRY (for GateBerries)
+
+TOUCHBERRY_PI (for TouchBerry Pis)
 ```
