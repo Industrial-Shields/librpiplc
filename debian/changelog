@@ -1,5 +1,9 @@
 librpiplc (4.0.0) bullseye bookworm; urgency=high
 
-  * Make it a .deb package.
+  * Make the library a .deb package, along with pre-compiled tests.
+  * Change RPIPLC macro to RPIPLC_CPU.
+  * Add GateBerry V9 click mapping.
+  * Add TouchBerry Pi V1 mapping.
+  * Add /home/pi/test symlink creation when installing librpiplc.
 
  -- Industrial Shields <support@industrialshields.com>  Thu, 24 Apr 2025 08:54:00 +0000
