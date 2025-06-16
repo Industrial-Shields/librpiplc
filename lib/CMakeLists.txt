@@ -52,8 +52,8 @@ add_dependencies(${LIBNAME} plc-peripherals)
 
 
 # Must be a matching pattern, because files are downloaded during the build process
-install(DIRECTORY ${SOURCE_DIR}/include/ DESTINATION include COMPONENT headers FILES_MATCHING PATTERN "*.h")
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include COMPONENT headers FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY ${SOURCE_DIR}/include/ DESTINATION include/lib${LIBNAME}/ COMPONENT headers FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include/lib${LIBNAME}/ COMPONENT headers FILES_MATCHING PATTERN "*.h")
 install(TARGETS ${LIBNAME} DESTINATION lib)
 
 
