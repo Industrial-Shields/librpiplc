@@ -9,4 +9,4 @@ debs:
 	mv ../*.buildinfo ../DebRepo
 
 clean_debian:
-	rm -rf DEBIAN .debhelper build obj-* debian/librpiplc/ debian/librpiplc-dev/ debian/librpiplc-tests-*/ debian/tmp/ debian/*debhelper* debian/*substvars* debian/files
+	$(MAKE) -f debian/rules clean
