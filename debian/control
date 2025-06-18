@@ -8,12 +8,13 @@ Build-Depends: cmake (>= 3.15), dh-cmake, dh-cmake-compat (= 1), dh-sequence-cma
 Package: librpiplc
 Architecture: any
 Priority: required
-Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Industrial Shields library for Raspberry-based PLCs
  librpiplc implements useful functions to use Raspberry based
  Industrial Shields PLCs for industrial environments. It also
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
+Depends: ${shlibs:Depends}
+Multi-Arch: same
 
 Package: librpiplc-dev
 Architecture: any
@@ -23,8 +24,8 @@ Description: Industrial Shields library headers for Raspberry-based PLCs
  Industrial Shields PLCs for industrial environments. It also
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
-Depends: librpiplc (= ${binary:Version}), ${misc:Depends}
-
+Depends: librpiplc (= ${binary:Version})
+Multi-Arch: same
 
 
 Package: librpiplc-tests-rpiplc-v6
@@ -35,7 +36,8 @@ Description: Industrial Shields test programs for Raspberry V6 PLCs
  Industrial Shields PLCs for industrial environments. It also
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
-Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: librpiplc (= ${binary:Version}), ${shlibs:Depends}
+Multi-Arch: same
 
 Package: librpiplc-tests-rpiplc-v4
 Architecture: any
@@ -45,7 +47,8 @@ Description: Industrial Shields test programs for Raspberry V4 PLCs
  Industrial Shields PLCs for industrial environments. It also
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
-Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: librpiplc (= ${binary:Version}), ${shlibs:Depends}
+Multi-Arch: same
 
 Package: librpiplc-tests-rpiplc-v3
 Architecture: any
@@ -55,7 +58,8 @@ Description: Industrial Shields test programs for Raspberry V3 PLCs
  Industrial Shields PLCs for industrial environments. It also
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
-Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: librpiplc (= ${binary:Version}), ${shlibs:Depends}
+Multi-Arch: same
 
 Package: librpiplc-tests-touchberry-pi-v1
 Architecture: any
@@ -65,7 +69,8 @@ Description: Industrial Shields test programs for TouchBerry V1 PLCs
  Industrial Shields PLCs for industrial environments. It also
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
-Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: librpiplc (= ${binary:Version}), ${shlibs:Depends}
+Multi-Arch: same
 
 Package: librpiplc-tests-upsafepi-v6
 Architecture: any
@@ -75,7 +80,8 @@ Description: Industrial Shields test programs for UPSafePi V6 PLCs
  Industrial Shields PLCs for industrial environments. It also
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
-Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: librpiplc (= ${binary:Version}), ${shlibs:Depends}
+Multi-Arch: same
 
 Package: librpiplc-tests-gateberry-v9
 Architecture: any
@@ -85,4 +91,5 @@ Description: Industrial Shields test programs for GateBerry V9 PLCs
  Industrial Shields PLCs for industrial environments. It also
  contains some adaptations based on the code structure of the
  Arduino IDE to make it more familiar.
-Depends: librpiplc (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: librpiplc (= ${binary:Version}), ${shlibs:Depends}
+Multi-Arch: same

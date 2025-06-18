@@ -1,6 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
+ARCH_SUFFIX=$(echo "$0" | cut -d ':' -f2 | cut -c4-5)
+if [[ $ARCH_SUFFIX == "64" ]]; then
+    TARGET_PATH="/usr/libexec/aarch64-linux-gnu/librpiplc"
+elif [[ $ARCH_SUFFIX == "hf" ]]; then
+    TARGET_PATH="/usr/libexec/arm-linux-gnueabihf/librpiplc"
+else
+    echo "Unknown architecture. Aborting..."
+    exit 1
+fi
+
 HOME_DIR=$(getent passwd 1000 | cut -d: -f6)
 THOUSAND_USER=$(getent passwd 1000 | cut -d: -f1)
 if [ "$THOUSAND_USER" != "pi" ] || [ ! -d "$HOME_DIR" ]; then
@@ -9,7 +19,6 @@ if [ "$THOUSAND_USER" != "pi" ] || [ ! -d "$HOME_DIR" ]; then
 fi
 
 LINK_PATH="$HOME_DIR/test"
-TARGET_PATH="/usr/lib/librpiplc"
 if [ -L "$LINK_PATH" ]; then
     LINK_TARGET=$(readlink "$LINK_PATH")
     if [ -e "$LINK_TARGET" ]; then

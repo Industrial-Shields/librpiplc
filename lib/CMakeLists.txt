@@ -52,13 +52,21 @@ add_dependencies(${LIBNAME} plc-peripherals)
 
 
 # Must be a matching pattern, because files are downloaded during the build process
-install(DIRECTORY ${SOURCE_DIR}/include/ DESTINATION include/lib${LIBNAME}/ COMPONENT headers FILES_MATCHING PATTERN "*.h")
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include/lib${LIBNAME}/ COMPONENT headers FILES_MATCHING PATTERN "*.h")
-install(TARGETS ${LIBNAME} DESTINATION lib)
+install(DIRECTORY ${SOURCE_DIR}/include/
+        DESTINATION include/${CMAKE_LIBRARY_PATH}/lib${LIBNAME}
+        COMPONENT headers
+        FILES_MATCHING PATTERN "*.h")
+
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        DESTINATION include/${CMAKE_LIBRARY_PATH}/lib${LIBNAME}
+        COMPONENT headers
+        FILES_MATCHING PATTERN "*.h")
+
+install(TARGETS ${LIBNAME} DESTINATION lib/${CMAKE_LIBRARY_PATH})
 
 
 set_target_properties(${LIBNAME} PROPERTIES
-  PUBLIC_HEADER "rpiplc.h"
-  VERSION 4.0.0
-  SOVERSION 4
+	PUBLIC_HEADER "rpiplc.h"
+	VERSION 4.0.0
+	SOVERSION 4
 )

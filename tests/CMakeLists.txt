@@ -47,7 +47,7 @@ function(build_one_test VERSION MODEL)
 
 
 		if(CMAKE_BUILD_TYPE STREQUAL "DebPackage")
-			install(TARGETS ${FULL_TEST_NAME} DESTINATION lib/librpiplc/${VERSION}/${MODEL})
+			install(TARGETS ${FULL_TEST_NAME} DESTINATION libexec/${CMAKE_LIBRARY_PATH}/librpiplc/${VERSION}/${MODEL})
 		else()
 			install(TARGETS ${FULL_TEST_NAME} DESTINATION $ENV{HOME}/test/${VERSION}/${MODEL})
 		endif()
