@@ -60,20 +60,21 @@
 #define __ARRAY_MCP23017 ((const uint8_t[]){})
 
 
-
-#define initExpandedGPIO(restart) (	  \
-	  ARRAY_MCP23008 = __ARRAY_MCP23008, \
-	  NUM_ARRAY_MCP23008 = sizeof(__ARRAY_MCP23008) / sizeof(uint8_t), \
-	  ARRAY_ADS1015 = __ARRAY_ADS1015, \
-	  NUM_ARRAY_ADS1015 = sizeof(__ARRAY_ADS1015) / sizeof(uint8_t), \
-	  ARRAY_PCA9685 = __ARRAY_PCA9685, \
-	  NUM_ARRAY_PCA9685 = sizeof(__ARRAY_PCA9685) / sizeof(uint8_t), \
-	  ARRAY_LTC2309 = __ARRAY_LTC2309, \
-	  NUM_ARRAY_LTC2309 = sizeof(__ARRAY_LTC2309) / sizeof(uint8_t), \
-	  ARRAY_MCP23017 = __ARRAY_MCP23017, \
-	  NUM_ARRAY_MCP23017 = sizeof(__ARRAY_MCP23017) / sizeof(uint8_t), \
-	  initExpandedGPIOV2(restart) \
-	  )
+#ifndef DONT_IMPORT_LIBRPIPLC_PREMAIN
+void __attribute__((constructor)) __attribute__((weak)) __libriplc_premain()
+{
+	ARRAY_MCP23008 = __ARRAY_MCP23008;
+	NUM_ARRAY_MCP23008 = sizeof(__ARRAY_MCP23008) / sizeof(uint8_t);
+	ARRAY_ADS1015 = __ARRAY_ADS1015;
+	NUM_ARRAY_ADS1015 = sizeof(__ARRAY_ADS1015) / sizeof(uint8_t);
+	ARRAY_PCA9685 = __ARRAY_PCA9685;
+	NUM_ARRAY_PCA9685 = sizeof(__ARRAY_PCA9685) / sizeof(uint8_t);
+	ARRAY_LTC2309 = __ARRAY_LTC2309;
+	NUM_ARRAY_LTC2309 = sizeof(__ARRAY_LTC2309) / sizeof(uint8_t);
+	ARRAY_MCP23017 = __ARRAY_MCP23017;
+	NUM_ARRAY_MCP23017 = sizeof(__ARRAY_MCP23017) / sizeof(uint8_t);
+}
+#endif // DONT_IMPORT_LIBRPIPLC_PREMAIN
 
 
 
