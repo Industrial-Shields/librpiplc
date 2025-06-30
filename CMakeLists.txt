@@ -51,7 +51,7 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_compile_definitions("DEBUG")
-	set(LIBRPIPLC_DEFAULT_COMPILE_FLAGS "${LIBRPIPLC_DEFAULT_COMPILE_FLAGS} -O0 -g -fno-omit-frame-pointer")
+	list(APPEND LIBRPIPLC_DEFAULT_COMPILE_FLAGS -Werror -Og -g -fno-omit-frame-pointer)
 else()
 	add_compile_definitions("NDEBUG")
 	# Change -O3 optimization to -O2
