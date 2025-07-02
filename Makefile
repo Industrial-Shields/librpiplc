@@ -10,3 +10,4 @@ debs:
 
 clean_debian:
 	$(MAKE) -f debian/rules clean
+	rm -rf obj-arm-linux-gnueabihf
