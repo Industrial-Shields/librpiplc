@@ -2,25 +2,49 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [4.0.0] - 2025-07-03
 
 ### 🚀 Features
+
+- [**breaking**] Merge branch 'new-pins-enum' and update plc-peripherals ([68879b7](68879b71c1e843db92d9bf3aa30f03568a3bd0e0))
+
+- Remove initExpandedGPIO breaking change ([ce918fe](ce918fe48a20453ea804b57956717f8883200380))
+
+- Change RPIPLC macro to RPIPLC_CPU ([98aa2a8](98aa2a8a1e73cbf1ddabb6bac77d74a95426b0c4))
 
 - Add GateBerry V9 click mapping ([596a7b9](596a7b9e1a0210b8ea0f45f4238a5ed0bd723f3f))
 
 
 ### 🐛 Bug Fixes
 
-- ~/test/ symlink creation when installing librpiplc ([5cccfc0](5cccfc0972fddb103829d752fb33bafa88dfbe08))
+- Append debug flags in CMake ([e459eda](e459eda9d67724f10bcd0151b94b79a32fe481bd))
 
-- Add sign key to .deb packages + Fix mv command ([382389c](382389cfb2956b0ea8699137afc3d9a5951e7be8))
+- Reduce Debian dependencies, and make the package truly multi-arch ([cd4d287](cd4d28720a2b056118c1daad420b153c50de6999))
+
+- Silence read-in-maintainer-script lintian error ([9427fac](9427fac585df52b60046914f7915a94b864a9c1c))
+
+- Install headers inside librpiplc/ directory ([29409f2](29409f2ed06e58d5f9df490579c2bc88b9b87188))
+
+- Ask to proceed with the APT installation ([f70af8e](f70af8e6064304e4d9d17dde3243bde029cab31f))
+
+- Update clean_debian target ([ed57dba](ed57dba6b08cd83a676b35482b4a92c3a5f3d177))
+
+- ~/test/ symlink creation when installing librpiplc ([5cccfc0](5cccfc0972fddb103829d752fb33bafa88dfbe08))
 
 - Fix RPIPLC_V4 and RPIPLC_V3 test compilations ([0244a51](0244a51a82f6f944aa7ef73103e7b949ab193956))
 
 
 ### 💼 Other
 
+- Update debian/changelog ([64fb869](64fb86926fb1bbbcc591953040463c372a2e20e1))
+
+- Update clean_debian target ([be7fc2f](be7fc2f04203e46f8ad437f526e1f1fbcf9f0c45))
+
+- Compile all tests when creating .deb package ([38b7bcc](38b7bccafd0bc7c20fbeec3962ebb805ec2ca70d))
+
 - Add support to cross-compile from armhf to arm64 in .deb package ([a9b3a15](a9b3a1572c4feafe17c980791c2be754c14f5e4b))
+
+- Add sign key to .deb packages + Fix mv command ([382389c](382389cfb2956b0ea8699137afc3d9a5951e7be8))
 
 - Modify debs target in Makefile ([d446d1c](d446d1c678759575fd1434f8581fb9c0864c041f))
 
@@ -31,9 +55,25 @@ All notable changes to this project will be documented in this file.
 - Update VERSION and SOVERSION inside CMake ([201b89f](201b89f1d7a0f17989fe662d1c0ca25ef71227a7))
 
 
+### 📚 Documentation
+
+- Update README with apt package, build instructions and general fixes ([6e50fe0](6e50fe03ecc3c14a4efba9da407e19fd4dccfdda))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Update clean_debian ([c84ee1a](c84ee1abf79b4b2f66ebf81afb1ab586d7b34225))
+
+- Update bug fixes cliff regex ([19205eb](19205ebf57ba06519613d0cb8eb9ee8bb7546731))
+
+- Update Debian changelog ([3c7e618](3c7e618b9deb1e39db126beabd58e972a03a2dbb))
+
+- Add CHANGELOG file ([74ae5ae](74ae5ae7a055dc4ff38b7741a7e86e3bc7bdf291))
+
+
 ## [3.0.2-hf] - 2024-05-27
 
-### 🐛 Bug Fixes
+### 💼 Other
 
 - Remove PIN8 from tests
 By default our images enable the SPI0-2CS overlay, and the tests will fail when trying to test this pin (as it's the CS of SPI0). This commit fixes this problem ([5151468](5151468039ccb40f792d0e755a3c4ffc4b46eb6e))
@@ -76,12 +116,9 @@ This reverts from commit 07f509eb671bdafb45e0b360548eacf40e7e2d3c to commit 0cd8
 
 ## [3.0.0] - 2024-04-25
 
-### 🐛 Bug Fixes
+### 💼 Other
 
 - Update README + Fix assert in Arduino functions ([48e95c8](48e95c80e6a4fc32d73b42595ee37deefe930fee))
-
-
-### 💼 Other
 
 - Add sudo ldconfig in README ([1cdd3ac](1cdd3acca20c4afdf12b53f799b7814b28b99d50))
 
@@ -205,6 +242,13 @@ Add main function to reference and explanation ([fc117fb](fc117fb47e7b1c40274ff1
 
 - BUG FIX: ads1015 buffer overflow ([7045b97](7045b97520bb92bbf718c8760b2dff7e461738bc))
 
+
+### 💼 Other
+
+- Version 1.1.0 ([fb9636c](fb9636cb96f1d1c52e685ae07a2585e471671273))
+
+- Remove main from library ([9712858](9712858655bc1eb682ae321f112944342f19e3fa))
+
 - Update README.md
 
 Bug fix: Add a line in Installing > 6. ([d73cf8a](d73cf8acf466ff2a3214042e4cbfd179fc063503))
@@ -216,13 +260,6 @@ Bug fix: set h2 to reference ([522bff1](522bff188687808ea428cce1f7051c067c1ad41a
 - Update README.md
 
 Bug fix README ([1b13807](1b13807d0d5481be781908d669add41740f256f9))
-
-
-### 💼 Other
-
-- Version 1.1.0 ([fb9636c](fb9636cb96f1d1c52e685ae07a2585e471671273))
-
-- Remove main from library ([9712858](9712858655bc1eb682ae321f112944342f19e3fa))
 
 - Update README.md
 
