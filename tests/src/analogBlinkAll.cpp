@@ -34,9 +34,13 @@ void setup() {
 	printf("librpiplc version: %s\n", LIB_RPIPLC_VERSION);
 	fflush(stdout);
 
-	if (initExpandedGPIO(false) < 0) {
+	int result = initExpandedGPIO(false);
+	if (result < 0 || result == PLC_PERIHPERALS_STRUCT_INVALID) {
 		PERROR_WITH_LINE("initExpandedGPIO failed");
 		exit(-1);
+	}
+	else if (result > 1) {
+		fprintf(stderr, "WARNING: initExpandedGPIO returned %d\n", result);
 	}
 
 	printf("%zu analog outputs: ", /*numNamedDigitalInputsOutputs +*/ numNamedAnalogOutputs);
@@ -44,10 +48,20 @@ void setup() {
 	/* TODO: Currently PWM in direct GPIOs are not supported. And also analogWriteAll doesn't work
 	 * with direct pins
 	 */
+
+	if (numNamedAnalogOutputs > 0) {
+		const size_t last_analog = numNamedAnalogOutputs - 1;
+		for (size_t c = 0; c < last_analog; c++) {
+			pinMode(namedAnalogOutputs[c].pin, OUTPUT);
+
+			printf("%s ", namedAnalogOutputs[c].name);
+		}
+		printf("%s\n", namedAnalogOutputs[last_analog].name);
+	}
 }
 
 static bool is_output_analog(uint8_t addr, uint8_t index) {
-	uint32_t pin = ((addr << 8) | index);
+	uint32_t pin = MAKE_PIN_PCA9685(addr, index);
 	for (size_t c = 0; c < numAnalogOutputs; c++) {
 		if (pin == analogOutputs[c]) {
 			pinMode(pin, OUTPUT);

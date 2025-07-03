@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Industrial Shields. All rights reserved
+ * Copyright (c) 2025 Industrial Shields. All rights reserved
  *
  * This file is part of librpiplc.
  *
@@ -17,22 +17,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __RPIPLC_VERSION_H__
-#define __RPIPLC_VERSION_H__
-
-#define __LIB_RPIPLC_VERSION_MAJOR_NUM 4
-#define __LIB_RPIPLC_VERSION_MINOR_NUM 0
-#define __LIB_RPIPLC_VERSION_PATCH_NUM 0
-
-
-
-extern const int LIB_RPIPLC_VERSION_MAJOR_NUM;
-extern const int LIB_RPIPLC_VERSION_MINOR_NUM;
-extern const int LIB_RPIPLC_VERSION_PATCH_NUM;
-
-extern const char* LIB_RPIPLC_VERSION_MAJOR;
-extern const char* LIB_RPIPLC_VERSION_MINOR;
-extern const char* LIB_RPIPLC_VERSION_PATCH;
-extern const char* LIB_RPIPLC_VERSION;
-
+#ifndef __RPIPLC_MAPPING_H__
+#error "Not importing from rpiplc-mapping.h"
 #endif
+
+#include <stdint.h>
+
+#define PIN_DE_RE             MAKE_PIN_DIRECT(27)
+static const uint32_t DE_RE = PIN_DE_RE;

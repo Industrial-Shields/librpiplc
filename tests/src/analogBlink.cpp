@@ -37,9 +37,13 @@ void setup() {
 	printf("librpiplc version: %s\n", LIB_RPIPLC_VERSION);
 	fflush(stdout);
 
-	if (initExpandedGPIO(false) < 0) {
+	int result = initExpandedGPIO(false);
+	if (result < 0 || result == PLC_PERIHPERALS_STRUCT_INVALID) {
 		PERROR_WITH_LINE("initExpandedGPIO failed");
 		exit(-1);
+	}
+	else if (result > 1) {
+		fprintf(stderr, "WARNING: initExpandedGPIO returned %d\n", result);
 	}
 
 	printf("%zu analog outputs: ", /*numNamedDigitalInputsOutputs +*/ numNamedAnalogOutputs);
@@ -64,9 +68,9 @@ void setup() {
 		for (size_t c = 0; c < last_analog; c++) {
 			analogBlinking.push_back(namedAnalogOutputs[c]);
 
-			pinMode(namedAnalogOutputs[c].pin, OUTPUT);
-
 			printf("%s ", namedAnalogOutputs[c].name);
+
+			pinMode(namedAnalogOutputs[c].pin, OUTPUT);
 		}
 		analogBlinking.push_back(namedAnalogOutputs[last_analog]);
 		printf("%s\n", namedAnalogOutputs[last_analog].name);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Industrial Shields. All rights reserved
+ * Copyright (c) 2025 Industrial Shields. All rights reserved
  *
  * This file is part of librpiplc.
  *
@@ -18,35 +18,21 @@
  */
 
 #ifndef __RPIPLC_MAPPING_H__
-#define __RPIPLC_MAPPING_H__
-
-#include <expanded-gpio.h>
-
-/**
- * This header is used to define which version of the PLC mappings
- * will be imported.
- */
-
-#if defined(RPIPLC_V6)
-#include "rpiplc-mapping-v6.h"
-
-#elif defined(RPIPLC_V4)
-#include "rpiplc-mapping-v4.h"
-
-#elif defined(RPIPLC_V3)
-#include "rpiplc-mapping-v3.h"
-
-#elif defined(UPSAFEPI_V6) && defined(UPSAFEPI)
-#include "upsafepi-mapping-v6.h"
-
-#elif defined(TOUCHBERRY_PI_V1) && defined(TOUCHBERRY_PI)
-#include "touchberry-pi-mapping-v1.h"
-
-#elif defined(GATEBERRY_V9) && defined(GATEBERRY)
-#include "gateberry-mapping-v9.h"
-
-#else
-#error "No selected PLC version"
+#error "Not importing from rpiplc-mapping.h"
 #endif
 
-#endif
+#include <stdint.h>
+
+#define PIN_DE_RE             MAKE_PIN_DIRECT(27)
+static const uint32_t DE_RE = PIN_DE_RE;
+
+#define PIN_EXP_RST           MAKE_PIN_DIRECT(26)
+#define PIN_EXP_CS            MAKE_PIN_DIRECT(11)
+#define PIN_EXP_AN            MAKE_PIN_DIRECT(16)
+#define PIN_EXP_PWM           MAKE_PIN_DIRECT(20)
+#define PIN_EXP_INT           MAKE_PIN_DIRECT(21)
+static const uint32_t EXP_RST = PIN_EXP_RST;
+static const uint32_t EXP_CS =  PIN_EXP_CS;
+static const uint32_t EXP_AN =  PIN_EXP_AN;
+static const uint32_t EXP_PWM = PIN_EXP_PWM;
+static const uint32_t EXP_INT = PIN_EXP_INT;

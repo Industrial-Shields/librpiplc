@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --buildsystem=cmake
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH) -DCMAKE_BUILD_TYPE=DebPackage -DPLC_VERSION=ALL -DPLC_MODEL=ALL
+
+
+override_dh_install:
+	dh_install
+# The librpiplc.so symlink must be in the -dev package, lintian warning
+	mkdir -p debian/librpiplc-dev/usr/lib/$(DEB_HOST_MULTIARCH)
+	mv debian/librpiplc/usr/lib/$(DEB_HOST_MULTIARCH)/librpiplc.so debian/librpiplc-dev/usr/lib/$(DEB_HOST_MULTIARCH)/
+# Create librpiplc folder for tests
+	mkdir -p debian/librpiplc/usr/libexec/$(DEB_HOST_MULTIARCH)/librpiplc/

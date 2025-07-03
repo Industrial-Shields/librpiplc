@@ -1,0 +1,8 @@
+# It is required for our PLCs to work
+excessive-priority-for-library-package
+
+# Silence
+package-name-doesnt-match-sonames
+
+# Enable prompts in preinst script
+read-in-maintainer-script

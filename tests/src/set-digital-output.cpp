@@ -31,9 +31,13 @@ using namespace std;
 
 
 int main(int argc, const char* argv[]) {
-	if (initExpandedGPIO(false) < 0) {
-		PERROR_WITH_LINE("initExpandedGPIO fail");
-	        return -1;
+	int result = initExpandedGPIO(false);
+	if (result < 0 || result == PLC_PERIHPERALS_STRUCT_INVALID) {
+		PERROR_WITH_LINE("initExpandedGPIO failed");
+		exit(-1);
+	}
+	else if (result > 1) {
+		fprintf(stderr, "WARNING: initExpandedGPIO returned %d\n", result);
 	}
 
 	if (argc != 3) {
