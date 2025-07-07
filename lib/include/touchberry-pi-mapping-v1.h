@@ -66,3 +66,14 @@ static const uint32_t O1 = PIN_O1;
 static const uint32_t O2 = PIN_O2;
 static const uint32_t O3 = PIN_O3;
 static const uint32_t O4 = PIN_O4;
+
+#define PIN_Q0           MAKE_PIN_DIRECT(19)
+#define PIN_Q1           MAKE_PIN_DIRECT(6)
+#define PIN_Q2           MAKE_PIN_DIRECT(5)
+#define PIN_Q3           MAKE_PIN_DIRECT(22)
+#define PIN_Q4           MAKE_PIN_DIRECT(4)
+static const uint32_t Q0 = PIN_Q0;
+static const uint32_t Q1 = PIN_Q1;
+static const uint32_t Q2 = PIN_Q2;
+static const uint32_t Q3 = PIN_Q3;
+static const uint32_t Q4 = PIN_Q4;
