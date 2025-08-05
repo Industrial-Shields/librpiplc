@@ -76,6 +76,8 @@ commit_parsers = [
   { body = ".*security", group = "<!-- 8 -->🛡️ Security" },
   { message = "^revert", group = "<!-- 9 -->◀️ Revert" },
   { message = "^Merge", skip = true },
+  { message = "Bump library version", skip = true },
+  { message = "Update ABI Dumps", skip = true },
   { message = "Update CHANGELOG.md", skip = true },
   { message = ".*", group = "<!-- 10 -->💼 Other" },
 ]
