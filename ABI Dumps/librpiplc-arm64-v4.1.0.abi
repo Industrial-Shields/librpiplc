@@ -1,0 +1,2846 @@
+$VAR1 = {
+          'ABI_DUMPER_VERSION' => '1.4',
+          'ABI_DUMP_VERSION' => '3.5',
+          'Arch' => 'AARCH64',
+          'GccVersion' => '10.2.1',
+          'Headers' => {
+                         '<built-in>' => 1,
+                         'FILE.h' => 1,
+                         'errno.h' => 1,
+                         'expanded-gpio.h' => 1,
+                         'fcntl.h' => 1,
+                         'gpio.h' => 1,
+                         'i2c-dev.h' => 1,
+                         'i2c-interface.h' => 1,
+                         'i2c.h' => 1,
+                         'int-ll64.h' => 1,
+                         'ioctl.h' => 1,
+                         'plc-peripherals-version.h' => 1,
+                         'rpi-gpio.h' => 1,
+                         'rpiplc-peripherals.h' => 1,
+                         'rpiplc-version.h' => 1,
+                         'stddef.h' => 1,
+                         'stdint-intn.h' => 1,
+                         'stdint-uintn.h' => 1,
+                         'stdio.h' => 1,
+                         'stdlib.h' => 1,
+                         'string.h' => 1,
+                         'struct_FILE.h' => 1,
+                         'struct_timespec.h' => 1,
+                         'time.h' => 1,
+                         'types.h' => 1,
+                         'unistd.h' => 1
+                       },
+          'Language' => 'C',
+          'LibraryName' => 'librpiplc.so.4.1.0',
+          'LibraryVersion' => '4',
+          'NameSpaces' => {},
+          'Needed' => {
+                        'libc.so.6' => 1
+                      },
+          'Sources' => {
+                         'expanded-gpio.c' => 1,
+                         'i2c-interface.c' => 1,
+                         'peripheral-ads1015.c' => 1,
+                         'peripheral-ltc2309.c' => 1,
+                         'peripheral-mcp23008.c' => 1,
+                         'peripheral-mcp23017.c' => 1,
+                         'peripheral-pca9685.c' => 1,
+                         'plc-peripherals-version.c' => 1,
+                         'rpi-gpio.c' => 1,
+                         'rpiplc-peripherals.c' => 1,
+                         'rpiplc-version.c' => 1
+                       },
+          'SymbolInfo' => {
+                            '10901' => {
+                                         'Line' => '247',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'i2c',
+                                                               'type' => '757'
+                                                             },
+                                                      '1' => {
+                                                               'name' => 'addr',
+                                                               'type' => '163'
+                                                             },
+                                                      '2' => {
+                                                               'name' => 'modes',
+                                                               'type' => '163'
+                                                             }
+                                                    },
+                                         'Return' => '111',
+                                         'ShortName' => 'mcp23008_set_pin_mode_all',
+                                         'Source' => 'peripheral-mcp23008.c'
+                                       },
+                            '11890' => {
+                                         'Line' => '141',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'i2c',
+                                                               'type' => '757'
+                                                             },
+                                                      '1' => {
+                                                               'name' => 'addr',
+                                                               'type' => '163'
+                                                             }
+                                                    },
+                                         'Return' => '111',
+                                         'ShortName' => 'mcp23008_init',
+                                         'Source' => 'peripheral-mcp23008.c'
+                                       },
+                            '1214' => {
+                                        'Line' => '495',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'values',
+                                                              'type' => '192'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'digitalWriteAll',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '1484' => {
+                                        'Line' => '456',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            }
+                                                   },
+                                        'Return' => '180',
+                                        'ShortName' => 'analogRead',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '15724' => {
+                                         'Line' => '340',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'i2c',
+                                                               'type' => '757'
+                                                             },
+                                                      '1' => {
+                                                               'name' => 'addr',
+                                                               'type' => '163'
+                                                             },
+                                                      '2' => {
+                                                               'name' => 'modes',
+                                                               'type' => '180'
+                                                             }
+                                                    },
+                                         'Return' => '111',
+                                         'ShortName' => 'mcp23017_set_pin_mode_all',
+                                         'Source' => 'peripheral-mcp23017.c'
+                                       },
+                            '17069' => {
+                                         'Line' => '200',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'i2c',
+                                                               'type' => '757'
+                                                             },
+                                                      '1' => {
+                                                               'name' => 'addr',
+                                                               'type' => '163'
+                                                             }
+                                                    },
+                                         'Return' => '111',
+                                         'ShortName' => 'mcp23017_init',
+                                         'Source' => 'peripheral-mcp23017.c'
+                                       },
+                            '1726' => {
+                                        'Line' => '416',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'desired_freq',
+                                                              'type' => '192'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'analogWriteSetFrequency',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '1982' => {
+                                        'Line' => '390',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'value',
+                                                              'type' => '180'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'analogWrite',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '2200' => {
+                                        'Line' => '338',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'digitalRead',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '22811' => {
+                                         'Line' => '259',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'i2c',
+                                                               'type' => '757'
+                                                             },
+                                                      '1' => {
+                                                               'name' => 'addr',
+                                                               'type' => '163'
+                                                             }
+                                                    },
+                                         'Return' => '111',
+                                         'ShortName' => 'pca9685_init',
+                                         'Source' => 'peripheral-pca9685.c'
+                                       },
+                            '24563' => {
+                                         'Header' => 'stdlib.h',
+                                         'Line' => '542',
+                                         'Return' => '1',
+                                         'ShortName' => 'calloc'
+                                       },
+                            '24631' => {
+                                         'Data' => 1,
+                                         'Header' => 'plc-peripherals-version.h',
+                                         'Line' => '29',
+                                         'Return' => '118',
+                                         'ShortName' => 'LIB_PLC_PERIPHERALS_VERSION_MAJOR_NUM',
+                                         'Source' => 'plc-peripherals-version.c',
+                                         'SourceLine' => '27'
+                                       },
+                            '24655' => {
+                                         'Data' => 1,
+                                         'Header' => 'plc-peripherals-version.h',
+                                         'Line' => '30',
+                                         'Return' => '118',
+                                         'ShortName' => 'LIB_PLC_PERIPHERALS_VERSION_MINOR_NUM',
+                                         'Source' => 'plc-peripherals-version.c',
+                                         'SourceLine' => '28'
+                                       },
+                            '24667' => {
+                                         'Data' => 1,
+                                         'Header' => 'plc-peripherals-version.h',
+                                         'Line' => '31',
+                                         'Return' => '118',
+                                         'ShortName' => 'LIB_PLC_PERIPHERALS_VERSION_PATCH_NUM',
+                                         'Source' => 'plc-peripherals-version.c',
+                                         'SourceLine' => '29'
+                                       },
+                            '24679' => {
+                                         'Data' => 1,
+                                         'Header' => 'plc-peripherals-version.h',
+                                         'Line' => '33',
+                                         'Return' => '24691',
+                                         'ShortName' => 'LIB_PLC_PERIPHERALS_VERSION_MAJOR',
+                                         'Source' => 'plc-peripherals-version.c',
+                                         'SourceLine' => '31'
+                                       },
+                            '24709' => {
+                                         'Data' => 1,
+                                         'Header' => 'plc-peripherals-version.h',
+                                         'Line' => '34',
+                                         'Return' => '24691',
+                                         'ShortName' => 'LIB_PLC_PERIPHERALS_VERSION_MINOR',
+                                         'Source' => 'plc-peripherals-version.c',
+                                         'SourceLine' => '32'
+                                       },
+                            '24721' => {
+                                         'Data' => 1,
+                                         'Header' => 'plc-peripherals-version.h',
+                                         'Line' => '35',
+                                         'Return' => '24691',
+                                         'ShortName' => 'LIB_PLC_PERIPHERALS_VERSION_PATCH',
+                                         'Source' => 'plc-peripherals-version.c',
+                                         'SourceLine' => '33'
+                                       },
+                            '24733' => {
+                                         'Data' => 1,
+                                         'Header' => 'plc-peripherals-version.h',
+                                         'Line' => '36',
+                                         'Return' => '24691',
+                                         'ShortName' => 'LIB_PLC_PERIPHERALS_VERSION',
+                                         'Source' => 'plc-peripherals-version.c',
+                                         'SourceLine' => '34'
+                                       },
+                            '2490' => {
+                                        'Line' => '301',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'value',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'digitalWrite',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '26275' => {
+                                         'Header' => 'rpi-gpio.h',
+                                         'Line' => '81',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'pin',
+                                                               'type' => '192'
+                                                             },
+                                                      '1' => {
+                                                               'name' => 'value',
+                                                               'type' => '163'
+                                                             }
+                                                    },
+                                         'Return' => '111',
+                                         'ShortName' => 'rpi_gpio_write',
+                                         'Source' => 'rpi-gpio.c',
+                                         'SourceLine' => '173'
+                                       },
+                            '26492' => {
+                                         'Header' => 'rpi-gpio.h',
+                                         'Line' => '71',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'pin',
+                                                               'type' => '192'
+                                                             },
+                                                      '1' => {
+                                                               'name' => 'value',
+                                                               'type' => '4606'
+                                                             }
+                                                    },
+                                         'Return' => '111',
+                                         'ShortName' => 'rpi_gpio_read',
+                                         'Source' => 'rpi-gpio.c',
+                                         'SourceLine' => '151'
+                                       },
+                            '26715' => {
+                                         'Header' => 'rpi-gpio.h',
+                                         'Line' => '61',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'pin',
+                                                               'type' => '192'
+                                                             },
+                                                      '1' => {
+                                                               'name' => 'mode',
+                                                               'type' => '163'
+                                                             }
+                                                    },
+                                         'Return' => '111',
+                                         'ShortName' => 'rpi_gpio_set_pin_mode',
+                                         'Source' => 'rpi-gpio.c',
+                                         'SourceLine' => '115'
+                                       },
+                            '26934' => {
+                                         'Header' => 'rpi-gpio.h',
+                                         'Line' => '51',
+                                         'Return' => '111',
+                                         'ShortName' => 'rpi_gpio_deinit',
+                                         'Source' => 'rpi-gpio.c',
+                                         'SourceLine' => '92'
+                                       },
+                            '27063' => {
+                                         'Header' => 'rpi-gpio.h',
+                                         'Line' => '41',
+                                         'Return' => '111',
+                                         'ShortName' => 'rpi_gpio_init',
+                                         'Source' => 'rpi-gpio.c',
+                                         'SourceLine' => '63'
+                                       },
+                            '2719' => {
+                                        'Line' => '264',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'mode',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'pinMode',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '27518' => {
+                                         'Alias' => '__builtin_memset',
+                                         'Header' => '<built-in>',
+                                         'Line' => '0',
+                                         'Return' => '1',
+                                         'ShortName' => 'memset'
+                                       },
+                            '27541' => {
+                                         'Header' => 'stdio.h',
+                                         'Line' => '246',
+                                         'Return' => '1',
+                                         'ShortName' => 'fopen'
+                                       },
+                            '27553' => {
+                                         'Header' => 'stdio.h',
+                                         'Line' => '564',
+                                         'Return' => '1',
+                                         'ShortName' => 'fgets'
+                                       },
+                            '27566' => {
+                                         'Header' => 'string.h',
+                                         'Line' => '330',
+                                         'Return' => '1',
+                                         'ShortName' => 'strstr'
+                                       },
+                            '27579' => {
+                                         'Header' => 'stdio.h',
+                                         'Line' => '213',
+                                         'Return' => '1',
+                                         'ShortName' => 'fclose'
+                                       },
+                            '28137' => {
+                                         'Line' => '79',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'micros',
+                                                               'type' => '192'
+                                                             }
+                                                    },
+                                         'Return' => '1',
+                                         'ShortName' => 'delayMicroseconds',
+                                         'Source' => 'rpiplc-peripherals.c'
+                                       },
+                            '28228' => {
+                                         'Line' => '71',
+                                         'Param' => {
+                                                      '0' => {
+                                                               'name' => 'milliseconds',
+                                                               'type' => '192'
+                                                             }
+                                                    },
+                                         'Return' => '1',
+                                         'ShortName' => 'delay',
+                                         'Source' => 'rpiplc-peripherals.c'
+                                       },
+                            '28994' => {
+                                         'Header' => 'rpiplc-peripherals.h',
+                                         'InLine' => 2,
+                                         'Line' => '64',
+                                         'Return' => '1',
+                                         'ShortName' => '__libriplc_premain'
+                                       },
+                            '29020' => {
+                                         'Header' => 'time.h',
+                                         'Line' => '205',
+                                         'Return' => '1',
+                                         'ShortName' => 'nanosleep'
+                                       },
+                            '29134' => {
+                                         'Data' => 1,
+                                         'Header' => 'rpiplc-version.h',
+                                         'Line' => '29',
+                                         'Return' => '118',
+                                         'ShortName' => 'LIB_RPIPLC_VERSION_MAJOR_NUM',
+                                         'Source' => 'rpiplc-version.c',
+                                         'SourceLine' => '8'
+                                       },
+                            '29158' => {
+                                         'Data' => 1,
+                                         'Header' => 'rpiplc-version.h',
+                                         'Line' => '30',
+                                         'Return' => '118',
+                                         'ShortName' => 'LIB_RPIPLC_VERSION_MINOR_NUM',
+                                         'Source' => 'rpiplc-version.c',
+                                         'SourceLine' => '9'
+                                       },
+                            '29170' => {
+                                         'Data' => 1,
+                                         'Header' => 'rpiplc-version.h',
+                                         'Line' => '31',
+                                         'Return' => '118',
+                                         'ShortName' => 'LIB_RPIPLC_VERSION_PATCH_NUM',
+                                         'Source' => 'rpiplc-version.c',
+                                         'SourceLine' => '10'
+                                       },
+                            '29182' => {
+                                         'Data' => 1,
+                                         'Header' => 'rpiplc-version.h',
+                                         'Line' => '33',
+                                         'Return' => '24691',
+                                         'ShortName' => 'LIB_RPIPLC_VERSION_MAJOR',
+                                         'Source' => 'rpiplc-version.c',
+                                         'SourceLine' => '12'
+                                       },
+                            '29212' => {
+                                         'Data' => 1,
+                                         'Header' => 'rpiplc-version.h',
+                                         'Line' => '34',
+                                         'Return' => '24691',
+                                         'ShortName' => 'LIB_RPIPLC_VERSION_MINOR',
+                                         'Source' => 'rpiplc-version.c',
+                                         'SourceLine' => '13'
+                                       },
+                            '29224' => {
+                                         'Data' => 1,
+                                         'Header' => 'rpiplc-version.h',
+                                         'Line' => '35',
+                                         'Return' => '24691',
+                                         'ShortName' => 'LIB_RPIPLC_VERSION_PATCH',
+                                         'Source' => 'rpiplc-version.c',
+                                         'SourceLine' => '14'
+                                       },
+                            '29236' => {
+                                         'Data' => 1,
+                                         'Header' => 'rpiplc-version.h',
+                                         'Line' => '36',
+                                         'Return' => '24691',
+                                         'ShortName' => 'LIB_RPIPLC_VERSION',
+                                         'Source' => 'rpiplc-version.c',
+                                         'SourceLine' => '15'
+                                       },
+                            '2967' => {
+                                        'Line' => '259',
+                                        'Return' => '111',
+                                        'ShortName' => 'deinitExpandedGPIONoReset',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '3030' => {
+                                        'Line' => '204',
+                                        'Return' => '111',
+                                        'ShortName' => 'deinitExpandedGPIO',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '3330' => {
+                                        'Line' => '124',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'restart_peripherals',
+                                                              'type' => '3571'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'initExpandedGPIO',
+                                        'Source' => 'expanded-gpio.c'
+                                      },
+                            '3884' => {
+                                        'Line' => '413',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'values',
+                                                              'type' => '21494'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'pca9685_pwm_write_all',
+                                        'Source' => 'peripheral-pca9685.c'
+                                      },
+                            '3896' => {
+                                        'Header' => 'errno.h',
+                                        'Line' => '37',
+                                        'Return' => '1',
+                                        'ShortName' => '__errno_location'
+                                      },
+                            '3908' => {
+                                        'Line' => '418',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'value',
+                                                              'type' => '7752'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23017_read_all',
+                                        'Source' => 'peripheral-mcp23017.c'
+                                      },
+                            '3920' => {
+                                        'Line' => '316',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'value',
+                                                              'type' => '4606'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23008_read_all',
+                                        'Source' => 'peripheral-mcp23008.c'
+                                      },
+                            '3932' => {
+                                        'Line' => '443',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'value',
+                                                              'type' => '180'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23017_write_all',
+                                        'Source' => 'peripheral-mcp23017.c'
+                                      },
+                            '3944' => {
+                                        'Line' => '335',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'value',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23008_write_all',
+                                        'Source' => 'peripheral-mcp23008.c'
+                                      },
+                            '3956' => {
+                                        'Line' => '366',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'values',
+                                                              'type' => '180'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'pca9685_write_all',
+                                        'Source' => 'peripheral-pca9685.c'
+                                      },
+                            '3968' => {
+                                        'Line' => '149',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'read_value',
+                                                              'type' => '7752'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'ads1015_unsigned_read',
+                                        'Source' => 'peripheral-ads1015.c'
+                                      },
+                            '3980' => {
+                                        'Line' => '66',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'read',
+                                                              'type' => '7752'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'normal_gpio_analog_read',
+                                        'Source' => 'rpiplc-peripherals.c'
+                                      },
+                            '3992' => {
+                                        'Line' => '70',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'read_value',
+                                                              'type' => '7752'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'ltc2309_read',
+                                        'Source' => 'peripheral-ltc2309.c'
+                                      },
+                            '4004' => {
+                                        'Line' => '382',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'prescaler_value',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'pca9685_pwm_frequency',
+                                        'Source' => 'peripheral-pca9685.c'
+                                      },
+                            '4016' => {
+                                        'Line' => '52',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'freq',
+                                                              'type' => '192'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'normal_gpio_pwm_frequency',
+                                        'Source' => 'rpiplc-peripherals.c'
+                                      },
+                            '4028' => {
+                                        'Line' => '404',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'value',
+                                                              'type' => '180'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'pca9685_pwm_write',
+                                        'Source' => 'peripheral-pca9685.c'
+                                      },
+                            '4040' => {
+                                        'Line' => '57',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'value',
+                                                              'type' => '180'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'normal_gpio_pwm_write',
+                                        'Source' => 'rpiplc-peripherals.c'
+                                      },
+                            '4052' => {
+                                        'Line' => '355',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'value',
+                                                              'type' => '4606'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23017_read',
+                                        'Source' => 'peripheral-mcp23017.c'
+                                      },
+                            '4064' => {
+                                        'Line' => '62',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'read',
+                                                              'type' => '4606'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'normal_gpio_read',
+                                        'Source' => 'rpiplc-peripherals.c'
+                                      },
+                            '4076' => {
+                                        'Line' => '257',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'value',
+                                                              'type' => '4606'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23008_read',
+                                        'Source' => 'peripheral-mcp23008.c'
+                                      },
+                            '4088' => {
+                                        'Line' => '48',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'value',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'normal_gpio_write',
+                                        'Source' => 'rpiplc-peripherals.c'
+                                      },
+                            '4100' => {
+                                        'Line' => '352',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'value',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'pca9685_write',
+                                        'Source' => 'peripheral-pca9685.c'
+                                      },
+                            '4112' => {
+                                        'Line' => '282',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'value',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23008_write',
+                                        'Source' => 'peripheral-mcp23008.c'
+                                      },
+                            '4124' => {
+                                        'Line' => '382',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'value',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23017_write',
+                                        'Source' => 'peripheral-mcp23017.c'
+                                      },
+                            '4136' => {
+                                        'Line' => '212',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'mode',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23008_set_pin_mode',
+                                        'Source' => 'peripheral-mcp23008.c'
+                                      },
+                            '4148' => {
+                                        'Line' => '44',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pin',
+                                                              'type' => '192'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'mode',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'normal_gpio_set_pin_mode',
+                                        'Source' => 'rpiplc-peripherals.c'
+                                      },
+                            '4160' => {
+                                        'Line' => '303',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'mode',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23017_set_pin_mode',
+                                        'Source' => 'peripheral-mcp23017.c'
+                                      },
+                            '4172' => {
+                                        'Line' => '188',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'pointer_to_i2c',
+                                                              'type' => '6712'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'i2c_deinit',
+                                        'Source' => 'i2c-interface.c'
+                                      },
+                            '4184' => {
+                                        'Line' => '321',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'pca9685_deinit',
+                                        'Source' => 'peripheral-pca9685.c'
+                                      },
+                            '4196' => {
+                                        'Line' => '75',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'ads1015_deinit',
+                                        'Source' => 'peripheral-ads1015.c'
+                                      },
+                            '4208' => {
+                                        'Line' => '179',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23008_deinit',
+                                        'Source' => 'peripheral-mcp23008.c'
+                                      },
+                            '4220' => {
+                                        'Line' => '56',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'ltc2309_deinit',
+                                        'Source' => 'peripheral-ltc2309.c'
+                                      },
+                            '4232' => {
+                                        'Line' => '260',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'mcp23017_deinit',
+                                        'Source' => 'peripheral-mcp23017.c'
+                                      },
+                            '4244' => {
+                                        'Header' => 'expanded-gpio.h',
+                                        'Line' => '125',
+                                        'Return' => '111',
+                                        'ShortName' => 'normal_gpio_deinit',
+                                        'Source' => 'rpiplc-peripherals.c',
+                                        'SourceLine' => '40'
+                                      },
+                            '4256' => {
+                                        'Header' => 'expanded-gpio.h',
+                                        'Line' => '124',
+                                        'Return' => '111',
+                                        'ShortName' => 'normal_gpio_init',
+                                        'Source' => 'rpiplc-peripherals.c',
+                                        'SourceLine' => '36'
+                                      },
+                            '4268' => {
+                                        'Header' => 'unistd.h',
+                                        'Line' => '460',
+                                        'Return' => '1',
+                                        'ShortName' => 'usleep'
+                                      },
+                            '4281' => {
+                                        'Line' => '123',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'bus',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '757',
+                                        'ShortName' => 'i2c_init',
+                                        'Source' => 'i2c-interface.c'
+                                      },
+                            '443' => {
+                                       'Data' => 1,
+                                       'Header' => 'expanded-gpio.h',
+                                       'Line' => '97',
+                                       'Return' => '293',
+                                       'ShortName' => '_peripherals_struct',
+                                       'Source' => 'expanded-gpio.c',
+                                       'SourceLine' => '121'
+                                     },
+                            '455' => {
+                                       'Data' => 1,
+                                       'Header' => 'expanded-gpio.h',
+                                       'Line' => '119',
+                                       'Return' => '118',
+                                       'ShortName' => 'I2C_BUS',
+                                       'Source' => 'rpiplc-peripherals.c',
+                                       'SourceLine' => '30'
+                                     },
+                            '467' => {
+                                       'Data' => 1,
+                                       'Header' => 'expanded-gpio.h',
+                                       'Line' => '121',
+                                       'Return' => '175',
+                                       'ShortName' => 'NORMAL_GPIO_INPUT',
+                                       'Source' => 'rpiplc-peripherals.c',
+                                       'SourceLine' => '32'
+                                     },
+                            '479' => {
+                                       'Data' => 1,
+                                       'Header' => 'expanded-gpio.h',
+                                       'Line' => '122',
+                                       'Return' => '175',
+                                       'ShortName' => 'NORMAL_GPIO_OUTPUT',
+                                       'Source' => 'rpiplc-peripherals.c',
+                                       'SourceLine' => '33'
+                                     },
+                            '4793' => {
+                                        'Header' => 'i2c-interface.h',
+                                        'Line' => '187',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '175'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'read_order',
+                                                              'type' => '5256'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'to_read',
+                                                              'type' => '5262'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'i2c_write_then_read',
+                                        'Source' => 'i2c-interface.c',
+                                        'SourceLine' => '540'
+                                      },
+                            '5441' => {
+                                        'Header' => 'i2c-interface.h',
+                                        'Line' => '163',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '175'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'to_read',
+                                                              'type' => '5262'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'i2c_read',
+                                        'Source' => 'i2c-interface.c',
+                                        'SourceLine' => '425'
+                                      },
+                            '5965' => {
+                                        'Header' => 'i2c-interface.h',
+                                        'Line' => '141',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '175'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'to_write',
+                                                              'type' => '5256'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'i2c_write',
+                                        'Source' => 'i2c-interface.c',
+                                        'SourceLine' => '311'
+                                      },
+                            '7103' => {
+                                        'Header' => 'ioctl.h',
+                                        'Line' => '41',
+                                        'Return' => '1',
+                                        'ShortName' => 'ioctl'
+                                      },
+                            '7127' => {
+                                        'Header' => 'unistd.h',
+                                        'Line' => '353',
+                                        'Return' => '1',
+                                        'ShortName' => 'close'
+                                      },
+                            '7140' => {
+                                        'Header' => 'stdlib.h',
+                                        'Line' => '565',
+                                        'Return' => '1',
+                                        'ShortName' => 'free'
+                                      },
+                            '7153' => {
+                                        'Header' => 'stdio.h',
+                                        'Line' => '354',
+                                        'Return' => '1',
+                                        'ShortName' => 'snprintf'
+                                      },
+                            '7166' => {
+                                        'Header' => 'fcntl.h',
+                                        'Line' => '168',
+                                        'Return' => '1',
+                                        'ShortName' => 'open'
+                                      },
+                            '7178' => {
+                                        'Header' => 'stdlib.h',
+                                        'Line' => '539',
+                                        'Return' => '1',
+                                        'ShortName' => 'malloc'
+                                      },
+                            '7758' => {
+                                        'Line' => '89',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            },
+                                                     '2' => {
+                                                              'name' => 'index',
+                                                              'type' => '163'
+                                                            },
+                                                     '3' => {
+                                                              'name' => 'read_value',
+                                                              'type' => '8135'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'ads1015_read',
+                                        'Source' => 'peripheral-ads1015.c'
+                                      },
+                            '8271' => {
+                                        'Line' => '70',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'ads1015_init',
+                                        'Source' => 'peripheral-ads1015.c'
+                                      },
+                            '832' => {
+                                       'Line' => '556',
+                                       'Param' => {
+                                                    '0' => {
+                                                             'name' => 'addr',
+                                                             'type' => '163'
+                                                           },
+                                                    '1' => {
+                                                             'name' => 'values',
+                                                             'type' => '711'
+                                                           }
+                                                  },
+                                       'Return' => '111',
+                                       'ShortName' => 'analogWriteAll',
+                                       'Source' => 'expanded-gpio.c'
+                                     },
+                            '9268' => {
+                                        'Line' => '51',
+                                        'Param' => {
+                                                     '0' => {
+                                                              'name' => 'i2c',
+                                                              'type' => '757'
+                                                            },
+                                                     '1' => {
+                                                              'name' => 'addr',
+                                                              'type' => '163'
+                                                            }
+                                                   },
+                                        'Return' => '111',
+                                        'ShortName' => 'ltc2309_init',
+                                        'Source' => 'peripheral-ltc2309.c'
+                                      },
+                            '998' => {
+                                       'Line' => '529',
+                                       'Param' => {
+                                                    '0' => {
+                                                             'name' => 'addr',
+                                                             'type' => '163'
+                                                           },
+                                                    '1' => {
+                                                             'name' => 'values',
+                                                             'type' => '154'
+                                                           }
+                                                  },
+                                       'Return' => '111',
+                                       'ShortName' => 'digitalReadAll',
+                                       'Source' => 'expanded-gpio.c'
+                                     }
+                          },
+          'SymbolVersion' => {},
+          'Symbols' => {
+                         'librpiplc.so.4.1.0' => {
+                                                   'I2C_BUS' => -4,
+                                                   'LIB_PLC_PERIPHERALS_VERSION' => -8,
+                                                   'LIB_PLC_PERIPHERALS_VERSION_MAJOR' => -8,
+                                                   'LIB_PLC_PERIPHERALS_VERSION_MAJOR_NUM' => -4,
+                                                   'LIB_PLC_PERIPHERALS_VERSION_MINOR' => -8,
+                                                   'LIB_PLC_PERIPHERALS_VERSION_MINOR_NUM' => -4,
+                                                   'LIB_PLC_PERIPHERALS_VERSION_PATCH' => -8,
+                                                   'LIB_PLC_PERIPHERALS_VERSION_PATCH_NUM' => -4,
+                                                   'LIB_RPIPLC_VERSION' => -8,
+                                                   'LIB_RPIPLC_VERSION_MAJOR' => -8,
+                                                   'LIB_RPIPLC_VERSION_MAJOR_NUM' => -4,
+                                                   'LIB_RPIPLC_VERSION_MINOR' => -8,
+                                                   'LIB_RPIPLC_VERSION_MINOR_NUM' => -4,
+                                                   'LIB_RPIPLC_VERSION_PATCH' => -8,
+                                                   'LIB_RPIPLC_VERSION_PATCH_NUM' => -4,
+                                                   'NORMAL_GPIO_INPUT' => -1,
+                                                   'NORMAL_GPIO_OUTPUT' => -1,
+                                                   '__libriplc_premain' => 1,
+                                                   '_peripherals_struct' => -80,
+                                                   'ads1015_deinit' => 1,
+                                                   'ads1015_init' => 1,
+                                                   'ads1015_read' => 1,
+                                                   'ads1015_unsigned_read' => 1,
+                                                   'analogRead' => 1,
+                                                   'analogWrite' => 1,
+                                                   'analogWriteAll' => 1,
+                                                   'analogWriteSetFrequency' => 1,
+                                                   'deinitExpandedGPIO' => 1,
+                                                   'deinitExpandedGPIONoReset' => 1,
+                                                   'delay' => 1,
+                                                   'delayMicroseconds' => 1,
+                                                   'digitalRead' => 1,
+                                                   'digitalReadAll' => 1,
+                                                   'digitalWrite' => 1,
+                                                   'digitalWriteAll' => 1,
+                                                   'i2c_deinit' => 1,
+                                                   'i2c_init' => 1,
+                                                   'i2c_read' => 1,
+                                                   'i2c_write' => 1,
+                                                   'i2c_write_then_read' => 1,
+                                                   'initExpandedGPIO' => 1,
+                                                   'ltc2309_deinit' => 1,
+                                                   'ltc2309_init' => 1,
+                                                   'ltc2309_read' => 1,
+                                                   'mcp23008_deinit' => 1,
+                                                   'mcp23008_init' => 1,
+                                                   'mcp23008_read' => 1,
+                                                   'mcp23008_read_all' => 1,
+                                                   'mcp23008_set_pin_mode' => 1,
+                                                   'mcp23008_set_pin_mode_all' => 1,
+                                                   'mcp23008_write' => 1,
+                                                   'mcp23008_write_all' => 1,
+                                                   'mcp23017_deinit' => 1,
+                                                   'mcp23017_init' => 1,
+                                                   'mcp23017_read' => 1,
+                                                   'mcp23017_read_all' => 1,
+                                                   'mcp23017_set_pin_mode' => 1,
+                                                   'mcp23017_set_pin_mode_all' => 1,
+                                                   'mcp23017_write' => 1,
+                                                   'mcp23017_write_all' => 1,
+                                                   'normal_gpio_analog_read' => 1,
+                                                   'normal_gpio_deinit' => 1,
+                                                   'normal_gpio_init' => 1,
+                                                   'normal_gpio_pwm_frequency' => 1,
+                                                   'normal_gpio_pwm_write' => 1,
+                                                   'normal_gpio_read' => 1,
+                                                   'normal_gpio_set_pin_mode' => 1,
+                                                   'normal_gpio_write' => 1,
+                                                   'pca9685_deinit' => 1,
+                                                   'pca9685_init' => 1,
+                                                   'pca9685_pwm_frequency' => 1,
+                                                   'pca9685_pwm_write' => 1,
+                                                   'pca9685_pwm_write_all' => 1,
+                                                   'pca9685_write' => 1,
+                                                   'pca9685_write_all' => 1,
+                                                   'pinMode' => 1,
+                                                   'rpi_gpio_deinit' => 1,
+                                                   'rpi_gpio_init' => 1,
+                                                   'rpi_gpio_read' => 1,
+                                                   'rpi_gpio_set_pin_mode' => 1,
+                                                   'rpi_gpio_write' => 1
+                                                 }
+                       },
+          'Target' => 'unix',
+          'TypeInfo' => {
+                          '-1' => {
+                                    'Name' => '...',
+                                    'Type' => 'Intrinsic'
+                                  },
+                          '1' => {
+                                   'Name' => 'void',
+                                   'Type' => 'Intrinsic'
+                                 },
+                          '111' => {
+                                     'Name' => 'int',
+                                     'Size' => '4',
+                                     'Type' => 'Intrinsic'
+                                   },
+                          '118' => {
+                                     'BaseType' => '111',
+                                     'Name' => 'int const',
+                                     'Size' => '4',
+                                     'Type' => 'Const'
+                                   },
+                          '123' => {
+                                     'BaseType' => '59',
+                                     'Header' => 'types.h',
+                                     'Line' => '42',
+                                     'Name' => '__uint32_t',
+                                     'Size' => '4',
+                                     'Type' => 'Typedef'
+                                   },
+                          '135' => {
+                                     'Name' => 'long',
+                                     'Size' => '8',
+                                     'Type' => 'Intrinsic'
+                                   },
+                          '142' => {
+                                     'BaseType' => '66',
+                                     'Header' => 'types.h',
+                                     'Line' => '45',
+                                     'Name' => '__uint64_t',
+                                     'Size' => '8',
+                                     'Type' => 'Typedef'
+                                   },
+                          '154' => {
+                                     'BaseType' => '1',
+                                     'Name' => 'void*',
+                                     'Size' => '8',
+                                     'Type' => 'Pointer'
+                                   },
+                          '156' => {
+                                     'Name' => 'char',
+                                     'Size' => '1',
+                                     'Type' => 'Intrinsic'
+                                   },
+                          '163' => {
+                                     'BaseType' => '80',
+                                     'Header' => 'stdint-uintn.h',
+                                     'Line' => '24',
+                                     'Name' => 'uint8_t',
+                                     'Size' => '1',
+                                     'Type' => 'Typedef'
+                                   },
+                          '175' => {
+                                     'BaseType' => '163',
+                                     'Name' => 'uint8_t const',
+                                     'Size' => '1',
+                                     'Type' => 'Const'
+                                   },
+                          '180' => {
+                                     'BaseType' => '99',
+                                     'Header' => 'stdint-uintn.h',
+                                     'Line' => '25',
+                                     'Name' => 'uint16_t',
+                                     'Size' => '2',
+                                     'Type' => 'Typedef'
+                                   },
+                          '192' => {
+                                     'BaseType' => '123',
+                                     'Header' => 'stdint-uintn.h',
+                                     'Line' => '26',
+                                     'Name' => 'uint32_t',
+                                     'Size' => '4',
+                                     'Type' => 'Typedef'
+                                   },
+                          '204' => {
+                                     'BaseType' => '142',
+                                     'Header' => 'stdint-uintn.h',
+                                     'Line' => '27',
+                                     'Name' => 'uint64_t',
+                                     'Size' => '8',
+                                     'Type' => 'Typedef'
+                                   },
+                          '21121' => {
+                                       'BaseType' => '180',
+                                       'Name' => 'uint16_t const',
+                                       'Size' => '2',
+                                       'Type' => 'Const'
+                                     },
+                          '21494' => {
+                                       'BaseType' => '21121',
+                                       'Name' => 'uint16_t const*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '21500' => {
+                                       'BaseType' => '163',
+                                       'Name' => 'uint8_t[65]',
+                                       'Size' => '65',
+                                       'Type' => 'Array'
+                                     },
+                          '216' => {
+                                     'BaseType' => '66',
+                                     'Header' => 'stddef.h',
+                                     'Line' => '209',
+                                     'Name' => 'size_t',
+                                     'Size' => '8',
+                                     'Type' => 'Typedef'
+                                   },
+                          '228' => {
+                                     'Name' => 'long long',
+                                     'Size' => '8',
+                                     'Type' => 'Intrinsic'
+                                   },
+                          '235' => {
+                                     'Name' => 'long double',
+                                     'Size' => '16',
+                                     'Type' => 'Intrinsic'
+                                   },
+                          '242' => {
+                                     'Header' => 'expanded-gpio.h',
+                                     'Line' => '57',
+                                     'Memb' => {
+                                                 '0' => {
+                                                          'name' => 'PLC_DIRECT',
+                                                          'value' => '0'
+                                                        },
+                                                 '1' => {
+                                                          'name' => 'PLC_PCA9685',
+                                                          'value' => '1'
+                                                        },
+                                                 '2' => {
+                                                          'name' => 'PLC_MCP23008',
+                                                          'value' => '2'
+                                                        },
+                                                 '3' => {
+                                                          'name' => 'PLC_MCP23017',
+                                                          'value' => '3'
+                                                        },
+                                                 '4' => {
+                                                          'name' => 'PLC_LTC2309',
+                                                          'value' => '4'
+                                                        },
+                                                 '5' => {
+                                                          'name' => 'PLC_ADS1015',
+                                                          'value' => '5'
+                                                        }
+                                               },
+                                     'Name' => 'anon-enum-expanded-gpio.h-57',
+                                     'Size' => '4',
+                                     'Type' => 'Enum'
+                                   },
+                          '24342' => {
+                                       'BaseType' => '163',
+                                       'Name' => 'uint8_t[5]',
+                                       'Size' => '5',
+                                       'Type' => 'Array'
+                                     },
+                          '24691' => {
+                                       'BaseType' => '24704',
+                                       'Name' => 'char const*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '24704' => {
+                                       'BaseType' => '156',
+                                       'Name' => 'char const',
+                                       'Size' => '1',
+                                       'Type' => 'Const'
+                                     },
+                          '25002' => {
+                                       'BaseType' => '135',
+                                       'Header' => 'types.h',
+                                       'Line' => '152',
+                                       'Name' => '__off_t',
+                                       'Size' => '8',
+                                       'Type' => 'Typedef'
+                                     },
+                          '25014' => {
+                                       'BaseType' => '135',
+                                       'Header' => 'types.h',
+                                       'Line' => '153',
+                                       'Name' => '__off64_t',
+                                       'Size' => '8',
+                                       'Type' => 'Typedef'
+                                     },
+                          '25028' => {
+                                       'BaseType' => '156',
+                                       'Name' => 'char*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '25070' => {
+                                       'BaseType' => '111',
+                                       'Header' => 'int-ll64.h',
+                                       'Line' => '26',
+                                       'Name' => '__s32',
+                                       'Size' => '4',
+                                       'Type' => 'Typedef'
+                                     },
+                          '25101' => {
+                                       'BaseType' => '704',
+                                       'Header' => 'int-ll64.h',
+                                       'Line' => '31',
+                                       'Name' => '__u64',
+                                       'Size' => '8',
+                                       'Type' => 'Typedef'
+                                     },
+                          '25136' => {
+                                       'Header' => 'gpio.h',
+                                       'Line' => '72',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_USED',
+                                                            'value' => '1'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_ACTIVE_LOW',
+                                                            'value' => '2'
+                                                          },
+                                                   '10' => {
+                                                             'name' => 'GPIO_V2_LINE_FLAG_BIAS_DISABLED',
+                                                             'value' => '1024'
+                                                           },
+                                                   '11' => {
+                                                             'name' => 'GPIO_V2_LINE_FLAG_EVENT_CLOCK_REALTIME',
+                                                             'value' => '2048'
+                                                           },
+                                                   '12' => {
+                                                             'name' => 'GPIO_V2_LINE_FLAG_EVENT_CLOCK_HTE',
+                                                             'value' => '4096'
+                                                           },
+                                                   '2' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_INPUT',
+                                                            'value' => '4'
+                                                          },
+                                                   '3' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_OUTPUT',
+                                                            'value' => '8'
+                                                          },
+                                                   '4' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_EDGE_RISING',
+                                                            'value' => '16'
+                                                          },
+                                                   '5' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_EDGE_FALLING',
+                                                            'value' => '32'
+                                                          },
+                                                   '6' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_OPEN_DRAIN',
+                                                            'value' => '64'
+                                                          },
+                                                   '7' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_OPEN_SOURCE',
+                                                            'value' => '128'
+                                                          },
+                                                   '8' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_BIAS_PULL_UP',
+                                                            'value' => '256'
+                                                          },
+                                                   '9' => {
+                                                            'name' => 'GPIO_V2_LINE_FLAG_BIAS_PULL_DOWN',
+                                                            'value' => '512'
+                                                          }
+                                                 },
+                                       'Name' => 'enum gpio_v2_line_flag',
+                                       'Size' => '4',
+                                       'Type' => 'Enum'
+                                     },
+                          '25238' => {
+                                       'Header' => 'gpio.h',
+                                       'Line' => '96',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'bits',
+                                                            'offset' => '0',
+                                                            'type' => '25101'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'mask',
+                                                            'offset' => '8',
+                                                            'type' => '25101'
+                                                          }
+                                                 },
+                                       'Name' => 'struct gpio_v2_line_values',
+                                       'Size' => '16',
+                                       'Type' => 'Struct'
+                                     },
+                          '25281' => {
+                                       'Header' => 'gpio.h',
+                                       'Line' => '133',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'flags',
+                                                            'offset' => '0',
+                                                            'type' => '25101'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'values',
+                                                            'offset' => '0',
+                                                            'type' => '25101'
+                                                          },
+                                                   '2' => {
+                                                            'name' => 'debounce_period_us',
+                                                            'offset' => '0',
+                                                            'type' => '4653'
+                                                          }
+                                                 },
+                                       'Name' => 'anon-union-gpio.h-133',
+                                       'Size' => '8',
+                                       'Type' => 'Union'
+                                     },
+                          '25330' => {
+                                       'Header' => 'gpio.h',
+                                       'Line' => '130',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'id',
+                                                            'offset' => '0',
+                                                            'type' => '4653'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'padding',
+                                                            'offset' => '4',
+                                                            'type' => '4653'
+                                                          },
+                                                   '2' => {
+                                                            'name' => 'unnamed0',
+                                                            'offset' => '8',
+                                                            'type' => '25281'
+                                                          }
+                                                 },
+                                       'Name' => 'struct gpio_v2_line_attribute',
+                                       'Size' => '16',
+                                       'Type' => 'Struct'
+                                     },
+                          '25377' => {
+                                       'Header' => 'gpio.h',
+                                       'Line' => '148',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'attr',
+                                                            'offset' => '0',
+                                                            'type' => '25330'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'mask',
+                                                            'offset' => '22',
+                                                            'type' => '25101'
+                                                          }
+                                                 },
+                                       'Name' => 'struct gpio_v2_line_config_attribute',
+                                       'Size' => '24',
+                                       'Type' => 'Struct'
+                                     },
+                          '25420' => {
+                                       'Header' => 'gpio.h',
+                                       'Line' => '167',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'flags',
+                                                            'offset' => '0',
+                                                            'type' => '25101'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'num_attrs',
+                                                            'offset' => '8',
+                                                            'type' => '4653'
+                                                          },
+                                                   '2' => {
+                                                            'name' => 'padding',
+                                                            'offset' => '18',
+                                                            'type' => '25490'
+                                                          },
+                                                   '3' => {
+                                                            'name' => 'attrs',
+                                                            'offset' => '50',
+                                                            'type' => '25506'
+                                                          }
+                                                 },
+                                       'Name' => 'struct gpio_v2_line_config',
+                                       'Size' => '272',
+                                       'Type' => 'Struct'
+                                     },
+                          '25490' => {
+                                       'BaseType' => '4653',
+                                       'Name' => '__u32[5]',
+                                       'Size' => '20',
+                                       'Type' => 'Array'
+                                     },
+                          '25506' => {
+                                       'BaseType' => '25377',
+                                       'Name' => 'struct gpio_v2_line_config_attribute[10]',
+                                       'Size' => '240',
+                                       'Type' => 'Array'
+                                     },
+                          '25523' => {
+                                       'Header' => 'gpio.h',
+                                       'Line' => '196',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'offsets',
+                                                            'offset' => '0',
+                                                            'type' => '25636'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'consumer',
+                                                            'offset' => '598',
+                                                            'type' => '4457'
+                                                          },
+                                                   '2' => {
+                                                            'name' => 'config',
+                                                            'offset' => '648',
+                                                            'type' => '25420'
+                                                          },
+                                                   '3' => {
+                                                            'name' => 'num_lines',
+                                                            'offset' => '1376',
+                                                            'type' => '4653'
+                                                          },
+                                                   '4' => {
+                                                            'name' => 'event_buffer_size',
+                                                            'offset' => '1380',
+                                                            'type' => '4653'
+                                                          },
+                                                   '5' => {
+                                                            'name' => 'padding',
+                                                            'offset' => '1384',
+                                                            'type' => '25490'
+                                                          },
+                                                   '6' => {
+                                                            'name' => 'fd',
+                                                            'offset' => '1416',
+                                                            'type' => '25070'
+                                                          }
+                                                 },
+                                       'Name' => 'struct gpio_v2_line_request',
+                                       'Size' => '592',
+                                       'Type' => 'Struct'
+                                     },
+                          '25636' => {
+                                       'BaseType' => '4653',
+                                       'Name' => '__u32[64]',
+                                       'Size' => '256',
+                                       'Type' => 'Array'
+                                     },
+                          '25664' => {
+                                       'Header' => 'struct_FILE.h',
+                                       'Line' => '49',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => '_flags',
+                                                            'offset' => '0',
+                                                            'type' => '111'
+                                                          },
+                                                   '1' => {
+                                                            'name' => '_IO_read_ptr',
+                                                            'offset' => '8',
+                                                            'type' => '25028'
+                                                          },
+                                                   '10' => {
+                                                             'name' => '_IO_backup_base',
+                                                             'offset' => '128',
+                                                             'type' => '25028'
+                                                           },
+                                                   '11' => {
+                                                             'name' => '_IO_save_end',
+                                                             'offset' => '136',
+                                                             'type' => '25028'
+                                                           },
+                                                   '12' => {
+                                                             'name' => '_markers',
+                                                             'offset' => '150',
+                                                             'type' => '26080'
+                                                           },
+                                                   '13' => {
+                                                             'name' => '_chain',
+                                                             'offset' => '260',
+                                                             'type' => '26086'
+                                                           },
+                                                   '14' => {
+                                                             'name' => '_fileno',
+                                                             'offset' => '274',
+                                                             'type' => '111'
+                                                           },
+                                                   '15' => {
+                                                             'name' => '_flags2',
+                                                             'offset' => '278',
+                                                             'type' => '111'
+                                                           },
+                                                   '16' => {
+                                                             'name' => '_old_offset',
+                                                             'offset' => '288',
+                                                             'type' => '25002'
+                                                           },
+                                                   '17' => {
+                                                             'name' => '_cur_column',
+                                                             'offset' => '296',
+                                                             'type' => '52'
+                                                           },
+                                                   '18' => {
+                                                             'name' => '_vtable_offset',
+                                                             'offset' => '304',
+                                                             'type' => '73'
+                                                           },
+                                                   '19' => {
+                                                             'name' => '_shortbuf',
+                                                             'offset' => '305',
+                                                             'type' => '26092'
+                                                           },
+                                                   '2' => {
+                                                            'name' => '_IO_read_end',
+                                                            'offset' => '22',
+                                                            'type' => '25028'
+                                                          },
+                                                   '20' => {
+                                                             'name' => '_lock',
+                                                             'offset' => '310',
+                                                             'type' => '26108'
+                                                           },
+                                                   '21' => {
+                                                             'name' => '_offset',
+                                                             'offset' => '324',
+                                                             'type' => '25014'
+                                                           },
+                                                   '22' => {
+                                                             'name' => '_codecvt',
+                                                             'offset' => '338',
+                                                             'type' => '26119'
+                                                           },
+                                                   '23' => {
+                                                             'name' => '_wide_data',
+                                                             'offset' => '352',
+                                                             'type' => '26130'
+                                                           },
+                                                   '24' => {
+                                                             'name' => '_freeres_list',
+                                                             'offset' => '360',
+                                                             'type' => '26086'
+                                                           },
+                                                   '25' => {
+                                                             'name' => '_freeres_buf',
+                                                             'offset' => '374',
+                                                             'type' => '154'
+                                                           },
+                                                   '26' => {
+                                                             'name' => '__pad5',
+                                                             'offset' => '388',
+                                                             'type' => '216'
+                                                           },
+                                                   '27' => {
+                                                             'name' => '_mode',
+                                                             'offset' => '402',
+                                                             'type' => '111'
+                                                           },
+                                                   '28' => {
+                                                             'name' => '_unused2',
+                                                             'offset' => '406',
+                                                             'type' => '26136'
+                                                           },
+                                                   '3' => {
+                                                            'name' => '_IO_read_base',
+                                                            'offset' => '36',
+                                                            'type' => '25028'
+                                                          },
+                                                   '4' => {
+                                                            'name' => '_IO_write_base',
+                                                            'offset' => '50',
+                                                            'type' => '25028'
+                                                          },
+                                                   '5' => {
+                                                            'name' => '_IO_write_ptr',
+                                                            'offset' => '64',
+                                                            'type' => '25028'
+                                                          },
+                                                   '6' => {
+                                                            'name' => '_IO_write_end',
+                                                            'offset' => '72',
+                                                            'type' => '25028'
+                                                          },
+                                                   '7' => {
+                                                            'name' => '_IO_buf_base',
+                                                            'offset' => '86',
+                                                            'type' => '25028'
+                                                          },
+                                                   '8' => {
+                                                            'name' => '_IO_buf_end',
+                                                            'offset' => '100',
+                                                            'type' => '25028'
+                                                          },
+                                                   '9' => {
+                                                            'name' => '_IO_save_base',
+                                                            'offset' => '114',
+                                                            'type' => '25028'
+                                                          }
+                                                 },
+                                       'Name' => 'struct _IO_FILE',
+                                       'Size' => '216',
+                                       'Type' => 'Struct'
+                                     },
+                          '26055' => {
+                                       'BaseType' => '25664',
+                                       'Header' => 'FILE.h',
+                                       'Line' => '7',
+                                       'Name' => 'FILE',
+                                       'Size' => '216',
+                                       'Type' => 'Typedef'
+                                     },
+                          '26067' => {
+                                       'BaseType' => '1',
+                                       'Header' => 'struct_FILE.h',
+                                       'Line' => '43',
+                                       'Name' => '_IO_lock_t',
+                                       'Type' => 'Typedef'
+                                     },
+                          '26075' => {
+                                       'Name' => 'struct _IO_marker',
+                                       'Type' => 'Struct'
+                                     },
+                          '26080' => {
+                                       'BaseType' => '26075',
+                                       'Name' => 'struct _IO_marker*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '26086' => {
+                                       'BaseType' => '25664',
+                                       'Name' => 'struct _IO_FILE*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '26092' => {
+                                       'BaseType' => '156',
+                                       'Name' => 'char[1]',
+                                       'Size' => '1',
+                                       'Type' => 'Array'
+                                     },
+                          '26108' => {
+                                       'BaseType' => '26067',
+                                       'Name' => '_IO_lock_t*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '26114' => {
+                                       'Name' => 'struct _IO_codecvt',
+                                       'Type' => 'Struct'
+                                     },
+                          '26119' => {
+                                       'BaseType' => '26114',
+                                       'Name' => 'struct _IO_codecvt*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '26125' => {
+                                       'Name' => 'struct _IO_wide_data',
+                                       'Type' => 'Struct'
+                                     },
+                          '26130' => {
+                                       'BaseType' => '26125',
+                                       'Name' => 'struct _IO_wide_data*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '26136' => {
+                                       'BaseType' => '156',
+                                       'Name' => 'char[20]',
+                                       'Size' => '20',
+                                       'Type' => 'Array'
+                                     },
+                          '26152' => {
+                                       'BaseType' => '26055',
+                                       'Name' => 'FILE*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '26164' => {
+                                       'BaseType' => '118',
+                                       'Name' => 'int const*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '26170' => {
+                                       'BaseType' => '111',
+                                       'Name' => 'int[64]',
+                                       'Size' => '256',
+                                       'Type' => 'Array'
+                                     },
+                          '26263' => {
+                                       'Line' => '39',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'rpi_4',
+                                                            'value' => '0'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'rpi_5',
+                                                            'value' => '1'
+                                                          },
+                                                   '2' => {
+                                                            'name' => 'no_rpi',
+                                                            'value' => '2'
+                                                          }
+                                                 },
+                                       'Name' => 'enum rpi_type_t',
+                                       'Size' => '4',
+                                       'Source' => 'rpi-gpio.c',
+                                       'Type' => 'Enum'
+                                     },
+                          '26928' => {
+                                       'BaseType' => '111',
+                                       'Name' => 'int*',
+                                       'Size' => '8',
+                                       'Type' => 'Pointer'
+                                     },
+                          '27465' => {
+                                       'BaseType' => '156',
+                                       'Name' => 'char[128]',
+                                       'Size' => '128',
+                                       'Type' => 'Array'
+                                     },
+                          '27741' => {
+                                       'BaseType' => '135',
+                                       'Header' => 'types.h',
+                                       'Line' => '160',
+                                       'Name' => '__time_t',
+                                       'Size' => '8',
+                                       'Type' => 'Typedef'
+                                     },
+                          '27753' => {
+                                       'BaseType' => '135',
+                                       'Header' => 'types.h',
+                                       'Line' => '196',
+                                       'Name' => '__syscall_slong_t',
+                                       'Size' => '8',
+                                       'Type' => 'Typedef'
+                                     },
+                          '27825' => {
+                                       'Header' => 'struct_timespec.h',
+                                       'Line' => '10',
+                                       'Memb' => {
+                                                   '0' => {
+                                                            'name' => 'tv_sec',
+                                                            'offset' => '0',
+                                                            'type' => '27741'
+                                                          },
+                                                   '1' => {
+                                                            'name' => 'tv_nsec',
+                                                            'offset' => '8',
+                                                            'type' => '27753'
+                                                          }
+                                                 },
+                                       'Name' => 'struct timespec',
+                                       'Size' => '16',
+                                       'Type' => 'Struct'
+                                     },
+                          '293' => {
+                                     'Header' => 'expanded-gpio.h',
+                                     'Line' => '66',
+                                     'Memb' => {
+                                                 '0' => {
+                                                          'name' => 'arrayMCP23008',
+                                                          'offset' => '0',
+                                                          'type' => '437'
+                                                        },
+                                                 '1' => {
+                                                          'name' => 'numArrayMCP23008',
+                                                          'offset' => '8',
+                                                          'type' => '216'
+                                                        },
+                                                 '2' => {
+                                                          'name' => 'arrayADS1015',
+                                                          'offset' => '22',
+                                                          'type' => '437'
+                                                        },
+                                                 '3' => {
+                                                          'name' => 'numArrayADS1015',
+                                                          'offset' => '36',
+                                                          'type' => '216'
+                                                        },
+                                                 '4' => {
+                                                          'name' => 'arrayPCA9685',
+                                                          'offset' => '50',
+                                                          'type' => '437'
+                                                        },
+                                                 '5' => {
+                                                          'name' => 'numArrayPCA9685',
+                                                          'offset' => '64',
+                                                          'type' => '216'
+                                                        },
+                                                 '6' => {
+                                                          'name' => 'arrayLTC2309',
+                                                          'offset' => '72',
+                                                          'type' => '437'
+                                                        },
+                                                 '7' => {
+                                                          'name' => 'numArrayLTC2309',
+                                                          'offset' => '86',
+                                                          'type' => '216'
+                                                        },
+                                                 '8' => {
+                                                          'name' => 'arrayMCP23017',
+                                                          'offset' => '100',
+                                                          'type' => '437'
+                                                        },
+                                                 '9' => {
+                                                          'name' => 'numArrayMCP23017',
+                                                          'offset' => '114',
+                                                          'type' => '216'
+                                                        }
+                                               },
+                                     'Name' => 'struct peripherals_t',
+                                     'Size' => '80',
+                                     'Type' => 'Struct'
+                                   },
+                          '3571' => {
+                                      'Name' => '_Bool',
+                                      'Size' => '1',
+                                      'Type' => 'Intrinsic'
+                                    },
+                          '3763' => {
+                                      'Name' => 'int(i2c_interface_t*, uint8_t)',
+                                      'Param' => {
+                                                   '0' => {
+                                                            'type' => '757'
+                                                          },
+                                                   '1' => {
+                                                            'type' => '163'
+                                                          }
+                                                 },
+                                      'Return' => '111',
+                                      'Type' => 'Func'
+                                    },
+                          '3783' => {
+                                      'Name' => 'int(*)(i2c_interface_t*, uint8_t)',
+                                      'Param' => {
+                                                   '0' => {
+                                                            'type' => '757'
+                                                          },
+                                                   '1' => {
+                                                            'type' => '163'
+                                                          }
+                                                 },
+                                      'Return' => '111',
+                                      'Size' => '8',
+                                      'Type' => 'FuncPtr'
+                                    },
+                          '437' => {
+                                     'BaseType' => '175',
+                                     'Name' => 'uint8_t const*',
+                                     'Size' => '8',
+                                     'Type' => 'Pointer'
+                                   },
+                          '4457' => {
+                                      'BaseType' => '156',
+                                      'Name' => 'char[32]',
+                                      'Size' => '32',
+                                      'Type' => 'Array'
+                                    },
+                          '45' => {
+                                    'Name' => 'unsigned char',
+                                    'Size' => '1',
+                                    'Type' => 'Intrinsic'
+                                  },
+                          '4553' => {
+                                      'Header' => 'i2c-interface.h',
+                                      'Line' => '66',
+                                      'Memb' => {
+                                                  '0' => {
+                                                           'name' => 'buff',
+                                                           'offset' => '0',
+                                                           'type' => '437'
+                                                         },
+                                                  '1' => {
+                                                           'name' => 'len',
+                                                           'offset' => '8',
+                                                           'type' => '216'
+                                                         }
+                                                },
+                                      'Name' => 'struct i2c_write_t',
+                                      'Size' => '16',
+                                      'Type' => 'Struct'
+                                    },
+                          '4565' => {
+                                      'BaseType' => '4553',
+                                      'Name' => 'i2c_write_t const',
+                                      'Size' => '16',
+                                      'Type' => 'Const'
+                                    },
+                          '4606' => {
+                                      'BaseType' => '163',
+                                      'Name' => 'uint8_t*',
+                                      'Size' => '8',
+                                      'Type' => 'Pointer'
+                                    },
+                          '4612' => {
+                                      'Header' => 'i2c-interface.h',
+                                      'Line' => '78',
+                                      'Memb' => {
+                                                  '0' => {
+                                                           'name' => 'buff',
+                                                           'offset' => '0',
+                                                           'type' => '4606'
+                                                         },
+                                                  '1' => {
+                                                           'name' => 'len',
+                                                           'offset' => '8',
+                                                           'type' => '216'
+                                                         }
+                                                },
+                                      'Name' => 'struct i2c_read_t',
+                                      'Size' => '16',
+                                      'Type' => 'Struct'
+                                    },
+                          '4624' => {
+                                      'BaseType' => '4612',
+                                      'Name' => 'i2c_read_t const',
+                                      'Size' => '16',
+                                      'Type' => 'Const'
+                                    },
+                          '4629' => {
+                                      'BaseType' => '45',
+                                      'Header' => 'int-ll64.h',
+                                      'Line' => '21',
+                                      'Name' => '__u8',
+                                      'Size' => '1',
+                                      'Type' => 'Typedef'
+                                    },
+                          '4641' => {
+                                      'BaseType' => '52',
+                                      'Header' => 'int-ll64.h',
+                                      'Line' => '24',
+                                      'Name' => '__u16',
+                                      'Size' => '2',
+                                      'Type' => 'Typedef'
+                                    },
+                          '4653' => {
+                                      'BaseType' => '59',
+                                      'Header' => 'int-ll64.h',
+                                      'Line' => '27',
+                                      'Name' => '__u32',
+                                      'Size' => '4',
+                                      'Type' => 'Typedef'
+                                    },
+                          '4665' => {
+                                      'Header' => 'i2c-dev.h',
+                                      'Line' => '50',
+                                      'Memb' => {
+                                                  '0' => {
+                                                           'name' => 'msgs',
+                                                           'offset' => '0',
+                                                           'type' => '4781'
+                                                         },
+                                                  '1' => {
+                                                           'name' => 'nmsgs',
+                                                           'offset' => '8',
+                                                           'type' => '4653'
+                                                         }
+                                                },
+                                      'Name' => 'struct i2c_rdwr_ioctl_data',
+                                      'Size' => '16',
+                                      'Type' => 'Struct'
+                                    },
+                          '4705' => {
+                                      'BaseType' => '4665',
+                                      'Name' => 'struct i2c_rdwr_ioctl_data const',
+                                      'Size' => '16',
+                                      'Type' => 'Const'
+                                    },
+                          '4710' => {
+                                      'Header' => 'i2c.h',
+                                      'Line' => '73',
+                                      'Memb' => {
+                                                  '0' => {
+                                                           'name' => 'addr',
+                                                           'offset' => '0',
+                                                           'type' => '4641'
+                                                         },
+                                                  '1' => {
+                                                           'name' => 'flags',
+                                                           'offset' => '2',
+                                                           'type' => '4641'
+                                                         },
+                                                  '2' => {
+                                                           'name' => 'len',
+                                                           'offset' => '4',
+                                                           'type' => '4641'
+                                                         },
+                                                  '3' => {
+                                                           'name' => 'buf',
+                                                           'offset' => '8',
+                                                           'type' => '4787'
+                                                         }
+                                                },
+                                      'Name' => 'struct i2c_msg',
+                                      'Size' => '16',
+                                      'Type' => 'Struct'
+                                    },
+                          '4776' => {
+                                      'BaseType' => '4710',
+                                      'Name' => 'struct i2c_msg const',
+                                      'Size' => '16',
+                                      'Type' => 'Const'
+                                    },
+                          '4781' => {
+                                      'BaseType' => '4710',
+                                      'Name' => 'struct i2c_msg*',
+                                      'Size' => '8',
+                                      'Type' => 'Pointer'
+                                    },
+                          '4787' => {
+                                      'BaseType' => '4629',
+                                      'Name' => '__u8*',
+                                      'Size' => '8',
+                                      'Type' => 'Pointer'
+                                    },
+                          '491' => {
+                                     'Header' => 'expanded-gpio.h',
+                                     'Line' => '147',
+                                     'Memb' => {
+                                                 '0' => {
+                                                          'name' => 'I2C_ALREADY_INITIALIZED',
+                                                          'value' => '1'
+                                                        },
+                                                 '1' => {
+                                                          'name' => 'I2C_ALREADY_DEINITIALIZED',
+                                                          'value' => '2'
+                                                        },
+                                                 '10' => {
+                                                           'name' => 'ARRAY_ADS1015_DEINIT_FAIL',
+                                                           'value' => '11'
+                                                         },
+                                                 '11' => {
+                                                           'name' => 'ARRAY_MCP23008_DEINIT_FAIL',
+                                                           'value' => '12'
+                                                         },
+                                                 '12' => {
+                                                           'name' => 'ARRAY_LTC2309_DEINIT_FAIL',
+                                                           'value' => '13'
+                                                         },
+                                                 '13' => {
+                                                           'name' => 'ARRAY_MCP23017_DEINIT_FAIL',
+                                                           'value' => '14'
+                                                         },
+                                                 '14' => {
+                                                           'name' => 'PLC_PERIHPERALS_STRUCT_INVALID',
+                                                           'value' => '33'
+                                                         },
+                                                 '15' => {
+                                                           'name' => 'NORMAL_GPIO_SET_PIN_MODE_FAIL',
+                                                           'value' => '15'
+                                                         },
+                                                 '16' => {
+                                                           'name' => 'ARRAY_MCP23008_SET_PIN_MODE_FAIL',
+                                                           'value' => '16'
+                                                         },
+                                                 '17' => {
+                                                           'name' => 'ARRAY_MCP23017_SET_PIN_MODE_FAIL',
+                                                           'value' => '17'
+                                                         },
+                                                 '18' => {
+                                                           'name' => 'NORMAL_GPIO_WRITE_FAIL',
+                                                           'value' => '18'
+                                                         },
+                                                 '19' => {
+                                                           'name' => 'ARRAY_PCA9685_WRITE_FAIL',
+                                                           'value' => '19'
+                                                         },
+                                                 '2' => {
+                                                          'name' => 'NORMAL_GPIO_INIT_FAIL',
+                                                          'value' => '3'
+                                                        },
+                                                 '20' => {
+                                                           'name' => 'ARRAY_MCP23008_WRITE_FAIL',
+                                                           'value' => '20'
+                                                         },
+                                                 '21' => {
+                                                           'name' => 'ARRAY_MCP23017_WRITE_FAIL',
+                                                           'value' => '21'
+                                                         },
+                                                 '22' => {
+                                                           'name' => 'NORMAL_GPIO_PWM_WRITE_FAIL',
+                                                           'value' => '22'
+                                                         },
+                                                 '23' => {
+                                                           'name' => 'ARRAY_PCA9685_PWM_WRITE_FAIL',
+                                                           'value' => '23'
+                                                         },
+                                                 '24' => {
+                                                           'name' => 'NORMAL_GPIO_PWM_CHANGE_FREQ_FAIL',
+                                                           'value' => '24'
+                                                         },
+                                                 '25' => {
+                                                           'name' => 'ARRAY_PCA9685_PWM_CHANGE_FREQ_FAIL',
+                                                           'value' => '25'
+                                                         },
+                                                 '26' => {
+                                                           'name' => 'ARRAY_PCA9685_WRITE_ALL_FAIL',
+                                                           'value' => '26'
+                                                         },
+                                                 '27' => {
+                                                           'name' => 'ARRAY_MCP23008_WRITE_ALL_FAIL',
+                                                           'value' => '27'
+                                                         },
+                                                 '28' => {
+                                                           'name' => 'ARRAY_MCP23017_WRITE_ALL_FAIL',
+                                                           'value' => '28'
+                                                         },
+                                                 '29' => {
+                                                           'name' => 'ARRAY_MCP23008_READ_ALL_FAIL',
+                                                           'value' => '29'
+                                                         },
+                                                 '3' => {
+                                                          'name' => 'ARRAY_PCA9685_INIT_FAIL',
+                                                          'value' => '4'
+                                                        },
+                                                 '30' => {
+                                                           'name' => 'ARRAY_MCP23017_READ_ALL_FAIL',
+                                                           'value' => '30'
+                                                         },
+                                                 '31' => {
+                                                           'name' => 'ARRAY_PCA9685_PWM_WRITE_ALL_FAIL',
+                                                           'value' => '31'
+                                                         },
+                                                 '32' => {
+                                                           'name' => 'I2C_PIN_WITHOUT_I2C_BUS',
+                                                           'value' => '32'
+                                                         },
+                                                 '4' => {
+                                                          'name' => 'ARRAY_ADS1015_INIT_FAIL',
+                                                          'value' => '5'
+                                                        },
+                                                 '5' => {
+                                                          'name' => 'ARRAY_MCP23008_INIT_FAIL',
+                                                          'value' => '6'
+                                                        },
+                                                 '6' => {
+                                                          'name' => 'ARRAY_LTC2309_INIT_FAIL',
+                                                          'value' => '7'
+                                                        },
+                                                 '7' => {
+                                                          'name' => 'ARRAY_MCP23017_INIT_FAIL',
+                                                          'value' => '8'
+                                                        },
+                                                 '8' => {
+                                                          'name' => 'NORMAL_GPIO_DEINIT_FAIL',
+                                                          'value' => '9'
+                                                        },
+                                                 '9' => {
+                                                          'name' => 'ARRAY_PCA9685_DEINIT_FAIL',
+                                                          'value' => '10'
+                                                        }
+                                               },
+                                     'Name' => 'anon-enum-expanded-gpio.h-147',
+                                     'Size' => '4',
+                                     'Type' => 'Enum'
+                                   },
+                          '52' => {
+                                    'Name' => 'unsigned short',
+                                    'Size' => '2',
+                                    'Type' => 'Intrinsic'
+                                  },
+                          '5256' => {
+                                      'BaseType' => '4565',
+                                      'Name' => 'i2c_write_t const*',
+                                      'Size' => '8',
+                                      'Type' => 'Pointer'
+                                    },
+                          '5262' => {
+                                      'BaseType' => '4624',
+                                      'Name' => 'i2c_read_t const*',
+                                      'Size' => '8',
+                                      'Type' => 'Pointer'
+                                    },
+                          '5404' => {
+                                      'BaseType' => '4710',
+                                      'Name' => 'struct i2c_msg[2]',
+                                      'Size' => '32',
+                                      'Type' => 'Array'
+                                    },
+                          '5420' => {
+                                      'BaseType' => '4705',
+                                      'Name' => 'struct i2c_rdwr_ioctl_data const[1]',
+                                      'Size' => '16',
+                                      'Type' => 'Array'
+                                    },
+                          '5436' => {
+                                      'BaseType' => '5420',
+                                      'Name' => 'struct i2c_rdwr_ioctl_data const[1] const',
+                                      'Size' => '16',
+                                      'Type' => 'Const'
+                                    },
+                          '59' => {
+                                    'Name' => 'unsigned int',
+                                    'Size' => '4',
+                                    'Type' => 'Intrinsic'
+                                  },
+                          '5949' => {
+                                      'BaseType' => '4710',
+                                      'Name' => 'struct i2c_msg[1]',
+                                      'Size' => '16',
+                                      'Type' => 'Array'
+                                    },
+                          '66' => {
+                                    'Name' => 'unsigned long',
+                                    'Size' => '8',
+                                    'Type' => 'Intrinsic'
+                                  },
+                          '6712' => {
+                                      'BaseType' => '757',
+                                      'Name' => 'i2c_interface_t**',
+                                      'Size' => '8',
+                                      'Type' => 'Pointer'
+                                    },
+                          '704' => {
+                                     'Name' => 'unsigned long long',
+                                     'Size' => '8',
+                                     'Type' => 'Intrinsic'
+                                   },
+                          '711' => {
+                                     'BaseType' => '717',
+                                     'Name' => 'void const*',
+                                     'Size' => '8',
+                                     'Type' => 'Pointer'
+                                   },
+                          '717' => {
+                                     'BaseType' => '1',
+                                     'Name' => 'void const',
+                                     'Type' => 'Const'
+                                   },
+                          '718' => {
+                                     'BaseType' => '730',
+                                     'Header' => 'i2c-interface.h',
+                                     'Line' => '54',
+                                     'Name' => 'i2c_interface_t',
+                                     'Type' => 'Typedef'
+                                   },
+                          '7284' => {
+                                      'BaseType' => '92',
+                                      'Header' => 'types.h',
+                                      'Line' => '39',
+                                      'Name' => '__int16_t',
+                                      'Size' => '2',
+                                      'Type' => 'Typedef'
+                                    },
+                          '73' => {
+                                    'Name' => 'signed char',
+                                    'Size' => '1',
+                                    'Type' => 'Intrinsic'
+                                  },
+                          '730' => {
+                                     'Line' => '35',
+                                     'Memb' => {
+                                                 '0' => {
+                                                          'name' => 'fd',
+                                                          'offset' => '0',
+                                                          'type' => '111'
+                                                        }
+                                               },
+                                     'Name' => 'struct _i2c_interface_t',
+                                     'Size' => '4',
+                                     'Source' => 'i2c-interface.c',
+                                     'Type' => 'Struct'
+                                   },
+                          '7336' => {
+                                      'BaseType' => '7284',
+                                      'Header' => 'stdint-intn.h',
+                                      'Line' => '25',
+                                      'Name' => 'int16_t',
+                                      'Size' => '2',
+                                      'Type' => 'Typedef'
+                                    },
+                          '757' => {
+                                     'BaseType' => '718',
+                                     'Name' => 'i2c_interface_t*',
+                                     'Size' => '8',
+                                     'Type' => 'Pointer'
+                                   },
+                          '7752' => {
+                                      'BaseType' => '180',
+                                      'Name' => 'uint16_t*',
+                                      'Size' => '8',
+                                      'Type' => 'Pointer'
+                                    },
+                          '80' => {
+                                    'BaseType' => '45',
+                                    'Header' => 'types.h',
+                                    'Line' => '38',
+                                    'Name' => '__uint8_t',
+                                    'Size' => '1',
+                                    'Type' => 'Typedef'
+                                  },
+                          '802' => {
+                                     'Line' => '86',
+                                     'Memb' => {
+                                                 '0' => {
+                                                          'name' => 'INIT_SUCCESS',
+                                                          'value' => '0'
+                                                        },
+                                                 '1' => {
+                                                          'name' => 'FIRST_INIT',
+                                                          'value' => '1'
+                                                        },
+                                                 '2' => {
+                                                          'name' => 'RESTART_DEINIT',
+                                                          'value' => '2'
+                                                        },
+                                                 '3' => {
+                                                          'name' => 'RESTART_INIT',
+                                                          'value' => '3'
+                                                        }
+                                               },
+                                     'Name' => 'enum init_fail_type_t',
+                                     'Size' => '4',
+                                     'Source' => 'expanded-gpio.c',
+                                     'Type' => 'Enum'
+                                   },
+                          '8135' => {
+                                      'BaseType' => '7336',
+                                      'Name' => 'int16_t*',
+                                      'Size' => '8',
+                                      'Type' => 'Pointer'
+                                    },
+                          '8141' => {
+                                      'BaseType' => '163',
+                                      'Name' => 'uint8_t[3]',
+                                      'Size' => '3',
+                                      'Type' => 'Array'
+                                    },
+                          '9138' => {
+                                      'BaseType' => '163',
+                                      'Name' => 'uint8_t[2]',
+                                      'Size' => '2',
+                                      'Type' => 'Array'
+                                    },
+                          '92' => {
+                                    'Name' => 'short',
+                                    'Size' => '2',
+                                    'Type' => 'Intrinsic'
+                                  },
+                          '99' => {
+                                    'BaseType' => '52',
+                                    'Header' => 'types.h',
+                                    'Line' => '40',
+                                    'Name' => '__uint16_t',
+                                    'Size' => '2',
+                                    'Type' => 'Typedef'
+                                  }
+                        },
+          'UndefinedSymbols' => {
+                                  'librpiplc.so.4.1.0' => {
+                                                            '_ITM_deregisterTMCloneTable' => 0,
+                                                            '_ITM_registerTMCloneTable' => 0,
+                                                            '__cxa_finalize@GLIBC_2.17' => 0,
+                                                            '__errno_location@GLIBC_2.17' => 0,
+                                                            '__gmon_start__' => 0,
+                                                            'calloc@GLIBC_2.17' => 0,
+                                                            'close@GLIBC_2.17' => 0,
+                                                            'fclose@GLIBC_2.17' => 0,
+                                                            'fgets@GLIBC_2.17' => 0,
+                                                            'fopen@GLIBC_2.17' => 0,
+                                                            'free@GLIBC_2.17' => 0,
+                                                            'ioctl@GLIBC_2.17' => 0,
+                                                            'malloc@GLIBC_2.17' => 0,
+                                                            'memset@GLIBC_2.17' => 0,
+                                                            'nanosleep@GLIBC_2.17' => 0,
+                                                            'open@GLIBC_2.17' => 0,
+                                                            'snprintf@GLIBC_2.17' => 0,
+                                                            'strstr@GLIBC_2.17' => 0,
+                                                            'usleep@GLIBC_2.17' => 0
+                                                          }
+                                },
+          'WordSize' => '8'
+        };
