@@ -32,12 +32,50 @@ static int rpi_gpios_fds[MAX_RPI_GPIOS];
 
 static int gpiochip_fd = -1;
 
+typedef enum {
+	rpi_4,
+	rpi_5,
+	no_rpi
+} rpi_type_t;
+static rpi_type_t get_rpi_model(void) {
+	FILE *fp;
+	char model[128];
+
+	fp = fopen("/proc/device-tree/model", "r");
+	if (fp == NULL) {
+		return no_rpi;
+	}
+
+	rpi_type_t ret = no_rpi;
+	if (fgets(model, sizeof(model), fp) != NULL) {
+		if (strstr(model, "Raspberry Pi 4") != NULL) {
+			ret = rpi_4;
+		}
+		else if (strstr(model, "Raspberry Pi 5") != NULL) {
+			ret = rpi_5;
+		}
+	}
+
+	fclose(fp);
+	return ret;
+}
+
 int rpi_gpio_init(void) {
 	if (gpiochip_fd >= 0) {
 		return 1;
 	}
 
-	gpiochip_fd = open("/dev/gpiochip0", O_RDONLY);
+	const char* gpiochip_path;
+	switch (get_rpi_model()) {
+	case rpi_5:
+		gpiochip_path = "/dev/gpiochip4";
+		break;
+	default:
+		gpiochip_path = "/dev/gpiochip0";
+		break;
+	}
+
+	gpiochip_fd = open(gpiochip_path, O_RDONLY);
 	if (gpiochip_fd < 0) {
 		return gpiochip_fd;
 	}
