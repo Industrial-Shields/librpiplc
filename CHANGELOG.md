@@ -2,11 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0] - 2025-08-05
+
+### 🚀 Features
+
+- ABI automatic checking ([8a49ca3](8a49ca394433436d67e23c937740b35a9256e81a))
+
+- Add basic Raspberry Pi model detection ([12be3f3](12be3f36c590aba15dbf2e36403efeb1970e9d63))
+
+
+### 🐛 Bug Fixes
+
+- Add QX mapping that matches TouchBerry serigraphy ([4444da1](4444da1db05522bafb0b2f60c26075ba947b3150))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove Bump library version and Update ABI Dumps from changelog ([02b130c](02b130cb3d2b948b4d328c344b505456ef6b4eb4))
+
+
 ## [4.0.0] - 2025-07-03
 
 ### 🚀 Features
 
-- [**breaking**] Merge branch 'new-pins-enum' and update plc-peripherals ([68879b7](68879b71c1e843db92d9bf3aa30f03568a3bd0e0))
+- [**breaking**] Merge branch 'new-pins-enum' and update plc-peripherals ([7a140b9](7a140b9a0e96c9701488d97689704c9c6ec3b079))
 
 - Remove initExpandedGPIO breaking change ([ce918fe](ce918fe48a20453ea804b57956717f8883200380))
 
@@ -33,6 +52,12 @@ All notable changes to this project will be documented in this file.
 
 - Fix RPIPLC_V4 and RPIPLC_V3 test compilations ([0244a51](0244a51a82f6f944aa7ef73103e7b949ab193956))
 
+- Fix debug release in CMakeLists ([cc3bc56](cc3bc564de30a9d34f139d3c2bbb6724b7e57b6c))
+
+- Fix analogBlinkAll example ([bb83db4](bb83db4b5593957f8b9141148f6cc5ef1a53ae64))
+
+- Fix gpio_fd bad conditional + Remove compilation errors ([6587add](6587add0aa4246db0fbc89b329bc6eba055e11b0))
+
 
 ### 💼 Other
 
@@ -53,6 +78,45 @@ All notable changes to this project will be documented in this file.
 - Test packages for GATEBERRY_V9, TOUCHBERRY_PI_V1 and UPSAFEPI_V6 ([ccff204](ccff204f4cefef48a35d90c987dff6d1d3e9babc))
 
 - Update VERSION and SOVERSION inside CMake ([201b89f](201b89f1d7a0f17989fe662d1c0ca25ef71227a7))
+
+- Initial .deb package ([54c4f73](54c4f73ee12104ce774e5a448e531fb90b7ceff1))
+
+- Add getVersion test ([5034c18](5034c187356ad9ac3f7848e2aba51b1a7a999969))
+
+- Add support for GateBerry V9 ([3bb9ed1](3bb9ed12d509f327f2b861098dbd4396a825f4bd))
+
+- Remove CS0 and CS1 from the Touchberry examples
+
+They will most likely conflict with the Raspberry Pi's SPI overlays. ([6097fe3](6097fe35a343cc14c0ba1ecf5d1df52bd67260e8))
+
+- Touchberry V1 basic mappings (missing expansor pins) ([fe19919](fe1991905c1861db487a54525e0142942291f6b6))
+
+- Enable return of positive values in normal GPIOs init and deinit functions ([3bf7a69](3bf7a697c1ff3dd472984eaf9eb68df51091baf2))
+
+- Add comment to lib/CMakeLists.txt ([2e45615](2e45615ab24c62b8a5ce1a5d6a13ac404de61472))
+
+- Add -Wextra in librpiplc compilation ([f902996](f902996d0a3577a358ddfdf90ab16e94954e8879))
+
+- Make the library compatible with UPSafePi V6 ([04d8889](04d88890cd23f9e3377d4944e5bcc0d1348f6ed1))
+
+- Update lib/CMakeLists ([99136a3](99136a3b2a90c26d9cc9546f3d5b5e5c0a923123))
+
+- Add LTC exceptions for RPi PLC 21 and 19R ([c73afba](c73afbab6f3a75fa98e37cca225829e69ab733a7))
+
+- Give more information when some error is detected in test programs ([3374f6a](3374f6a10eaf997547957dc812076744c3ad4b2a))
+
+- Rebase from origin + Adapt to last plc-peripherals ([5984e89](5984e89ea839b1fb6b61d36ffcde67fc68eca210))
+
+- Update rpiplc mappings ([ad31531](ad31531a96b2649497fe0eee58af61b2a3fa1419))
+
+- Revert "Bump plc-peripherals + Simplify include directives for the library"
+
+This reverts commit 3a2da9f5e816fede0a8086d10e49127ec5558dea. ([b138610](b138610b9214faca29acaf42295d55f855cc2453))
+
+- Enable compile-time I2C bus and peripherals selection + Initial UPSafePi V6 support
+It requires to compile all your project along with a .c file that defines these variables depending on the macros you selected ([68c5792](68c57921c0dbfb8c17aa0a22a2463652019080b6))
+
+- Bump plc-peripherals + Simplify include directives for the library ([3a2da9f](3a2da9f5e816fede0a8086d10e49127ec5558dea))
 
 
 ### 📚 Documentation
@@ -83,8 +147,6 @@ By default our images enable the SPI0-2CS overlay, and the tests will fail when 
 
 ### 💼 Other
 
-- Bump library version ([c3a0c4e](c3a0c4e6ac154d4b42b9ff27c50d17738fa19c9e))
-
 - Use pinMode in tests programs, instead of relying in hw-config ([13b69e4](13b69e44665ac4db9641cc5595a4c17dbb91e4a4))
 
 
@@ -96,8 +158,6 @@ By default our images enable the SPI0-2CS overlay, and the tests will fail when 
 
 
 ### 💼 Other
-
-- Plc-peripherals v1.0.1 + Bump library version ([3be0593](3be0593a2bb0f7199c3eb0aead5d1a8142f71ede))
 
 - Revert "Support for UPSafePi V6 + Update plc-peripherals to v1.0.1"
 
@@ -116,6 +176,23 @@ This reverts from commit 07f509eb671bdafb45e0b360548eacf40e7e2d3c to commit 0cd8
 
 ## [3.0.0] - 2024-04-25
 
+### 🐛 Bug Fixes
+
+- Fix include directives for G++ in README ([2a3c3d8](2a3c3d87d6bc71e57903bd4fcfb44e840363d6c1))
+
+- Fix Debug flags ([eaf9d36](eaf9d367c624614ab77a40aa5dc5472d8eed9403))
+
+- Fix README + Pass CMAKE_BUILD_TYPE to plc-peripherals + Close GPIO if pinMode is used for a used GPIO ([e50db73](e50db7393880638b4ae7750da528328073a83532))
+
+- Fix #error messages from pins_references-vX.hpp ([22405cd](22405cd456989828513ff20b7d7314b57beb097b))
+
+- Fix OPTO_OUT_2 PLC V5 mapping ([f4388e4](f4388e450ba0db23456eb32f4de1ed447acf0df7))
+
+- Fix naming of EXP2 RST line ([ad6ab23](ad6ab23ea3bbcbba5a787366052b2eacb245dcd0))
+
+- Fix CMake indentation + Remove echo from prepare_cmake.sh ([756013b](756013b2b225654a4067b53960bf11b3434217e3))
+
+
 ### 💼 Other
 
 - Update README + Fix assert in Arduino functions ([48e95c8](48e95c80e6a4fc32d73b42595ee37deefe930fee))
@@ -123,6 +200,86 @@ This reverts from commit 07f509eb671bdafb45e0b360548eacf40e7e2d3c to commit 0cd8
 - Add sudo ldconfig in README ([1cdd3ac](1cdd3acca20c4afdf12b53f799b7814b28b99d50))
 
 - Use v1.0.0 tag for plc-peripherals ([dd39a06](dd39a0641b764ba0b6a389bfbe4560d1e8cb9849))
+
+- Update .gitignore ([497450e](497450ee5b100d3ffd7e8f6e5d27c2760e7b1893))
+
+- Change name of RPIPLC V5 to RPIPLC V6 to avoid future confusion ([94a991c](94a991c98284c5cf8b464d7a64aac78d171810c4))
+
+- Pass -fPIC to plc-peripherals + Fix analogBlink test compiling to RPIPLC ([910a487](910a48732c4f274f1a9807666c21011166093d5e))
+
+- Extract version macros to the header ([19f417f](19f417f677ba3be3ad7407b71848f44361b56f1b))
+
+- Better version header and print version in tests + Fix tests not initialising with new hw-config ([9860eca](9860ecaa35e2fb7db951f2109c601528d9bf803a))
+
+- License the library under the LGPL-3.0-or-later and the tests under the GPL-3.0-or-later ([31a89d5](31a89d5f0fa0e1a4ab05f6beed8fc4747d09de39))
+
+- Documentation + Bump version in the header ([1597d10](1597d1040b15ea05015d723b8539961762fa0f65))
+
+- Differentiate PWM and I/O pins + Create FDs if don't exist + Better tests ([8a4aa45](8a4aa45ea3274ffc432da3e7c0a01e9aae70d9cf))
+
+- Add new plc-peripherals PWM functions + Add more pins as possible PWM outputs ([5522028](552202884c4e78248ff176b60b71bab08bc84d0d))
+
+- Optionally change the PWM frequency whe using set-pwm-output ([dab05fa](dab05fa231617686ae4ed0fb4da96d01b4d9d4dc))
+
+- Make an extra folder for relative #includes ([1c40649](1c406490185ee6c3083760e1a3a1b55147f4abf9))
+
+- Add EXP as digitalOutputs + Correct README ([224a7a6](224a7a6c5da314a8e57a5e5379f349f3968fa375))
+
+- Install library headers (forgot to uncomment) ([8193aef](8193aefc1a7ba8e3126d4e7d760d1e265d7b4a23))
+
+- Better test suite + Update README + Add "RPIPLC" as model ([21f13f4](21f13f43809095cde923face8f25984ad81783db))
+
+- Ensure that analogBlinkAll only blinks analogic outputs (not relays) ([1a942ec](1a942ec3fc8ff110815ce262eb4473b62dc88842))
+
+- Debug and Release build types + Fetch plc-peripherals directly with CMake, wihout Git submodules ([6772532](6772532f1cba806842cee83a9919d41fc214cfe8))
+
+- Use CMake commands instead of custom build script + Bump plc-peripherals ([5595ff0](5595ff00f9a2f02efaa5cfd259e51e5c5fe785b1))
+
+- Update rpi-gpio to use GPIO_V2 Linux API + Better error handling ([70f86d7](70f86d735e86a1b7fe71e55e0b8702c8c0cbcc3c))
+
+- Add MCP23017 empty array and other functions + Better delays ([f80af61](f80af61df79ae94205decf00448d43b7f7d235a3))
+
+- Rename "test" directory to "tests" + Fix initExpandedGPIO callings ([7974029](7974029f3e018d3d8fac8dc52ea65fd7fdcf0151))
+
+- Bump to last plc-peripherals lib ([831d365](831d36523ca9b3914907f8a70bab727c1903ccd0))
+
+- Import PLCs peripherals as a library + Fix tests warnings ([eee6cfe](eee6cfe38be76dedf05c5f9259bf378f0b61e890))
+
+- Change underscores to hyphens to maintain coherence with other .hpp ([5b384ee](5b384ee25b00c573edbf1cc310883df2c024e896))
+
+- Rename library to librpiplc ([67a6bfc](67a6bfc72592e5398fab5512d8877e84c0623b14))
+
+- Downgrade CMake and C/C++ standards to match Debian Bullseye + Fix size_t prints ([5c166d5](5c166d573ec11a6b0a0787ab8fe261200743b1c4))
+
+- Macro to not include rpiplc-mapping.h (useful for libraries) ([abb9803](abb980324e7ff2a22d9ad12b768a4262850e8bec))
+
+- Only build tests if version and model macros are given ([d7c1786](d7c1786065d90adcdeda90e87299be151430c494))
+
+- Change nullptr in the library to NULL ([394e50e](394e50e79faa684455da73966eb358645225e8f8))
+
+- Compile library with C and make it compatible with C++ + Change optimization levels and standards used ([624a5ab](624a5aba3c01e364a3a540ea9fca2a1e4af5b1f8))
+
+- Add RPi PLC V5 mapping + Make some corrections in v4 pins_references to test ([1115c5e](1115c5ece41c129aa410cafd5a675e0f1136f6f3))
+
+- Enable all warnings as errors + Enable multithreaded compilation + Remove unused code in shellscripts ([0fd1fe3](0fd1fe36620648271ebde46c191b1efcc4da0027))
+
+- General test refactoring + Start updating the README ([27875f2](27875f22573a4dc92fc34210ca6656dc2428cc83))
+
+- Move install.sh to only build.sh, and enable installation through arguments ([068e7ee](068e7ee15f67e33298a64551b549465af8475c59))
+
+- When installing, also install test files ([a39dd17](a39dd17087e59d302b9acbab8695bcca62e73c4e))
+
+- Make tests version agnostic ([ae9dc0b](ae9dc0b338bdf91917434dbc05d48553cf0e5271))
+
+- Remove duplicated code + Fix 57ARA name ([df0337c](df0337cbb3d1b8e8a203b0f0a82cd64fca27c80f))
+
+- Add missing pins in v3 pin mapping ([3fa0a05](3fa0a05bbdfd072770df50878778b07107f8ca74))
+
+- Enable compilation of all versions and models at the same time ([1768f77](1768f77281709183ec34aa67b4f4e1e42144c247))
+
+- Use macros to select which PLC version to compile for ([90c08fb](90c08fb9485f61948bd78845359c7a5504382f03))
+
+- Use CMake + Change some installation locations ([1dc23bd](1dc23bd3a76294b45b4f6cc6b63c831c039966c7))
 
 
 ## [2.0.1] - 2023-08-21
