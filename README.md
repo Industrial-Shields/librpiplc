@@ -18,6 +18,11 @@ This library is licensed under the LGPL-3.0-or-later. The test programs are lice
 
 ## Installing
 
+**WARNING: Installing this library from APT will remove the older library files, and all compiled
+programs that depend on the library must be recompiled, including the ones that come with our image
+(like `hw-config`). All of our programs can be installed later as an APT package (`sudo apt install
+hw-config`).**
+
 1. Check that you have configured the Industrial Shields Debian repository:
 ``` bash
 apt-cache policy | grep industrialshields
