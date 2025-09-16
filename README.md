@@ -50,15 +50,17 @@ sudo apt install librpiplc
 ## About the Debian packages
 
 `librpiplc` is the main package, the one that contains the compiled library. There is also `librpiplc-dev`, which contains the library
-headers and the `librpiplc.so` symlink. This package is needed in order to compile programs with C and C++.
+headers and the `librpiplc.so` symlink. This last package is needed in order to compile programs with C and C++.
 
 Other related packages are:
-* `librpiplc-tests-rpiplc-v6`: Raspberry PLC V6 test programs (located under `/home/pi/test`, or `/usr/lib/librpiplc`).
-* `librpiplc-tests-rpiplc-v4`: Raspberry PLC V4 test programs (located under `/home/pi/test`, or `/usr/lib/librpiplc`).
-* `librpiplc-tests-rpiplc-v3`: Raspberry PLC V3 test programs (located under `/home/pi/test`, or `/usr/lib/librpiplc`).
-* `librpiplc-tests-touchberry-v1`: TouchBerry V1 test programs (located under `/home/pi/test`, or `/usr/lib/librpiplc`).
-* `librpiplc-tests-upsafepi-v6`: UPSafePi V6 test programs (located under `/home/pi/test`, or `/usr/lib/librpiplc`).
-* `librpiplc-tests-gateberry-v9`: GateBerry V9 test programs (located under `/home/pi/test`, or `/usr/lib/librpiplc`).
+* `librpiplc-tests-rpiplc-v6`: Raspberry PLC V6 test programs.
+* `librpiplc-tests-rpiplc-v4`: Raspberry PLC V4 test programs.
+* `librpiplc-tests-rpiplc-v3`: Raspberry PLC V3 test programs.
+* `librpiplc-tests-touchberry-v1`: TouchBerry V1 test programs.
+* `librpiplc-tests-upsafepi-v6`: UPSafePi V6 test programs.
+* `librpiplc-tests-gateberry-v9`: GateBerry V9 test programs.
+After installing one or more of these packages, all programs can be found in either the
+`/usr/libexec/$ARCH/librpiplc` or the `/home/pi/test` directory.
 
 
 
