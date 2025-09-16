@@ -1,8 +1,8 @@
 .PHONY: debs clean_debian
 
 debs:
-	LD_LIBRARY_PATH=/usr/aarch64-linux-gnu/lib dpkg-buildpackage --host-arch arm64 --sign-key=5AD8FD2E2EF303FD7FAD59938356C65F95C75269 -j$$(nproc) -b
-	LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib dpkg-buildpackage --host-arch armhf --sign-key=5AD8FD2E2EF303FD7FAD59938356C65F95C75269 -j$$(nproc) -b
+	./dpkg-buildpackage-arch.sh arm64
+	./dpkg-buildpackage-arch.sh armhf
 	lintian ../*.deb
 	mv ../*.deb ../DebRepo
 	mv ../*.changes ../DebRepo
@@ -10,4 +10,4 @@ debs:
 
 clean_debian:
 	$(MAKE) -f debian/rules clean
-	rm -rf obj-arm-linux-gnueabihf
+	rm -rf obj-aarch64-linux-gnu obj-arm-linux-gnueabihf build
