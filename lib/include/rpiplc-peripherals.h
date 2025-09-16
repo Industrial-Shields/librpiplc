@@ -25,36 +25,59 @@
 
 
 #if defined(RPIPLC_V3) || defined(RPIPLC_V4) || defined(RPIPLC_V6)
+
+#if defined(RPIPLC_CPU)
+#define __ARRAY_MCP23008 ((const uint8_t[]){})
+#else
 #define __ARRAY_MCP23008 ((const uint8_t[]){ 0x20, 0x21 })
+#endif // defined(RPIPLC_CPU)
+
 #else
 #define __ARRAY_MCP23008 ((const uint8_t[]){})
-#endif
+#endif // defined(RPIPLC_V3) || defined(RPIPLC_V4) || defined(RPIPLC_V6)
 
 #if defined(RPIPLC_V3)
+
+#if defined(RPIPLC_CPU)
+#define __ARRAY_ADS1015 ((const uint8_t[]){})
+#else
 #define __ARRAY_ADS1015 ((const uint8_t[]){ 0x48, 0x49, 0x4a, 0x4b })
+#endif // defined(RPIPLC_CPU)
+
 #elif defined(TOUCHBERRY_PI_V1)
 #define __ARRAY_ADS1015 ((const uint8_t[]){ 0x49 })
+
 #else
 #define __ARRAY_ADS1015 ((const uint8_t[]){})
-#endif
+#endif // defined(RPIPLC_V3)
 
 
 #if defined(RPIPLC_V3) || defined(RPIPLC_V4) || defined(RPIPLC_V6)
+
+#if defined(RPIPLC_CPU)
+#define __ARRAY_PCA9685 ((const uint8_t[]){ 0x41 })
+#else
 #define __ARRAY_PCA9685 ((const uint8_t[]){ 0x40, 0x41 })
+#endif // defined(RPIPLC_CPU)
+
 #else
 #define __ARRAY_PCA9685 ((const uint8_t[]){})
-#endif
+#endif // defined(RPIPLC_V3) || defined(RPIPLC_V4) || defined(RPIPLC_V6)
 
 
 #if defined(RPIPLC_V4) || defined(RPIPLC_V6)
-#if defined(RPIPLC_21) || defined(RPIPLC_19R)
+
+#if defined(RPIPLC_CPU)
+#define __ARRAY_LTC2309 ((const uint8_t[]){})
+#elif defined(RPIPLC_21) || defined(RPIPLC_19R)
 #define __ARRAY_LTC2309 ((const uint8_t[]){ 0x08, 0x0a })
 #else
 #define __ARRAY_LTC2309 ((const uint8_t[]){ 0x08, 0x0a, 0x28 })
-#endif
+#endif //  defined(RPIPLC_CPU)
+
 #else
 #define __ARRAY_LTC2309 ((const uint8_t[]){})
-#endif
+#endif // defined(RPIPLC_V4) || defined(RPIPLC_V6)
 
 
 #define __ARRAY_MCP23017 ((const uint8_t[]){})
