@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euo
+set -eu
 
 SIGN_KEY=5AD8FD2E2EF303FD7FAD59938356C65F95C75269
 

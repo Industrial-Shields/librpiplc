@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -eu
 
 # If we are cross-compiling don't execute anything
 ARCH=$(uname -m)
