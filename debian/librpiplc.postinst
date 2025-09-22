@@ -1,6 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 
+# If we are cross-compiling don't execute anything
+ARCH=$(uname -m)
+if [ "$ARCH" = "x86_64" ] || [ "$ARCH" = "amd64" ]; then
+    exit 0
+fi
+
+HOME_DIR=$(getent passwd 1000 | cut -d: -f6)
+THOUSAND_USER=$(getent passwd 1000 | cut -d: -f1)
+if [ "$THOUSAND_USER" != "pi" ] || [ ! -d "$HOME_DIR" ]; then
+    # Only delete the test/ folder if the user pi has the 1000 UID
+    exit 0
+fi
 
 ARCH_SUFFIX=$(echo "$0" | cut -d ':' -f2 | cut -c4-5)
 if [[ $ARCH_SUFFIX == "64" ]]; then
@@ -10,13 +22,6 @@ elif [[ $ARCH_SUFFIX == "hf" ]]; then
 else
     echo "Unknown architecture. Aborting..."
     exit 1
-fi
-
-HOME_DIR=$(getent passwd 1000 | cut -d: -f6)
-THOUSAND_USER=$(getent passwd 1000 | cut -d: -f1)
-if [ "$THOUSAND_USER" != "pi" ] || [ ! -d "$HOME_DIR" ]; then
-    # Only create the test/ folder if the user pi has the 1000 UID
-    exit 0
 fi
 
 SYMLINK_DIR="$HOME_DIR/test"
