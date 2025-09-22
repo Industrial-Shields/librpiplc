@@ -1,3 +1,11 @@
+librpiplc (4.1.1) bullseye bookworm; urgency=low
+
+  * Cross-compiled librpiplc
+  * Remove APT install warning: Always uninstall older libraries
+  * Don't try to initialize MCP23008 and LTC2309 chips in RPIPLC_CPU
+
+ -- Industrial Shields <support@industrialshields.com>  Mon, 22 Sep 2025 16:35:00 +0000
+
 librpiplc (4.1.0) bullseye bookworm; urgency=medium
 
   * Add QX mapping at TouchBerry Pi V1.
