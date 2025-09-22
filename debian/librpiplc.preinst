@@ -1,0 +1,37 @@
+#!/bin/bash
+set -euo
+
+
+# Script to erase librpiplc installations from older images
+
+is_file_owned_by_dpkg() {
+    local file_path="$1"
+
+    if dpkg -S "$file_path" &> /dev/null; then
+	return 0
+    fi
+
+    return 1
+}
+
+rm_if_not_owned_by_dpkg() {
+    local file_path="$1"
+
+    if [ ! -e $file_path ]; then
+	return
+    fi
+
+    if ! is_file_owned_by_dpkg $file_path; then
+	echo "Deleting $file_path"
+	rm -rf $file_path
+	if [ ! -L "$(getent passwd 1000 | cut -d: -f6)/test" ]; then
+	    rm -f "/home/pi/test"
+	fi
+    fi
+}
+
+
+rm_if_not_owned_by_dpkg /usr/lib/librpiplc.so
+rm_if_not_owned_by_dpkg /usr/include/librpiplc
+rm_if_not_owned_by_dpkg /usr/local/lib/librpiplc.so
+rm_if_not_owned_by_dpkg /usr/local/include/librpiplc
