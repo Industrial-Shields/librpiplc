@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.1] - 2025-09-22
+
+### 🐛 Bug Fixes
+
+- Preinst script to automatically remove older libraries ([7010028](7010028e5eabeb61d77a4c4804581ef2441732bd))
+
+- Postinst and postrm scripts when cross-compiling ([0f9196f](0f9196f0209ea4861ac2a409d13e4dbfd2579faf))
+
+- CC warnings and refactor dpkg-buildpackage call ([cd139b4](cd139b4db8ed980f9b3fbba5f2f41f68c15763ca))
+
+- Don't declare MCP23008 and LTC2309 for RPIPLC_CPU ([390c181](390c1817c385201231a2d46bdb43350a0f51ca5a))
+
+
+### 📚 Documentation
+
+- Fix librpiplc-tests location in README ([11fdb30](11fdb301dc49938feee007787b6eb82d159932b2))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove set -o from bash scripts ([0854809](0854809479eba9ccdece61375d43a1208da9e952))
+
+- Remove unnecessary lintian override ([9ad3524](9ad35244898c5a6dd0b7fe9d9181fb1e95b198fb))
+
+- Remove APT warning ([d944595](d9445953de91f37d32caf38d5203884ff8f405e6))
+
+- Prepare librpiplc to cross-compile in a container ([165e23d](165e23dd93dddc82fca11b6f5c2c1fc3cf3dd79f))
+
+
 ## [4.1.0] - 2025-08-05
 
 ### 🚀 Features
