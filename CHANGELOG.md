@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.2.0] - 2025-12-16
+
+### 🚀 Features
+
+- *(GateBerry V9)* Add RS485 termination pin ([3f185ab](3f185ab402528c95c204038b377019068bc2f3b5))
+
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump library version ([ef4bc16](ef4bc16220b42433e1bf8c2a821cb8155d5f239c))
+
+
 ## [4.1.1] - 2025-09-22
 
 ### 🐛 Bug Fixes
