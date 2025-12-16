@@ -1,3 +1,10 @@
+librpiplc (4.2.0) bullseye bookworm; urgency=low
+
+  * Fix the detection of the installation environment
+  * Add RS485 termination pin for GateBerry V9
+
+ -- Industrial Shields <support@industrialshields.com>  Tue, 16 Dec 2025 13:51:00 +0000
+
 librpiplc (4.1.1) bullseye bookworm; urgency=low
 
   * Cross-compiled librpiplc
