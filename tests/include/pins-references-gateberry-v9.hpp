@@ -32,7 +32,7 @@ static const size_t numDigitalInputs = sizeof(digitalInputs) / sizeof(uint32_t);
 static const uint32_t analogInputs[] = {};
 static const size_t numAnalogInputs = sizeof(analogInputs) / sizeof(uint32_t);
 
-static const uint32_t digitalOutputs[] = {DE_RE, EXP_PWM, EXP_RST};
+static const uint32_t digitalOutputs[] = {DE_RE, EXP_PWM, EXP_RST, RS485_TERMINATION};
 static const size_t numDigitalOutputs = sizeof(digitalOutputs) / sizeof(uint32_t);
 
 static const uint32_t PWMOutputs[] = {};
@@ -52,7 +52,7 @@ static const size_t numNamedDigitalInputs = sizeof(namedDigitalInputs) / sizeof(
 static const pin_name_t namedAnalogInputs[] = {};
 static const size_t numNamedAnalogInputs = sizeof(namedAnalogInputs) / sizeof(pin_name_t);
 
-static const pin_name_t namedDigitalOutputs[] = {{"DE_RE", DE_RE}, {"EXP_PWM", EXP_PWM}, {"EXP_RST", EXP_RST}};
+static const pin_name_t namedDigitalOutputs[] = {{"DE_RE", DE_RE}, {"EXP_PWM", EXP_PWM}, {"EXP_RST", EXP_RST}, {"RS485_TERMINATION", RS485_TERMINATION}};
 static const size_t numNamedDigitalOutputs = sizeof(namedDigitalOutputs) / sizeof(pin_name_t);
 
 static const pin_name_t namedPWMOutputs[] = {};

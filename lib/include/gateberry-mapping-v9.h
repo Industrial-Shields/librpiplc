@@ -36,3 +36,6 @@ static const uint32_t EXP_CS =  PIN_EXP_CS;
 static const uint32_t EXP_AN =  PIN_EXP_AN;
 static const uint32_t EXP_PWM = PIN_EXP_PWM;
 static const uint32_t EXP_INT = PIN_EXP_INT;
+
+#define PIN_RS485_TERMINATION             MAKE_PIN_DIRECT(17)
+static const uint32_t RS485_TERMINATION = PIN_RS485_TERMINATION;
