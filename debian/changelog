@@ -1,3 +1,9 @@
+librpiplc (4.2.0-r1) bullseye bookworm; urgency=low
+
+  * Fix version ints and string
+
+ -- Industrial Shields <support@industrialshields.com>  Mon, 02 Mar 2026 11:23:00 +0000
+
 librpiplc (4.2.0) bullseye bookworm; urgency=low
 
   * Fix the detection of the installation environment
